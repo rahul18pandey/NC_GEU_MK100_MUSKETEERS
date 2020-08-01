@@ -43,6 +43,7 @@ class _TransactionPageState extends State<TransactionPage> {
     user=fobj.getUser();
   }
   int count=0;
+  bool islocal=false;
   @override
   Widget build(BuildContext context) {
    if(transactiondata!=null && buyerdata!=null &&collabdata!=null){
@@ -50,6 +51,14 @@ class _TransactionPageState extends State<TransactionPage> {
          if(transactiondata.documents[i].data['Email']==fobj.user.email){
            count++;
            break;
+         }
+       }
+       for(int k=0;k<buyerdata.documents.length;k++){
+         if(buyerdata.documents[k].documentID==fobj.user.email){
+           if(buyerdata.documents[k].data['Type']=='local'){
+             islocal=true;
+             break;
+           }
          }
        }
        if(count!=0) {
@@ -113,6 +122,7 @@ class _TransactionPageState extends State<TransactionPage> {
   Widget buildTransaction(BuildContext context, int i) {
     bool isrequest=false;
     int q;
+    if(!islocal){
      for( q=0;q<collabdata.documents.length;q++){
        if(collabdata.documents[q].data['Buyeremail']==fobj.user.email&&collabdata.documents[q].data['Farmeremail']==transactiondata.documents[i].data['Farmer_email']){
 
@@ -384,6 +394,84 @@ class _TransactionPageState extends State<TransactionPage> {
         );
       }
 
+  }else{
+      if(transactiondata.documents[i].data['Email']==fobj.user.email ){
+        return new Container(
+          margin: EdgeInsets.all(10.0),
+          width: double.infinity,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 3.0, // soften the shadow
+                  spreadRadius: 3.0, //extend the shadow
+                  offset: Offset(
+                    0.0, // Move to right 10  horizontally
+                    0.0, // Move to bottom 10 Vertically
+                  ),
+                ),
+              ]
+          ),
+          child: Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20.0))),
+            color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0, bottom: 10.0),
+                    child: Row(children: <Widget>[
+                      Text(transactiondata.documents[i].data['Type'],
+                        style: new TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),),
+                      Spacer(),
+                    ]),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0, bottom: 10.0),
+                    child: Row(children: <Widget>[
+                      Text("Bought From : ${transactiondata.documents[i].data['Farmer_email']}",
+                        style: new TextStyle(
+                            fontSize: 15.0, fontWeight: FontWeight.bold),),
+                      Spacer(),
+                    ]),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0, bottom: 10.0),
+                    child: Row(children: <Widget>[
+
+                      RaisedButton(shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(12.0),
+                          side: BorderSide(color: Colors.grey)
+                      ),
+                        color: Colors.blue,onPressed: () {
+                          if(transactiondata.documents[i].data['Farmer_Rating']=="")
+                          {
+                            dialogbox(context,i);
+                          }else{
+                            dialogbox(context,i);
+                          }
+                        }, child: Text("Rate Farmer",style: TextStyle(fontFamily:'Courier',fontWeight: FontWeight.bold,fontSize: 15.0)),),
+
+                    ]),
+
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      }else{
+        return Container(
+          width: 0.0,
+          height: 0.0,
+        );
+      }
+    }
   }
   dialogbox(BuildContext context,int i){
     return showDialog(context: context,

@@ -26,7 +26,7 @@ class _PaymentState extends State<Payment> {
   crudMethods fobj = new crudMethods();
   String amount,upi;
   emailvalafunction e = new emailvalafunction();
-  QuerySnapshot cropdata1;
+  QuerySnapshot cropdata1,buyersdata;
   int number;
   @override
   void initState() {
@@ -37,9 +37,14 @@ class _PaymentState extends State<Payment> {
         cropdata1 = results;
       });
     });
+    fobj.getData().then((results) {
+      setState(() {
+        buyersdata = results;
+      });
+    });
     _appsFuture = UpiPay.getInstalledUpiApplications();
   }
-
+ bool islocal=false;
   @override
   void dispose() {
     super.dispose();
@@ -78,19 +83,32 @@ class _PaymentState extends State<Payment> {
           print(e);
         });
         }else{
-          fobj.addtransactiondata1({
-            'Email': widget.quantity,
-            'Farmer_email':fobj.user.email,
-            'Type':widget.type,
-            'Farmer_Rating':"",
-            'Buyer_Rating':"",
-            'Service_Rating':"",
-          }).then((result) {})
-              .catchError((e) {
-            print(e);
-          });
+          if(!islocal) {
+            fobj.addtransactiondata1({
+              'Email': widget.quantity,
+              'Farmer_email': fobj.user.email,
+              'Type': widget.type,
+              'Farmer_Rating': "",
+              'Buyer_Rating': "",
+              'Service_Rating': "",
+            }).then((result) {})
+                .catchError((e) {
+              print(e);
+            });
+          }else{
+            fobj.addtransactiondata1({
+              'Email': fobj.user.email,
+              'Farmer_email': widget.quantity,
+              'Type': widget.type,
+              'Farmer_Rating': "",
+              'Buyer_Rating': "",
+              'Service_Rating': "",
+            }).then((result) {})
+                .catchError((e) {
+              print(e);
+            });
+          }
         }
-        print(cropdata1.documents[number].documentID);
         fobj.deletecrop(cropdata1.documents[number].documentID);
         Navigator.push(context, MaterialPageRoute(builder: (context) => BuyCropPage()));
       }else{
@@ -101,7 +119,16 @@ class _PaymentState extends State<Payment> {
 
   @override
   Widget build(BuildContext context) {
-    if(cropdata1!=null) {
+    if(cropdata1!=null && buyersdata!=null) {
+      for(int k=0;k<buyersdata.documents.length;k++){
+        if(buyersdata.documents[k].documentID==fobj.user.email){
+          if(buyersdata.documents[k].data['Type']=='local'){
+            islocal=true;
+            break;
+          }
+        }
+      }
+      print(islocal);
       return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
