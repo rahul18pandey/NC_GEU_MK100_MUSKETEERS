@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <!-- ####################  firebase things   #################### -->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
+
+    <script src="{{url_for('static', filename='js/cred.js')}}"></script>
+    <!-- imports -->
+    <!-- mayank css mannual -->
+    <link rel="stylesheet" href="../static/css/mstyles.css">
+    <script src="{{url_for('static', filename='js/state.js')}}"></script>
+    <script src="{{url_for('static', filename='js/farmer_state.js')}}"></script>
+    <script src="{{url_for('static', filename='js/voice.js')}}"></script>
+
+
+    <!-- import from startpage  -->
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    <script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
+
+    <!--   {{url_for('static', filename='')}}   -->
+
+    <!-- Compiled and minified CSS -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/materialize.min.css')}}"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/k-style.css')}}"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet"
+        href="{{url_for('static', filename='fonts/beyond_the_mountains-webfont.css')}}" media="screen,projection" />
+    <script type="text/javascript" src="{{url_for('static', filename='js/kisan.js')}}"></script>
+
+
+
+
+
+
+    <!-- end of import from startpage -->
+
+
+    <!-- ########################   initialization part   ######################### -->
+</head>
+
+<body>
+    <header>
+
+
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="farmerirrigation.html">Irrigation</a></li>
+            <li><a href="farmerfertilisers.html">Fertilisers</a></li>
+            <li><a href="farmerpackaging.html">Packaging</a></li>
+            <li><a href="farmertransport.html">Transport</a></li>
+            <li><a href="farmerwarehouse.html">Warehouse</a></li>
+        </ul>
+
+
+
+        <ul id="dropdown2" class="dropdown-content">
+            <li><a href="farmerirrigation.html" id="dropirrigation">Irrigation</a></li>
+            <li><a href="farmerfertilisers.html" id="dropfertilizers">Fertilisers</a></li>
+            <li><a href="farmerpackaging.html" id="droppackaging">Packaging</a></li>
+            <li><a href="farmertransport.html" id="droptransport">Transport</a></li>
+            <li><a href="farmerwarehouse.html" id="dropwarehouse">Warehouse</a></li>
+        </ul>
+
+
+        <nav style="background-color: limegreen; padding: 10px;">
+            <div class="nav-wrapper">
+                <a href="/farmerhome" class="brand-logo mastfont" style="font-size: 50px; height: auto;">Saksham
+                    kisan</a>
+
+                <ul class="right hide-on-med-and-down">
+                    <li class="only-to-farmer"><a href="/farmersell" id="navsell">Sell</a></li>
+                    <li class="only-to-farmer"><a href="schemes.html" id="navscheme">Schemes</a></li>
+                    <li class="only-to-farmer"><a href="tutorials.html" id="navtutorials">Tutorials</a></li>
+                    <li class="only-to-farmer"><a href="/farmerauction" id="navauction">Auction</a></li>
+                    <!--		   Dropdown Trigger -->
+                    <li class="only-to-farmer"><a class="dropdown-trigger" href="#!" data-target="dropdown1" >Services<i
+                                class="material-icons right" id="navservices">arrow_drop_down</i></a></li>
+                    <li class="only-to-farmer"><a class="waves-effect waves-light btn" href="/farmerprofile" id="navprofile">Profile</a></li>
+                    <li><a class="waves-effect waves-light btn" href="#">Language</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="hide-on-med-and-up">
+            <ul id="slide-out" class="sidenav ">
+                <li class="only-to-farmer"><a href="/farmersell">Sell</a></li>
+                <li class="only-to-farmer"><a href="schemes.html">Schemes</a></li>
+                <li class="only-to-farmer"><a href="tutorials.html">Tutorials</a></li>
+                <li class="only-to-farmer"><a href="farmerauction.html">Auction</a></li>
+                <li class="only-to-farmer"><a class="dropdown-trigger" href="#!" data-target="dropdown2">Services<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li class="only-to-farmer"><a class="waves-effect waves-light btn" href="farmerprofile.html">Profile</a></li>
+                <li><a class="waves-effect waves-light btn" href="#">Language</a></li>
+            </ul>
+
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </ul>
+    </header>
+
+
+
+
+
+
+
+
+
+    <main>
+        {% block content %}
+        <!-- ################################################################################### -->
+        <!-- #####################   rest of the pages here   ################################## -->
+        <!-- ################################################################################### -->
+        {% endblock %}
+    </main>
+
+
+<!-- ################################################ -->
+<!-- ################  speech button   ############## -->
+<!-- ################################################ -->
+    <div class="fixed-action-btn" onclick="startVoice()">
+        <a class="btn-floating btn-large red" id="btnGiveCommand" >
+          <i class="large material-icons">keyboard_voice</i>
+        </a>
+       
+      </div>
+
+
+    <footer class="row white-text z-depth-1" style="background-color: limegreen;">
+        <div class="col s12 m6 l6 center">
+            <h6>
+                Copyright Team <b>MUSKETEERS</b>
+            </h6>
+        </div>
+        <div class="col s12 m6 l6 center">
+            <h6>
+                SIH - 2020
+            </h6>
+        </div>
+    </footer>
+
+
+
+
+    <script>
+
+        //################  materialize initiailisations  ###############
+
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+            $('.tabs').tabs();
+            $('select').formSelect();
+            $('.collapsible').collapsible();
+            $(".dropdown-trigger").dropdown();
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                direction: 'left'
+            });
+        });
+    </script>
+</body>
+
+</html>

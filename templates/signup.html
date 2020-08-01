@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<script src="{{url_for('static', filename='js/signup_man.js')}}"></script>
+<script src="{{url_for('static', filename='js/gst_verification.js')}}"></script>
+
+<div class="container z-depth-5 white">
+  <div class="row">
+
+    <div class="col s12 m6 l6 ">
+      <div class="col top_marg push-s3 mastfont">
+        <h2>Signup</h2>
+      </div>
+      <form class="col s12">
+
+
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">note</i>
+            <!--          <input type="password" id="pwd" name="pwd" minlength="8">-->
+            <input type="password" id="pwd" name="pwd" minlength="8">
+            <label for="password blue-text text-darken-2">Password</label>
+          </div>
+        </div>
+        <form action="#">
+          <p>
+            <label>
+              <input type="checkbox" onclick="myFunction()" />
+              <span>show password</span>
+            </label>
+          </p>
+        </form>
+
+
+        <div class="row">
+          <div class="col">
+            <h4 class="mastfont">Choose the profession</h4>
+          </div>
+        </div>
+        <div class="row">
+
+          <a class="waves-effect waves-light btn-small" onclick="profession_selector('farmer')">Farmer</a>
+
+          <a class="waves-effect waves-light btn-small" onclick="profession_selector('bigseller')"
+            style="margin-left: 5%;">Big
+            seller</a>
+
+          <a class="waves-effect waves-light btn-small" onclick="profession_selector('mandiseller')"
+            style="margin-left: 5%;">Mandi
+            seller</a>
+
+          <a class="waves-effect waves-light btn-small" onclick="profession_selector('localseller')"
+            style="margin-left: 5%;">Local
+            seller</a>
+
+          <a class="waves-effect waves-light btn-small" onclick="profession_selector('serviceprovider')"
+            style="margin-left: 5%;margin-top: 5%;">Service provider</a>
+
+        </div>
+        <div class="row" id="profession_selector">
+          <!-- ################################################## -->
+          <!-- #############   fields from signup js   ########## -->
+          <!-- ################################################## -->
+        </div>
+
+        <!-- 
+        <button class="btn waves-effect waves-light top_marg" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button> -->
+      </form>
+    </div>
+
+    <div class="col s12 m6 l6"> <img class="responsive-img"
+        src="{{url_for('static', filename='theme_images/winter_sun.jpg')}}"></div>
+  </div>
+
+</div>
+
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("pwd");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>
+{% endblock content %}

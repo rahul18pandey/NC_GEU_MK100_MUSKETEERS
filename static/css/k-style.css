@@ -1,0 +1,111 @@
+/*for search bar*/
+#myInput {
+  background-image: url(''); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+
+.top_marg{
+			margin-top: 5%;
+}
+/*maindiv*/
+.maindiv{  
+	background-color: transparent;
+	height: 100%;
+	width: 100%
+		
+}
+
+/*second div on start page*/
+.secdiv{
+	background-color: bisque;
+	height: 600px;
+	width: 100%;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr.k_header, #myTable tr:hover {
+  background-color: transparent;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  
+  font-size: 18px;
+}
+
+.gen_val{
+    height: 10%;
+    width: 10%;
+    background-color: transparent;
+    margin-left: 7%;
+    font-size: 50px;
+/*    margin: 8px;*/
+}
+
+#myBtn{
+	height: 50px;
+	width: 10%;
+	background-color: darkgreen;
+	margin-left: 20%;
+}
+
+.k_heading{
+	font-size:20px;
+	
+	
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+/*	  background-image: url('https://freepngimg.com/download/grass/3-grass-png-image-green-picture.png');*/
+ 
+  }
+/*footer*/
+#footer{
+	background-image: url('https://freepngimg.com/download/grass/3-grass-png-image-green-picture.png');
+/*	background-color: cornflowerblue;*/
+}
+.btn-accnt{
+  width: 100%;
+}
+.font-color{
+  color: black;
+}
+.heading-style{ 
+  font-family: 'beyond_the_mountainsregular', sans-serif; 
+}
+ hr {
+  border: 0;
+  border-top: 3px double black;
+	float:none;
+}
+table.myTableDelete{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top:20px;
+  }
+  table.myTableDelete th, table.myTableDelete td{
+  border: 1px solid #cdcdcd;
+  padding: 7px;
+  }
+  .lang-hin{
+    display: none;
+  }
