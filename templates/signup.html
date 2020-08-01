@@ -2,7 +2,6 @@
 {% block content %}
 
 <script src="{{url_for('static', filename='js/signup_man.js')}}"></script>
-<script src="{{url_for('static', filename='js/gst_verification.js')}}"></script>
 
 <div class="container z-depth-5 white">
   <div class="row">
@@ -42,7 +41,8 @@
 
         <div class="row">
           <div class="col">
-            <h4 class="mastfont">Choose the profession</h4>
+            <h4 class="mastfont lang-eng">Choose the profession</h4>
+            <h4 class="mastfont lang-hin" style="display: none;">पेशा चुनें</h4>
           </div>
         </div>
         <div class="row">
@@ -63,6 +63,82 @@
 
           <a class="waves-effect waves-light btn-small" onclick="profession_selector('serviceprovider')"
             style="margin-left: 5%;margin-top: 5%;">Service provider</a>
+
+
+            <a class=" modal-trigger" href="#modal1">NEED HELP TO GET GST NUMBER??</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Part I: Generate your GST Application form</h4>
+      <p><li>   The first step is to obtain the Temporary Registration Number (TRN). To obtain this, you need a valid mobile number (an India number), email address and PAN (Permanent Account Number) for the business.</li>
+
+        <li>   1. Go to the official GST portal -<a href="https://www.gst.gov.in/"> https://www.gst.gov.in/</a> and under the services tab, choose Services > Registration > New Registration.</li>
+        <li>   2. On the Registration page, enter all the requested details (including your PAN number), email address and mobile number.</li>
+        <li>   3. After entering the details, click proceed. You will receive two different OTPs on your mobile and on your email for verifying the mobile number and the email id. OTP is valid only for 10 minutes. If required, you can regenerate the OTP.</li>
+        <li>   Your Temporary Reference number will be generated at the end of this process.</li>
+        <li>   4. To use this number, either click Proceed or Services > Registration > New Registration option and select the Temporary Reference Number (TRN) radio button to login using the TRN.</li>
+        <li>   5. In the Temporary Reference Number (TRN) field, enter the TRN generated and enter the captcha text as shown on the screen.</li>
+        <li>   6. After this you will be asked to verify OTP again. This is different from the previous OTP generated, please enter the new OTP received. The same OTP will be received on the verified mobile number and email id.</li>
+        <li>   7. This will take you to your “My Saved Application” page. You will have to fill in all the form details and submit within 15 days. After this, your number and saved form will be deleted. Click the Edit button and proceed to Part II.</li>
+        
+        </p>
+        <h4>Part II: Filling in your GST Application form</h4>
+        <p><li>   The form contains 10 sections / tabs. Please click each tab to enter that section. Please consult your CA/Tax Consultant/GST Practitioner before submitting the form.</li>
+
+          <li>   For this process, you need scanned copies of the following documents and some additional personal information:</li>
+          <li>   >Valid Bank Account Number and IFSC</li>
+          <li>   >Proof of constitution / incorporation of business</li>
+          
+          <li>   1. In case of a Partnership Firm – Deed of Partnership</li>
+          <li>   2. For Others- Registration Certificate of the business entity.</li>
+          <li>   >Proof of primary place of business.</li>
+          <li>   >Photo of promoter, director, partner, karta of Hindu undivided family (HUF) (whichever is applicable).</li>
+          <li>   >Proof of appointment of Authorised Signatory.</li>
+          <li>   >Photo of Authorised Signatory.</li>
+          <li>   >Front / first page of bank passbook / statement containing bank account number, branch address, address of account holder and latest transaction details</li>
+          .
+          <li>   Once you have all the above-mentioned documents in place, follow the steps below to start the enrolment process:</li>
+          
+          <li>   Steps to follow . If you are logged out, you can log in again using your TRN number in previous section:</li>
+          
+          <li>   Step 1 – Fill in all the tabs, with instructions as provided in the slides above. Click Save & Continue to ensure you all information you filled in is saved.</li>
+          
+          <li>   Step 2 – Complete the details in the 'Business' and the 'Promoters / Partners' tabs, with at least the mandatory fields that have been highlighted. Ensure you provide proof of constitution of business.</li>
+          
+          <li>   Step 3 - Fill in the 'Authorized Signatory' information. Please note that, in case you wish to e-sign the form, the mobile/email of the Authorized Signatory will be used. If you wish to sign with DSC, the PAN of your Authorized Signatory must be linked to the DSC.</li>
+          
+          <li>   Step 4 – Further instructions on how to fill the remaining tabs such as 'Primary Place of Business' (PPOB) Tab, 'Goods & Services' Tab, 'Bank Accounts' Tab are mentioned in the above slides.</li>
+          </p>
+          <h4>Part III: Registering your Digital Signature Certificate</h4>
+          <p><li>   In order to verify your GST application, you would need to digitally sign the form. Please note that:</li>
+
+            <li>   > DSC is compulsory for Companies and LLPs.</li>
+            <li>   >You can only register and use the digital signature of the Authorized Signatory specified in the registration form.</li>
+            <li>   >If you wish to verify the form by other available methods (rather than by the use of DSC), please refer to Part IV.</li>
+            <li>   >If you wish to sign the document using Digital Signature Certificate (DSC), please follow instructions below: Please ensure you have DSC software installed on your computer.</li>
+            <li>   >If you wish to get a DSC, you can contact any one of the certifying authorities mentioned on http://www.cca.gov.in/cca/.</li>
+            <li>   >One you get the DSC software installed, you should also have the DSC Dongle with you (which you will receive with the DSC software).</li>
+            <li>   >To sign the GST form, you need to also install Emsigner. You can download and install the DSC Signer from emsigner.com</li>
+            </p>
+            <h4>Part IV: Verify and Submit Your GST Application</h4>
+            <p><li>   You can submit the application by choosing any one of the 3 verification methods:</li>
+              <li>   >Verification with DSC: Please refer to earlier section.</li>
+              <li>   >Verification with e-signature: Refer to the section below.</li>
+              <li>   >Verification with EVC: Refer to the section below.</li>
+              <li>   On completion, an Application Reference Number (ARN) will be generated and sent to your mobile number and email id. You can use this to track your application status (Services > Registration > Track Application).</li>
+              
+              <li>   Once your Application Status" shows “Approved”, an email and SMS will be received intimating that the GSTIN is generated and providing a temporary user name (which will be your GSTIN number) and password to login to the GST website.</li>
+              
+              <li>   While logging into the GST portal using the temporary user name and password received, you will have to go to the "Login" page and then click on “First time login” option, which will be available at the bottom of the login page. After you input the temporary user name and password provided to you and click on "Login" option, it will ask you to change the username and password for future use.</li>
+              
+              <li>   You will be able to Download your Registration Certificate within 3-5 days. To download your Registration Certificate, log in using your valid credentials on the www.gst.gov.in website to access your dashboard, go to Services > User Services > View or Download Certificates and click the Download button.</li>
+              </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  </div>
 
         </div>
         <div class="row" id="profession_selector">
@@ -85,6 +161,7 @@
 </div>
 
 
+
 <script>
   function myFunction() {
     var x = document.getElementById("pwd");
@@ -95,4 +172,26 @@
     }
   }
 </script>
+<script>
+
+  //################  materialize initiailisations  ###############
+
+  $(document).ready(function () {
+      $('.sidenav').sidenav();
+      $('.tabs').tabs();
+      $('select').formSelect();
+      $('.collapsible').collapsible();
+      $(".dropdown-trigger").dropdown();
+      $('.modal').modal();
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.fixed-action-btn');
+      var instances = M.FloatingActionButton.init(elems, {
+          direction: 'left'
+      });
+  });
+</script>
 {% endblock content %}
+
+
