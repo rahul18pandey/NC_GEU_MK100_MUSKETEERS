@@ -2,6 +2,7 @@
 {% block content %}
 
 <script src="{{url_for('static', filename='js/signup_man.js')}}"></script>
+<script src="{{url_for('static', filename='js/gst_verification.js')}}"></script>
 
 <div class="container z-depth-5 white">
   <div class="row">
@@ -41,8 +42,7 @@
 
         <div class="row">
           <div class="col">
-            <h4 class="mastfont lang-eng">Choose the profession</h4>
-            <h4 class="mastfont lang-hin" style="display: none;">पेशा चुनें</h4>
+            <h4 class="mastfont">Choose the profession</h4>
           </div>
         </div>
         <div class="row">
@@ -140,6 +140,8 @@
     </div>
   </div>
 
+
+
         </div>
         <div class="row" id="profession_selector">
           <!-- ################################################## -->
@@ -161,7 +163,6 @@
 </div>
 
 
-
 <script>
   function myFunction() {
     var x = document.getElementById("pwd");
@@ -172,6 +173,8 @@
     }
   }
 </script>
+
+
 <script>
 
   //################  materialize initiailisations  ###############
@@ -193,5 +196,3 @@
   });
 </script>
 {% endblock content %}
-
-
