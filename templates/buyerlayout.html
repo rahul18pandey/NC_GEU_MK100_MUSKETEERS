@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <!-- ####################  firebase things   #################### -->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
+
+    <script src="{{url_for('static', filename='js/cred.js')}}"></script>
+    <!-- imports -->
+    <!-- mayank css mannual -->
+    <link rel="stylesheet" href="../static/css/mstyles.css">
+
+    <script src="{{url_for('static', filename='js/state_buyer.js')}}"></script>
+    <script src="{{url_for('static', filename='js/voice.js')}}"></script>
+
+
+    <!-- import from startpage  -->
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    <script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
+
+    <!--   {{url_for('static', filename='')}}   -->
+
+    <!-- Compiled and minified CSS -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/materialize.min.css')}}"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/k-style.css')}}"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet"
+        href="{{url_for('static', filename='fonts/beyond_the_mountains-webfont.css')}}" media="screen,projection" />
+    <script type="text/javascript" src="{{url_for('static', filename='js/kisan.js')}}"></script>
+
+
+
+
+
+
+    <!-- end of import from startpage -->
+
+
+    <!-- ########################   initialization part   ######################### -->
+</head>
+
+<body>
+    <header>
+
+        <nav style="background-color: limegreen;">
+            <div class="nav-wrapper">
+                <a href="/buyerhome" class="brand-logo mastfont" style="font-size: 50px; height: auto;">Saksham
+                    kisan</a>
+
+                <ul class="right hide-on-med-and-down" id="buy_auction_button_container">
+
+
+                    <!-- ####################################################### -->
+                    <!-- ##################  from state_buyer.js  ############## -->
+                    <!-- ####################################################### -->
+
+                    
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="hide-on-med-and-up">
+            <ul id="slide-out" class="sidenav ">
+                <li><a href="/buyerbuy">Buy</a></li>
+                <li><a href="/buyerauction">Auction</a></li>
+
+                <li id="profile_button_container"></li>
+                <li><a class="waves-effect waves-light btn" href="#">Language</a></li>
+            </ul>
+
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </ul>
+    </header>
+
+
+
+    <main>
+        {% block content %}
+        <!-- ################################################################################### -->
+        <!-- #####################   rest of the pages here   ################################## -->
+        <!-- ################################################################################### -->
+        {% endblock %}
+    </main>
+
+
+
+
+    <footer class="row white-text z-depth-1" style="background-color: limegreen;">
+        <div class="col s12 m6 l6 center">
+            <h6>
+                Copyright Team <b>MUSKETEERS</b>
+            </h6>
+        </div>
+        <div class="col s12 m6 l6 center">
+            <h6>
+                SIH - 2020
+            </h6>
+        </div>
+    </footer>
+
+
+
+    <script>
+
+        //################  materialize initiailisations  ###############
+
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+            $('.tabs').tabs();
+            $('select').formSelect();
+            $('.collapsible').collapsible();
+            $(".dropdown-trigger").dropdown();
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                direction: 'left'
+            });
+        });
+    </script>
+
+</body>
+
+</html>

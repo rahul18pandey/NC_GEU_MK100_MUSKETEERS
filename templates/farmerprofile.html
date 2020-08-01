@@ -1,0 +1,127 @@
+{% extends "farmerlayout.html" %}
+{% block content %}
+<script src="{{url_for('static', filename= 'js/farmerdetails.js')}}"></script>
+
+<div class="maindiv" style="height:100%;width: 100%;background-color: transparent;">
+    <div style="height: 100px;width: 100%;background-color: transparent;"></div>
+
+    <div class="row">
+        <div class="col s6 push-s1" style="height:600px;width:400px;">
+            <div class="container" style="margin-top: 5%;">
+                <img src="{{url_for('static', filename='theme_images/winter_sun.jpg')}}"
+                    style="height: 300px;width: 300px;">
+            </div>
+            <div class="container col mastfont" style="margin-top: 20%;font-size: 35px;">
+                <div id="farmername" style="margin-left: 45%;"> Name</div>
+                <div id="farmeraadhar" style="margin-left: 45%;"> Aadhar</div>
+                <div id="farmeraddress" style="margin-left: 45%;"> Address</div>
+
+            </div>
+        </div>
+        <div class="col s12 l3 m12 push-s1"
+            style="height: auto;width:60%;background-color: transparent;margin-left: 8%; ">
+
+
+            <a class="waves-effect waves-light btn-large mastfont" style="height: 70px;margin-left: 2%;font-size: 25px;"
+                href="farmeredit.html" id="edit_profile">Edit Profile</a>
+            <a class="waves-effect waves-light btn-large mastfont"
+                style="height: 70px;margin-left: 2%;font-size: 25px;" id="payment">Payment</a>
+            <a class="waves-effect waves-light btn-large dropdown-trigger btn mastfont" href='#' data-target='dropdown3'
+                style="height: 70px;margin-left: 2%;font-size: 25px;" id="profile_brand">Brand</a>
+
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown3' class='dropdown-content mastfont'>
+                <li><a href="farmerbrandself.html">
+                        Self</a></li>
+                <li><a href="farmerbrandcollabsend.html"> Send Collaboration Request</a>
+
+                </li>
+                <li><a href="farmerbrandcollabrecieve.html"> Recieved Collaboration Request</a>
+
+                </li>
+
+            </ul>
+
+            <a class="waves-effect waves-light btn-large mastfont" style="height: 70px;margin-left: 2%;font-size: 25px;"
+                href="farmerrecent.html"><i id="history"></i>Recent History</a>
+
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6 offset-s6" style="height: auto;width:500px;margin-top: -30%; ">
+            <ul class="collapsible mastfont">
+                <li>
+                    <div class="collapsible-header" style="height: 80px;font-size: 35px;"><i
+                            class="material-icons" id="collapsable_contact"></i>Contact Details</div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>Phone number:</span>
+                        <span id="farmerphone">13654</span></div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>Email Address:</span>
+                        <span id="farmeremail">kisan@gmail.com</span></div>
+
+
+                </li>
+                <li>
+                    <div class="collapsible-header" style="height: 80px;font-size: 35px;"><i
+                            class="material-icons" id="collapsable_additional"></i>Additional Details</div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>Aadhar Card Number:</span>
+                        <span id="farmeraadhar1">13654</span></div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>Farm Area:</span>
+                        <span id="farmerarea">13654</span></div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>Pin Code:</span>
+                        <span id="farmerpin">13654</span></div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>Police Station:</span>
+                        <span id="farmerpolicestation">13654</span></div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>Post Office:</span>
+                        <span id="farmerpostoffice">13654</span></div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>District:</span>
+                        <span id="farmerdistrict">13654</span></div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>House number:</span>
+                        <span id="farmerhouse">13654</span></div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>City:</span>
+                        <span id="farmercity">13654</span></div>
+                    <div class="collapsible-body mastfont" style="font-size: 30px;"><span>State:</span>
+                        <span id="farmerstate">13654</span></div>
+
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $(".dropdown-trigger").dropdown();
+        $('.sidenav').sidenav();
+        $('.collapsible').collapsible();
+
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, {
+            direction: 'left'
+        });
+    });
+</script>
+
+{% endblock content %}

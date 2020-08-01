@@ -36,5 +36,21 @@ def farmerhome():
 
 
 
+
+#########################################################
+#####################   BUYER HOME   ####################
+#########################################################
+
+
+@app.route('/buyerhome', methods=['GET'])
+def buyerhome():
+    return render_template('buyerhome.html', title = 'Saksham Kisan - HOME', user="buyer") #other users could be "kisan", "sprovider", "buyer"
+
+
+@app.route('/bigbuyerprofile', methods=['GET'])
+def bigbuyerprofile():
+    return render_template('bigbuyerprofile.html', title = 'Saksham Kisan - HOME', user="bigbuyer") #other users could be "kisan", "sprovider", "buyer"
+
+
 if __name__ == '__main__': 
     app.run(debug=True) 

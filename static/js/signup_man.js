@@ -495,7 +495,7 @@ function signup_farmer() {
         })
             .then(function () {
                 console.log("Document successfully written!");
-                window.location.href = "/farmerhome";
+                window.location.href = "/";
             })
             .catch(function (error) {
                 console.error("Error writing document: ", error);
@@ -551,7 +551,7 @@ function signup_bigseller() {
         })
             .then(function () {
                 console.log("Document successfully written!");
-                window.location.href = "/buyerhome";
+                window.location.href = "/";
             })
             .catch(function (error) {
                 console.error("Error writing document: ", error);
@@ -616,7 +616,7 @@ function signup_mandiseller() {
         })
             .then(function () {
                 console.log("Document successfully written!");
-                window.location.href = "/buyerhome";
+                window.location.href = "/";
 
             })
             .catch(function (error) {
