@@ -1,0 +1,182 @@
+<span class="lang-eng">{% extends "buyerlayout.html" %}
+{% block content %}
+<!-- ########  important  ########## -->
+<div style="display: none;" id="docid">{{ id }}</div>
+<script>
+    const pageName = "buyerbidding"
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="maindiv" style="height: auto;width: 100%;">
+
+
+
+    <div class="container " style="width: 100%;">
+
+
+        <div class="row" style="height: auto;width: auto;">
+            <div class="col s6" style="margin-top: 5%;max-width: 30%;">
+                <a href="farmerprofilebuyer.html"><img src="./static/theme_images/th.jpg"
+                        style="height: 250px;width: 250px;border-radius: 50%"></a>
+            </div>
+            <div class="col s6" style="background-color: transparent;height: auto;width: 50%;margin-top: 5%;">
+                <div class="col s6" style="background-color: transparent;height: 100px;width: 100%;">
+
+                    <div class="col s6" style="background-color: transparent;height: 100px;width: 50%;">
+                        <label class="mastfont" style="font-size: 50px">
+                           <span class="lang-eng"> <font color="black">Crop-type:</font></span><span class="lang-hin">फसल-प्रकार:</span>
+                        </label>
+                    </div>
+
+                    <div class="col s6" style="background-color: transparent;height: 100px;width: 50%;font-size: 45px;"
+                        id="display_crop_type">
+
+
+                    </div>
+
+                </div>
+
+                <div class="col s6" style="background-color: transparent;height: 100px;width: 100%;">
+
+                    <div class="col s6" style="background-color: transparent;height: 100px;width: 50%;">
+                        <label class="mastfont" style="font-size: 50px">
+                           <span class="lang-eng"> <font color="black">Base-Price:</font></span><span class="lang-hin">आधार-मूल्य:</span>
+                        </label>
+                    </div>
+
+                    <div class="col s6" id="display_base_price"
+                        style="background-color: transparent;height: 100px;width: 50%;font-size: 45px;">
+
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+        <div id="p_name_val_val" class="gen_val mastfont" style="margin-top: 1%"><a href="farmer-profile-by-buyer.html">
+                <font color="black" id="farmer_name"></font>
+            </a></div>
+
+
+        <!--			for placea bid-->
+        <div class="row">
+            <div class="row">
+                <div class="input-field col s6 offset-s6 mastfont" style="width: 30%;" id="set_bidd_container">
+                    <input placeholder="bid" id="bid_value" type="text" class="validate" value="">
+                    <label for="bid_value" style="font-size: 30px;">
+                        <span class="lang-eng"><font color="black">Place your bid here:</font></span><span class="lang-hin"अपनी बोली यहां रखें:></span>
+                    </label>
+
+                    <button class="btn waves-effect waves-light" onclick="set_bid()" style="margin-left: 65%;">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="timer">
+
+            <table>
+                <tr style="font-size: 60px;">
+                    <td id="days">00:</td>
+                    <td id="hours">00:</td>
+                    <td id="min">00:</td>
+                    <td id="sec">00</td>
+                </tr>
+                <tr>
+                    <td><span class="lang-eng">Days</span><span class="lang-hin">दिन</span></td>
+                    <td><span class="lang-eng">Hours</span><span class="lang-hin">घंटे</span></td>
+                    <td><span class="lang-eng">Minutes</span><span class="lang-hin">मिनट</span></td>
+                    <td><span class="lang-eng">Seconds</span><span class="lang-hin">सेकंड</span></td>
+                </tr>
+            </table>
+
+
+        </div>
+    </div>
+
+
+
+
+
+    <!--			<a class="waves-effect waves-light btn"  onclick="f1()" style="margin-left: 50%; margin-top: 1%" >Click Me</a>-->
+
+
+
+    <div class="container" style="background-color: transparent; margin-top: 5%;">
+
+        <table class="myTableDelete">
+            <thead>
+                <tr>
+                <tr class="k_header">
+                    <th style="width:10%;"><span class="lang-eng"> Buyer's Name</span><span class="lang-hin">खरीदार का नाम</span></th>
+
+
+                    <th style="width:10%;"><span class="lang-eng">Quantity</span><span class="lang-hin">मात्रा</span></th>
+                    <th style="width:10%;"><span class="lang-eng">Current Bid</span><span class="lang-hin">वर्तमान बोली</span></th>
+
+
+                </tr>
+            </thead>
+            <tbody id="bid_table_container"></span>
+               
+            </tbody>
+        </table>
+
+
+    </div>
+
+</div>
+
+
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="{{url_for('static', filename='js/buyerbid.js')}}"></script>
+<script src="{{url_for('static', filename='js/commonbidding.js')}}"></script>
+
+
+
+{% endblock content %}
