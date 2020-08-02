@@ -1,0 +1,244 @@
+{% extends "farmerlayout.html" %}
+{% block content %}
+<!-- ###########  !!important  ########### -->
+<div id="docid" style="display: none;">{{ id }}</div>
+<script>
+    const pageName = "farmerbidding"
+</script>
+
+    
+
+
+
+
+<div class="maindiv" style="height: auto;width: 100%;">
+			
+			
+				
+    <div class="container " style="width: 100%;">
+        
+        
+        <div class="row" style="height: auto;width: auto;">
+            <div class="col s6" style="margin-top: 5%; max-width: 30%;">
+                <a href="farmerprofile.html"><img src="{{url_for('static', filename= 'theme_images/th.jpg')}}" style="height: 250px;width: 250px;border-radius: 50%"></a>
+            </div>
+            <div class="col s6" style="background-color: transparent;height: auto;width: 50%;margin-top: 5%;">
+                <div class="col s6" style="background-color: transparent;height: 100px;width: 100%;">
+                    
+                    <div class="col s6" style="background-color: transparent;height: 100px;width: 50%;">
+                        <label class="mastfont" style="font-size: 50px">
+                          <span class="lang-eng">  <font color="black">Crop-type:</font></span>
+                          <span class="lang-hin">  <font color="black">फसल-प्रकार:</font></span>
+                        
+                        </label>
+                </div>
+                    
+                    <div class="col s6" style="background-color: transparent;height: 100px;width: 50%;font-size: 45px;" id="crop_type_container">Crop
+                    
+                </div>
+                    
+                </div>
+                
+                    <div class="col s6" style="background-color: transparent;height: 100px;width: 100%;">
+                    
+                    <div class="col s6" style="background-color: transparent;height: 100px;width: 50%;">
+                        <label class="mastfont" style="font-size: 50px">
+                            <span class="lang-eng"><font color="black">Base-Price:</font></span>
+                            <span class="lang-hin"><font color="black">आधार-मूल्य:</font></span>
+                        </label>
+                </div>
+                    
+                    <div class="col s6" style="background-color: transparent;height: 100px;width: 50%;font-size: 45px;" id="base_price_container">Base
+                    
+                </div>
+                    
+                </div>
+    
+                
+            </div>
+
+            
+            </div>
+        
+        
+        <div id="p_name_val_val" class="gen_val mastfont" style="margin-top: 1%"><a href="farmer-profile-by-buyer.html"><font color="black" id="farmername_container">Name</font></a></div>
+            
+          <div id="timer" >  
+                    
+                        <table>
+                            <tr style="font-size: 60px;">
+                                 <td id="days">00:</td>
+                                <td id="hours">00:</td>
+                                <td id="min">00:</td>
+                                <td id="sec">00</td>
+                            </tr>
+                            <tr>
+                                 <td>Days</td>
+                                <td>Hours</td>
+                                <td>Minutes</td>
+                                <td>Seconds</td>
+                            </tr>
+                        </table>
+                                
+                  
+                    </div>
+    </div>
+    
+
+    
+    
+    
+    <a class="waves-effect waves-light btn"  onclick="f1()" style="margin-left: 50%; margin-top: 1%" ><span class="lang-eng">Click Me</span><span class="lang-hin">मुझे क्लिक करें </span></a>
+    <div class="container" style="background-color: transparent;">
+
+        
+        <table class="myTableDelete">
+<thead>
+<tr>                                  
+     <tr class="k_header">
+<th style="width:10%;"><span class="lang-eng"> Buyer's Name</span><span class="lang-hin">खरीदार का नाम</span></th>
+<th style="width:10%;"><span class="lang-eng">Crop-type</span><span class="lang-hin">फसल-प्रकार</span></th>
+
+<th style="width:10%;"><span class="lang-eng">Quantity</span><span class="lang-hin">मात्रा</span></th>
+<th style="width:10%;"><span class="lang-eng">Current Bid</span><span class="lang-hin">वर्तमान बोली</span></th>
+<th style="width:10%;"><span class="lang-eng">Delete</span><span class="lang-hin">हटाएँ</span></th>
+<!-- 
+    <th style="width:10%;"></th><span class="lang-eng">Delete</span><span class="lang-hin">हटाएँ</span></th>                                                                       -->
+</tr>                                                                      
+</thead>    
+<tbody id="bidding_buyer_container"> 
+
+
+
+<!-- ##################################################### -->
+<!-- ############  data from buyerbidding js  ############ -->
+<!-- ##################################################### -->
+
+
+
+<!--     
+<tr>                                  
+    <td>West Indies</td>
+    <td>Chris Gayle</td>
+    <td>195</td> 
+    <td>195</td> 
+    <td><button type="button" class="btndeleterow" >remove</button></td> 
+</tr>
+<tr>                                  
+    <td>India</td>
+    <td>Virat Kohli</td>
+    <td>124</td> 
+    <td>124</td> 
+    <td><button type="button" class="btndeleterow">remove</button></td> 
+</tr> 
+   <tr>                                  
+    <td>Australia</td>
+    <td>David Warner</td>
+    <td>167</td> 
+    <td>167</td> 
+    <td><button type="button" class="btndeleterow">remove</button></td> 
+</tr>
+<tr>                                  
+    <td>South Africa</td>
+    <td>AB De Villier's</td>
+    <td>185</td> 
+    <td>185</td> 
+    <td><button type="button" class="btndeleterow">remove</button></td> 
+</tr>  
+ <tr>                                  
+    <td>South Africa</td>
+    <td>AB De Villier's</td>
+    <td>185</td> 
+    <td>185</td> 
+    <td><button type="button" class="btndeleterow">remove</button></td> 
+</tr> 
+ <tr>                                  
+    <td>South Africa</td>
+    <td>AB De Villier's</td>
+    <td>185</td> 
+    <td>185</td> 
+    <td><button type="button" class="btndeleterow">remove</button></td> 
+</tr>  -->
+</tbody>
+</table>
+    </div>
+</div>
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function f1()
+    {
+    var x=new Date();
+    var y=x.getTime();
+    var total=y+(1*24*3600000);
+    
+    function count()
+    {
+        var now =new Date();
+        var currentTime=now.getTime();
+        
+        var diff= total-currentTime;
+        var s=Math.floor(diff/1000);
+        var m=Math.floor(s/60);
+        var h=Math.floor(m/60);
+        var d=Math.floor(h/24);
+        if(diff>0){
+        
+        h=h%24;
+        m=m%60;
+        s=s%60;
+        
+        h=(h<10)?"0"+h:h;
+        m=(m<10)?"0"+m:m;
+        s=(s<10)?"0"+s:s;
+        d=(d<10)?"0"+d:d;
+        
+        document.getElementById("days").innerHTML=d;
+        document.getElementById("hours").innerHTML=h;
+        document.getElementById("min").innerHTML=m;
+        document.getElementById("sec").innerHTML=s;
+        
+        setTimeout(count,1000);}
+        else
+            {
+                window.alert("EXPIRED");
+            }
+        
+
+    }
+    
+    count();
+    }
+    
+    
+    </script>
+<!--		for remove-->
+<script>
+$(document).ready(function(){
+$('.btndeleterow').click(function(){
+$(this).closest('tr').remove();
+});
+});
+</script>
+<script src="{{url_for('static', filename='js/farmerbid.js')}}"></script>
+<script src="{{url_for('static', filename='js/commonbidding.js')}}"></script>
+
+
+{% endblock content %}
