@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<form class="form-signin" method="GET" action="{% url 'message' %}">
+  {% csrf_token %}
+  <h1 class="h3 mb-3 font-weight-normal">Please fill credentials</h1>
+  <input type="tel" name="sender" id="inputFrom" class="form-control mb-4" readonly value="+16143899367">
+  <!-- <label for="inputBody" class="sr-only">Message</label>
+  <input type="text" name="message" id="inputBody" class="form-control  mb-4" placeholder="Message" required> -->
+  <label for="inputPrice" class="sr-only">Price</label>
+  <input type="text" name="price" id="inputPrice" class="form-control  mb-4" placeholder="Price" required>
+  <label for="inputTo" class="sr-only">Mobile Number</label>
+  <input type="tel" name="reciever" id="inputTo" class="form-control  mb-4" placeholder="Mobile Number" required autofocus>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Send Message</button>
+  <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+</form>
+
+{% endblock content %}
+
+
