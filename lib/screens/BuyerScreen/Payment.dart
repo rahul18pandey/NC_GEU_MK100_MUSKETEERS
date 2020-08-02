@@ -65,7 +65,7 @@ class _PaymentState extends State<Payment> {
 
       UpiTransactionResponse id = new UpiTransactionResponse(
           response.toString());
-
+        print(widget.isfarmer);
       if (response.status == UpiTransactionStatus.success) {
         if(widget.isfarmer=='no') {
           fobj.addtransactiondata1({
@@ -110,7 +110,7 @@ class _PaymentState extends State<Payment> {
           }
         }
         fobj.deletecrop(cropdata1.documents[number].documentID);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => BuyCropPage()));
+       // Navigator.push(context, MaterialPageRoute(builder: (context) => BuyCropPage()));
       }else{
         return _addDialog(context);
       }

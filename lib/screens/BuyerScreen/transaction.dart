@@ -4,6 +4,8 @@ import 'package:kisan_app/crud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kisan_app/Constants/loading.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'directedfarmer.dart';
 
@@ -18,6 +20,7 @@ class _TransactionPageState extends State<TransactionPage> {
   QuerySnapshot buyerdata;
   FirebaseUser user;
   String rating;
+  final FirebaseMessaging _fcm = FirebaseMessaging();
   final TextEditingController _controller = new TextEditingController();
   var items = ['1', '2', '3', '4','5'];
   String a,token;
@@ -40,7 +43,27 @@ class _TransactionPageState extends State<TransactionPage> {
         collabdata = results;
       });
     });
+    _fcm.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+        showLongToast();
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+        // TODO optional
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+        // TODO optional
+      },
+    );
     user=fobj.getUser();
+  }
+  void showLongToast() {
+    Fluttertoast.showToast(
+      msg: "you have got a collaboration",
+      toastLength: Toast.LENGTH_LONG,
+    );
   }
   int count=0;
   bool islocal=false;
@@ -192,7 +215,7 @@ class _TransactionPageState extends State<TransactionPage> {
                       {
                         dialogbox(context,i);
                       }else{
-                        dialogbox(context,i);
+                        dialogbox1(context,i);
                       }
                     }, child: Text("Rate Farmer",style: TextStyle(fontFamily:'Courier',fontWeight: FontWeight.bold,fontSize: 15.0)),),
 
@@ -352,7 +375,7 @@ class _TransactionPageState extends State<TransactionPage> {
                           {
                             dialogbox(context,i);
                           }else{
-                            dialogbox(context,i);
+                            dialogbox1(context,i);
                           }
                         }, child: Text("Rate Farmer",style: TextStyle(fontFamily:'Courier',fontWeight: FontWeight.bold,fontSize: 15.0)),),
 
@@ -453,7 +476,7 @@ class _TransactionPageState extends State<TransactionPage> {
                           {
                             dialogbox(context,i);
                           }else{
-                            dialogbox(context,i);
+                            dialogbox1(context,i);
                           }
                         }, child: Text("Rate Farmer",style: TextStyle(fontFamily:'Courier',fontWeight: FontWeight.bold,fontSize: 15.0)),),
 
@@ -558,6 +581,33 @@ class _TransactionPageState extends State<TransactionPage> {
         ],
       );
       }
+    );
+  }
+  dialogbox1(BuildContext context,int i){
+    return showDialog(context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context){
+          return AlertDialog(
+              contentPadding: EdgeInsets.only(left: 25, right: 25),
+              title: Center(child: Text("Rating")),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
+              content: Container(
+                  child: SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          Text("Already rated"),
+                          SizedBox(height: 20,),
+                          FlatButton(
+                            child: Text("ok"),
+                            onPressed: (){
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      )))
+          );
+        }
     );
   }
 }
