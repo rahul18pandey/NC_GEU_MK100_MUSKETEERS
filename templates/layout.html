@@ -105,7 +105,8 @@
 
                             <li><a class="waves-effect waves-light btn" href="/login">Login</a></li>
                             <li><a class="waves-effect waves-light btn" href="/signup">Register</a></li>
-                            <!-- <li><a class="waves-effect waves-light btn"  id="lang_btn" onclick="languageChanger()">भाषा</a></li> -->
+                            <li class="lang-hin"><a class="waves-effect waves-light btn" onclick="languageChanger()">भाषा</a></li>
+                    <li class="lang-eng"><a class="waves-effect waves-light btn" onclick="languageChanger()">LANGUAGE</a></li>
                         </ul>
 
                         <ul id="lgin_show" class="right hide-on-med-and-down" style="display: none;">
@@ -126,7 +127,7 @@
 
     </header>
 
- 
+
     <main>
         {% block content %}
         <!-- ################################################################################### -->
@@ -134,15 +135,12 @@
         <!-- ################################################################################### -->
         {% endblock %}
     </main>
-<!-- <img src="{{url_for('static', filename = 'theme_images/how_to/login_process.jpg')}}" alt="" srcset=""> -->
+
 
     <footer class="row white-text z-depth-1" style="background-color: limegreen;">
         <div class="col s12 m6 l6 center">
-            <h6 class="lang-eng">
+            <h6>
                 Copyright Team <b>MUSKETEERS</b>
-            </h6>
-            <h6 class="lang-hin">
-                कॉपीराइट टीम <b>MUSKETEERS</b>
             </h6>
         </div>
         <div class="col s12 m6 l6 center">
