@@ -1,0 +1,772 @@
+{% extends "farmerlayout.html" %}
+{% block content %}
+
+
+		<script>
+//			for sidenavdropdown
+			 $(document).ready(function(){
+$(".dropdown-trigger").dropdown();
+			 $('.sidenav').sidenav();
+				  $('.collapsible').collapsible();
+				 
+				  });
+			
+//			for dropdown of states
+			$(document).ready(function(){
+    $('select').formSelect();
+  });
+//			for floating button
+			 document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction: 'left'
+    });
+  });
+		
+			
+		</script>
+		
+		
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+			
+		</script>
+
+	</head>
+	<style>
+	
+		li{
+  list-style-type: square;
+			font-size: 22px;
+}
+	
+
+	</style>
+	<main>
+	<body>
+	      		<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating pulse blue"><i class="material-icons">chat</i></a></li>
+    <li><a class="btn-floating yellow pulse darken-1"><i class="material-icons">notifications</i></a></li>
+    <li><a class="btn-floating pulse green"><i class="material-icons">power_settings_new</i></a></li>
+    
+  </ul>
+</div>
+
+ 		<div class="maindiv" style="height:100%;width: 100%;background-color: transparent;">
+
+		
+			 <div class="container mastfont"  style="height:80px;width: 100px;"></div>
+				<div class=" mastfont"  style=" background-color: transparent;height: 100px;width: 100px;font-size: 80px;margin-left: 40%">Schemes</div>
+			 
+			
+				  <div class="row">
+					  <div class="container" style="margin-top: 5%;">
+					<img src="../static/theme_images/th.jpg" style="height: 350px;width: 350px;border-radius: 50%;">
+				</div>
+				 <div class="container col mastfont" style="font-size: 25px;margin-left: 44%;height: auto;width: 52%;margin-top: -20%;">
+					<span>
+					 Indian Government, at all levels, announces Welfare Schemes for a cross section of the society from time to time. These schemes could be either Central, State specific or a joint collaboration between the Centre and the States. In this section, we have attempted to provide you an easy and single point access to information about several welfare schemes of the Government and their various aspects including eligible beneficiaries, types of benefits, scheme details etc.
+					 </span>
+				  </div>
+				  </div>
+			
+			<div class="container mastfont" id="selectstatehead" style="height:80px;width: 20px;"></div>
+				<div class=" mastfont"  style=" background-color: transparent;height: 100px;width: auto;font-size: 35px;margin-left: 40%">Select Your State</div>
+			
+			   <center>
+        <div class="statedrop" style="margin-top:2%;width: 50%;margin-bottom: 30%; "> 
+
+			<select id="mySelect">
+				 <option selected>Select the state </option> 
+			<option value="37">Agriculture and farmers welfare program(for all states)</option>
+			<option value="1">Andhra Pradesh</option>
+<option value="2">Andaman and Nicobar Islands</option>
+<option value="3">Arunachal Pradesh</option>
+<option value="4">Assam</option>
+<option value="5">Bihar</option>
+<option value="6">Chandigarh</option>
+<option value="7">Chhattisgarh</option>
+<option value="8">Dadar and Nagar Haveli</option>
+<option value="9">Daman and Diu</option>
+<option value="10">Delhi</option>
+<option value="11">Lakshadweep</option>
+<option value="12">Pondicherry</option>
+<option value="13">Goa</option>
+<option value="14">Gujarat</option>
+<option value="15">Haryana</option>
+<option value="16">Himachal Pradesh</option>
+<option value="17">Jammu and Kashmir</option>
+<option value="18">Jharkhand</option>
+<option value="19">Karnataka</option>
+<option value="20">Kerala</option>
+<option value="21">Madhya Pradesh</option>
+<option value="22">Maharashtra</option>
+<option value="23">Manipur</option>
+<option value="24">Meghalaya</option>
+<option value="25">Mizoram</option>
+<option value="26">Nagaland</option>
+<option value="27">Odisha</option>
+<option value="28">Punjab</option>
+<option value="29">Rajasthan</option>
+<option value="30">Sikkim</option>
+<option value="31">Tamil Nadu</option>
+<option value="32">Telangana</option>
+<option value="33">Tripura</option>
+<option value="34">Uttar Pradesh</option>
+<option value="35">Uttarakhand</option>
+<option value="36">West Bengal</option>
+			
+			</select>
+
+        </div> 
+        <div> 
+			<div class="37 GFG" 
+                 style="padding: 30px;  
+                        margin-top: -30%; 
+                        width :60%;  
+                        background:transparent"> 
+			 <ul type="disc">
+
+				 <li><a href="https://www.pradhanmantriyojana.co.in/fasal-bima-beema/#:~:text=The%20Pradhan%20Mantri%20Fasal%20Bima%20Yojana%20also%20known,%28%20All%20the%20schemes%20of%20Central%20Government%20%29.">
+					 Pradhan mantri fasal bima yojna</a>
+				 </li>
+				  <li><a href="https://soilhealth.dac.gov.in/">
+					  Soil health card scheme</a>
+				 </li>
+				  <li><a href="http://sfacindia.com/Nam.aspx">
+					 National agriculture market (NAM)
+					  </a>
+				 </li>
+				  <li><a href="https://pgsindia-ncof.gov.in/pkvy/index.aspx">
+					  Paramparagat krishi vikas yojna</a>
+				 </li>
+				  <li><a href="https://pmksy.nic.in/">
+					  Pradhanmantri krishi sinchayee yojna (PMKSY)</a>
+				 </li>
+				  <li><a href="https://currentaffairs.gktoday.in/tags/interest-subvention-scheme-iss">
+					  Interest subvention scheme (ISS)</a>
+				 </li>
+				  <li><a href="https://pradhanmantri-yogana.in/rashtriya-gokul-mission-in-hindi/#Rashtriya_Gokul_Mission_in_Hindi_2019">
+					  Rashtriya gokul Mission</a>
+				 </li>
+				
+				  <li><a href="https://www.epashuhaat.gov.in/">
+					  E- pashudhan haat portal</a>
+				 </li>
+				 
+				  <li><a href="https://pdduuksy.icar.gov.in/">
+					  Pandit deendayal unnat krishi shiksha yojana</a>
+				 </li>
+				  <li><a href="http://rkvy.nic.in/">
+					  Rashtriy krishi shiksha divas</a>
+				 </li>
+				 <li><a href="https://www.pradhanmantriyojana.co.in/unnat-iitd-ac-in-bharat-abhiyan/">Unnat Bharat Abhiyan</a></li>
+				 
+				
+			 </ul>
+          </div> 
+         <div class="1 GFG" 
+                 style="padding: 30px;  
+                        margin-top: -30%; 
+                        width :60%;  
+                        background:transparent"> 
+			 <ul>
+				 <li><a href="https://www.thehansindia.com/posts/index/Andhra-Pradesh/2018-07-16/Chandrababu-Naidu-launches-Potharlanka-Lift-Irrigation-Scheme/398697">Potharlanka Lift Irrigation Scheme in AP</a></li>
+				  <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/andhra-pradesh-govt-scheme/" style="margin-top: 2%;">More State Schemes</a>
+			 </ul>
+          </div> 
+			
+			
+            <div class="2 GFG" 
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"ul>
+				<ul><li>
+					<a href="https://www.india.gov.in/centrally-sponsored-schemes-agriculture-department-andaman-and-nicobar" style="margin-top: 2%;"> Centrally sponsored schemes by Agriculture Department of Andaman and Nicobar.</a></li>
+					 
+				</ul>
+          </div> 
+            <div class="3 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+         <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/arunachal-pradesh-govt-schemes/" style="margin-top: 2%;">More State Schemes</a>
+				
+          </div> 
+            <div class="4 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+             <ul><li><a href="https://www.sarkariyojanalist.com/assam-cmsguy-tractor-distribution-scheme/">CM Tractors Distribution Yojana In Assam</a></li></ul>
+				 <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/assam-sarkar-schemes/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="5 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+          <ul><li><a href="https://www.pradhanmantriyojana.co.in/mukhyamantri-harit-krishi-sanyantra-bihar/">Mukhyamantri Harit Krishi Sanyantra Yojana In Bihar</a></li></ul>
+				 <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/bihar-sarkar-schemes/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="6 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+				<ul><li>NOT AVAILABLE ......</li></ul>
+          </div>
+			<div class="7 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+            <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/chhattisgarh-govt-schemes/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="8 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+        <ul><li>NOT AVAILABLE ......</li></ul>
+          </div>
+			<div class="9 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+          <ul><li>NOT AVAILABLE ......</li></ul>
+          </div>
+			<div class="10 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+    <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/delhi-sarkar-schemes/" style="margin-top: 2%;">More State Schemes</a> 
+          </div>
+			<div class="11 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+             <a class="waves-effect waves-light btn-small" href="" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="12 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+           <ul><li><a href="https://www.indiamart.com/proddetail/goat-farm-11510811148.html">Goat Farming in Pondicherry
+</a></li></ul> 
+				 
+          </div>
+			<div class="13 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+             <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/goa-government/" style="margin-top: 2%;">More State Schemes</a> 
+          </div>
+			<div class="14 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+             <ul><li><a href="https://grwwb.gujarat.gov.in/insurance-scheme.htm#maincontant">Accident Insurance Scheme In Gujarat</a></li></ul> 
+				 <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/gujarat-govt-schemes/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="15 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+             <ul>
+				 <li><a href="http://agriharyana.in/">
+					 Bhavantar Bharpayee Yojana in Haryana</a>
+				 </li>
+				<li><a href="https://www.pradhanmantriyojana.co.in/mukhya-mantri-gramin-dudharu-pashudhan-suraksha-mmgdpsy/">
+					Mukhya Mantri Gramin Dudharu Pashudhan Suraksha Yojana in Haryana</a>
+				 </li>	 
+				 <li> 
+					 <a href="https://pmmodiyojana.in/haryana-meri-fasal-mera-byora/">
+							 Meri Fasal Mera Byora Yojana .
+						 </a>
+				 </li>
+				</ul>
+				 <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/haryana-government-schemes/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="16 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+ <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/himachal-pradesh-govt-yojana/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="17 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+       <ul><li>NOT AVAILABLE ......</li></ul>
+          </div>
+			<div class="18 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+        <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/jharkhand-sarkar-schemes/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="19 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+ <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/karnataka-govt-schemes/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="20 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+           <ul><li><a href="http://irrigation.kerala.gov.in/index.php/infrastructure/lift-irrigation-schemes">Potharlanka Lift Irrigation Scheme</a></li></ul>
+		
+          </div>
+			<div class="21 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+              <ul><li>
+				  <a href="https://sarkariyojana.com/krishi-rin-samadhan-yojana-kisan-karj-rahat-farmers-mp/">Krishi Rin Samadhan Yojana In MP</a>
+				  </li>
+				  <li>
+					  <a href="https://pmjandhanyojana.co.in/krishak-udhyami-loan-yojana-farmers-entrepreneur-mp/">Krishak Udhyami Loan Yojana In MP</a>
+				  </li>
+				  <li><a href="https://www.yojanagyan.in/madhyapradesh-aachary-vidhyasagar-goo-sanvrdhan-yojana/">Gau Samvardhan Yojana
+</a></li>
+				</ul>
+				 <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/madhya-pradesh-govt-schemes/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="22 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+             <ul><li><a href="https://www.pmawasyojana.co.in/nanaji-deshmukh-krishi-sanjivani-maharashtra/#:~:text=The%20State%20government%20of%20Maharashtra%20has%20announced%20to,medium%20and%20small%20based%20farmers%20within%20the%20state.">Nanaji Deshmukh Krishi Sanjivani Yojna In Maharashtra</a></li>
+				 <li><a href="https://govinfo.me/one-farmer-one-transformer-ofot-maharashtra-one-transformer-per-farmer-to-reduce-the-electricity-losses/">One farmer one transformer scheme in Maharashtra</a>
+				 </li>
+				</ul>
+				 <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/maharashtra-govt-schemes/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="23 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+    <ul><li>NOT AVAILABLE ......</li></ul>
+          </div>
+			<div class="24 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+        <ul><li>NOT AVAILABLE ......</li></ul>
+          </div>
+			<div class="25 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+<ul><li>NOT AVAILABLE ......</li></ul>
+          </div>
+			<div class="26 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+         
+          </div>
+			<div class="27 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+         <ul>
+				<li><a href="https://www.pradhanmantriyojana.co.in/free-smart-phone-scheme-women-farmer-odisha/">
+					Free Smart Phone Scheme For  Farmers.</a>
+			 </li>
+			 <li><a href="https://www.pradhanmantriyojana.co.in/apply-biju-swasthya-kalyan-yojana-odisha-bsky/">Biju Krushak Kalyan Yojana Odisha</a></li>
+				</ul>
+				 <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/odisha-govt-schemes/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="28 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+               <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/punjab-sarkar-yojana/" style="margin-top: 2%;">More State Schemes</a>
+          </div>
+			<div class="29 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+             <ul><li>
+				 <a href="https://www.pradhanmantriyojana.co.in/raj-sahakar-personal-accident-insurance-scheme-rajasthan-farmers/#:~:text=Raj%20Sahakar%20personal%20accident%20insurance%20scheme%20Rajasthan%20Farmers,with%20an%20insurance%20coverage%20of%20Rs%206%20lakhs.">Raj Sahakar Personal Accident Insurance Scheme In Rajasthan</a>
+				 </li>
+				</ul>
+				 <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/rajasthan-govt-yojana/" style="margin-top: 2%;">>More State Schemes</a>
+          </div>
+			<div class="30 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+     <ul><li>NOT AVAILABLE ......</li></ul>
+          </div>
+			<div class="31 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+         <ul><li>
+			 <a href="https://sarkariyojana.com/tamil-nadu-tatkal-scheme-free-power-connection-farmers-application-form/">Tatkal Power Connection Scheme In Tamilnadu
+			 </a>
+			 </li></ul>
+				 <a class="waves-effect waves-light btn-small" href="" style="margin-top: 2%;">>More State Schemes</a>
+          </div>
+			<div class="32 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  	
+                        width :60%; 
+                        background:transparent"> 
+            <ul><li><a href="https://siddipet.telangana.gov.in/scheme/rythu-bhandhu/">
+				Rythu Bandhu Scheme In Telangana
+				</a>
+				</li>
+				<li><a href="https://www.pradhanmantriyojana.co.in/free-power-electricity-supply-scheme-farmers-telangana/">
+				Free Power Electricity Supply Scheme In Telangana
+				</a>
+				</li>
+				<li><a href="https://sarkariyojana.com/kaleshwaram-lift-irrigation-scheme-telangana/">Potharlanka Lift Irrigation Scheme in Telangana</a></li>
+				</ul>
+				 <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/telangana-sarkar-schemes/" style="margin-top: 2%;">>More State Schemes</a>
+          </div>
+			<div class="33 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+            <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/tripura-government-yojana/" style="margin-top: 2%;">>More State Schemes</a>
+          </div>
+			<div class="34 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+            <ul>
+				<li><a href="https://www.thehowpedia.com/kisan-uday-yojana-uttar-pradesh-provide-free-pump-sets-farmers-in-up/">Kisan Uday Pump Yojana In UP
+					</a></li>
+				<li>
+					<a href="https://www.pmawasyojana.co.in/gau-gram-scheme-up-cowsheds-gaushala-milk-plant/">Gau Samvardhan Yojana
+                    </a>
+				</li>
+				<li><a href="https://sarkariyojana.com/up-mukhyamantri-kisan-sarvhit-bima-yojana-application-form-pdf-download/">Mukhyamantri Kisan Sarvhit Bima Yojana In UP</a></li>
+				</ul>
+				 <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/uttar-pradesh-sarkar-yojana/" style="margin-top: 2%;">>More State Schemes</a>
+          </div>
+			<div class="35 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+           <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/uttarakhand-govt-schemes/" style="margin-top: 2%;">>More State Schemes</a> 
+          </div>
+			<div class="36 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+         <a class="waves-effect waves-light btn-small" href="https://pradhanmantrivikasyojana.in/category/west-bengal-govt-yojana/" style="margin-top: 2%;">>More State Schemes</a> 
+          </div>
+		
+		
+        </div> 
+
+    </center> 
+			
+				<div class=" mastfont"  style=" background-color: transparent;height: 100px;width: auto;font-size: 35px;margin-left: 40%;margin-top: 0%;">Bank Loan schemes</div>
+			
+			   <center>
+        <div class="statedrop" style="margin-top:2%;width: 50%;margin-bottom: 30%; "> 
+
+			<select>
+				 <option value="disabled">Same for all states</option> 
+			<option value="01">National Bank for Agriculture and Rural Development (NABARD)
+</option>
+<option value="02">Kisan Credit Card Scheme</option>
+<option value="03">State Bank of India Agricultural Loans</option>
+<option value="04">HDFC Bank Agricultural Loans</option>
+<option value="05">Allahabad Bank Agricultural Loans</option>
+<option value="06">Punjab National Bank Agricultural Loans</option>
+<option value="07">ICICI Bank Agricultural Loans</option>
+<option value="08">Axis Bank Agricultural Loans</option>
+
+			</select>
+
+        </div> 
+        <div> 
+         <div class="01 GFG" 
+                 style="padding: 30px;  
+                        margin-top: -30%; 
+                        width :60%;  
+                        background:transparent"> 
+			 <ul>
+				 <li>In India, all premier banking and financial organisations, at all levels, offer a great deal of financial help to farmers. However, this trend of boosting the rural economy and agriculture through financial credit was started by the National Bank for Agriculture and Rural Development (NABARD) back in the early 1980s. When it comes to credit in the field of agriculture, all other banks throughout the country fall under the purview of the NABARD.
+
+This financial institution is working in conjunction with the Government of India to boost agriculture sector. It is credited with several innovative schemes that have immensely aided the farmers throughout the country. The most notable scheme launched by the NABARD is the Kisan Credit Card (KCC).</li>
+				 <a class="waves-effect waves-light btn-small" href="https://www.nabard.org/#4thpage">Read more</a>
+			 </ul>
+          </div> 
+            <div class="02 GFG" 
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+			 <ul>
+				 <li>The Kisan Credit Card is a scheme launched by the Indian banks back in 1998, as a way to fulfill the financial necessities of the agricultural sector. This is done by giving monetary support to farmers, which in turn comes with various features and benefits. The quantum of the loan depends on several factors like cost of cultivation, farm maintenance cost, et cetera.
+				 Applying for the Kisan Credit Card is a simple, hassle-free process that requires minimal documentation. It also offers crop insurance coverage, along with subsidies on interest payments. Speaking of interest, farmers applying for loans under the KCC scheme can borrow funds at 7 percent per annum, for amounts up to Rs. 3 lakh.</li>
+				 <a class="waves-effect waves-light btn-small" href="https://www.bankbazaar.com/kisan-credit-card.html">Read more</a>
+			 </ul>
+          </div> 
+          
+            <div class="03 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+           <ul>
+			   <li>
+				   State Bank of India is a leader in financing projects in the agriculture sector. They have helped millions of farmer across the country through their 16,000 plus branches. They offer a variety of products like Kisan Credit Card, gold loan for crop production and multi-purpose gold loan for agriculture activities.
+
+SBI also offers agriculture loans for mechanisation of farms. The funds from these loans can be used to purchase combine harvesters, tractors and install drip irrigation. Moreover, loans for activities related to dairy, poultry or fisheries can also be availed. Credit can be taken against warehouse receipts.
+			   </li>
+			    <a class="waves-effect waves-light btn-small" href="https://www.sbi.co.in/web/agri-rural/agriculture-banking/miscellaneous-activities/land-purchase-scheme">Read more</a>
+				</ul>
+          </div> 
+            <div class="04 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+				<ul>
+					<li>
+						The HDFC Bank offers a variety of agriculture loans for farmers and agriculturists. The purpose of these loans varies across a broad spectrum, starting from installation of orchards and plantations to promotion of commercial horticulture and production of field crops. Furthermore, the HDFC bank also offers warehouse receipt financing to all farmers and small traders
+					</li>
+					 <a class="waves-effect waves-light btn-small" href="https://www.hdfcbank.com/agri">Read more</a>
+				</ul>
+               
+          </div>
+			<div class="05 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+              <ul>
+				  <li>
+					  Allahabad Bank is another nationalised bank in India which offers the Kisan Credit Card under its Akshay Krishi scheme. Needless to mention, the features of the plan are the same as that of the KCC scheme. All farmers, tenant farmers, and cultivator owners, et cetera.
+
+In fact, Allahabad Bank has gone the extra mile to come up with its own version of Kisan Credit Card. This one is known as the Allahabad Bank Potato Growers Credit Card Scheme and its main objective is to provide sufficient financial support in a timely manner to farmers, to help them meet their cultivation requirements.
+				  </li>
+				  <a class="waves-effect waves-light btn-small" href="https://www.bankbazaar.com/allahabad-bank-kisan-credit-card.html">Read more</a>
+				</ul> 
+          </div>
+			<div class="06 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+               <ul>
+				  <li>
+					  Punjab National Bank has myriad financial products related to agriculture. For example, one can avail loans from the PNB to establish biogas units, develop wastelands, set-up minor irrigation apparatus, et cetera. In addition to this, people who are interested in pursuing the field of apiculture (beekeeping) can approach Punjab National Bank for financial support.
+
+The bank also offers warehouse receipt financing, along with insurance coverage and financial support to farmers in the event of crop failure, owing to natural disasters, diseases, and pests. This scheme is known as Pradhan Mantri Fasal Bima Yojana. All of this is in addition to the regular financial services offered to farmers like Kisan Credit Card, debt swapping, et cetera.
+				  </li>
+				   <a class="waves-effect waves-light btn-small" href="https://www.pnbindia.in/procedural-guideline-for-agricultural-credit.html">Read more</a>
+				</ul> 
+          </div>
+			<div class="07 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+               <ul>
+				  <li>
+					  The ICICI Bank offers a variety of agricultural loans. Their top selling product is the Kisan Credit Card, which is a convenient way for farmers to meet their daily requirements. They also offer long-term loans to purchase equipment or cattle, which can be repaid over a period of 3-4 years.
+
+The ICICI Bank also offers instant gold loans to meet financial requirements for agriculture-related projects. In addition to this, they also offer the facility of overdraft against Fixed Deposits, also known as Kisan Kalpvriksha. For more information on these agricultural loans offered by the ICICI Bank, visit the official website.
+				  </li>
+				  <a class="waves-effect waves-light btn-small" href="https://www.icicibank.com/Personal-Banking/loans/pradhan-mantri-mudra-yojana.page?">Read more</a>
+				</ul>
+          </div>
+			<div class="08 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+              <ul>
+				  <li>
+					 Axis Bank has done well to earn a splendid reputation in the world of agricultural finance. Over the years, they have greatly helped farmers through their diversified financial products such as gold loans, Kisan Credit Card, tractor loans, warehouse receipt financing, loans for developing rural godowns and many more.
+
+Axis Bank also offers a product known as Contract Farming, wherein loan agreements are made between farmers and corporates. The amount is provided by the lender instantly for production and supply of the produce, and all of it is governed by the Fair Practices Lending Code.
+				  </li>
+				  <a class="waves-effect waves-light btn-small" href="https://www.axisbank.com/agri-and-rural/loans#:~:text=A%20facility%20that%20aims%20to%20provide%20timely%20credit,from%20poor%20households%20to%20help%20support%20their%20businesses.">Read more</a>
+				</ul>
+          </div>
+			
+			
+		</div>
+      
+ 
+			 </center> 
+				<div class=" mastfont"  style=" background-color: transparent;height: 100px;width: auto;font-size: 35px;margin-left: 40%;margin-top: 0%;">Insurance schemes</div>
+			
+			   <center>
+        <div class="statedrop" style="margin-top:2%;width: 50%;margin-bottom: 30%; "> 
+
+			<select>
+				 <option value="disabled">Same for all states</option> 
+			<option value="001">Pradhan Mantri Fasal Bima Yojana
+</option>
+<option value="002">Weather Based Crop Insurance Scheme (WBCIS)</option>
+<option value="003">Coconut Palm Insurance Scheme (CPIS)</option>
+<option value="004">Unified Package Insurance Scheme (UPIS) as pilot in 45 districts</option>
+
+
+			</select>
+
+        </div> 
+        <div> 
+         <div class="001 GFG" 
+                 style="padding: 30px;  
+                        margin-top: -30%; 
+                        width :60%;  
+                        background:transparent"> 
+			 <ul>
+				 <li>1-Insurance protection for food crops, oilseeds and annual horticultural/commercial crops notified by state government.</li>
+<li>2-Uniform maximum premium for all farmers:</li>
+<li>2.1-Kharif season - 2% of sum insured.</li>
+<li>2.2-Rabi Season 1.5% of sum insured.</li>
+<li>2.3-Annual commercial/horticultural crops - 5% of sum insured</li>
+				 <li>3-The difference between actual premium and the rate of Insurance payable by farmers shall be shared equally by the Centre and State.</li>
+				 <li>4-Claims of full Sum Insured (SI), without capping or reduction in SI.</li>
+				 <li>5-If the sowing is not done due to adverse weather/climate, claims upto 25% of sum insured will be paid for prevented sowing/planting risk.</li>
+				 <li>6-When the crop yield is less than the guaranteed yield of notified crops,the claim payment equal to shortfall in yield is payable to all insured farmers.</li>
+				 <li>7-If 50% loss in mid season of crop then on account advance payment, upto 25% of likely claims will be paid as immediate relief.</li>
+				 <li>8-Losses caused due to inundation, hail storm and landslide would be assessed at individual farm level.</li>
+				 <li>9-Post harvest losses assessment for damage to crops in cut and spread in the field up to 14 days on account of cyclonic rain and unseasonal rain in the entire country.</li>
+				 <li>10-Use of remote sensing Technology and drones to supplement Crop cutting experiments for faster settlement of claims.</li>
+				 <li>11-Implementing agency will be selected by the State Government through bid.</li>
+
+				 <a class="waves-effect waves-light btn-small" href="https://www.nabard.org/#4thpage">Read more</a>
+			 </ul>
+          </div> 
+            <div class="002 GFG" 
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+			 <ul>
+				  <li>1-Insurance protection for notified food crops, oilseeds and horticultural /commercial crops</li>
+<li>2-Uniform maximum premium for all farmers like PMFBY :</li>
+<li>2.1-Kharif season - 2% of sum insured.</li>
+<li>2.2-Rabi Season 1.5% of sum insured.</li>
+<li>2.3-Annual commercial/horticultural crops - 5% of sum insured</li>
+				 <li>3-The difference between actual premium and the rate of Insurance payable by farmers shall be shared equally by the Centre and State.</li>
+				 <li>4-When the Weather indices (rainfall/temperature/relative humidity/wind speed etc) is different (less/ higher) from the Guaranteed Weather Index of notified crops, the claim payment equal to deviation/shortfall is payable to all insured farmers of notified area.
+                 </li>
+				 <li>5-Provision for assessment of losses caused by hailstorm and cloud burst at individual farm level.</li>
+				 <li>6-Implementing agency will be selected by the State Government through bid.
+                 </li>
+				 
+				 <a class="waves-effect waves-light btn-small" href="https://www.bajajallianz.com/weather-based-crop-insurance.html">Read more</a>
+				</ul>
+          </div> 
+          
+            <div class="003 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+         <ul>
+				 <li>1-Insurance protection for Coconut Palm growers.</li>
+<li>2-Premium rate per palm ranges from Rs. 9.00 (in the plant age group of 4 to 15 years) to Rs. 14.00 (in the plant age group of 16-60 years).</li>
+
+				 <li>3-50-75% subsidy of premium is provided to all types of farmers.</li>
+				 <li>4-When the palm damaged, the claim payment equal to input cost loss damage is payable to the insured in notified areas</li>
+				
+
+				 <a class="waves-effect waves-light btn-small" href="https://www.indiafilings.com/learn/coconut-palm-insurance-scheme/">Read more</a>
+				</ul>
+          </div> 
+            <div class="004 GFG"
+                 style="padding: 30px; 
+                        margin-top: -30%;  
+                        width :60%; 
+                        background:transparent"> 
+			 <ul>
+				 <li>1-To provide financial protection and comprehensive risk coverage of crops, assets, life and student safety to farmers.</li>
+<li>2-Pilot will include 7 section Viz.., - Crop Insurance (PMFBY / WBCIS), Loss of life (Pradhan Mantri Jeevan Jyoti Bima Yojna (PMJJBY)), Accident Insurance (Pradhan Mantri Suraksha Bima Yojana - PMSBY) , Student safety, Household, Agriculture implements and Tractor.</li>
+
+				 <li>3-Crop insurance will be compulsory. However farmers can choose atleast 2 sections from remaining.</li>
+				 <li>4-Farmers may be able to get all requisite insurance products for farmers through one simple proposal/ application Form and through single window.
+                 </li>
+				 <li>5-Two flagship schemes of the Government viz PMSBY & PMJJBY have been included apart from insurance of assets.</li>
+				 <li>6-Pilot scheme will be implemented through single window.
+                 </li>
+				<li>7-Processing of claims (other than Crop Insurance) on the basis of individual claim report.</li>
+				 
+
+				 <a class="waves-effect waves-light btn-small" href="https://www.vikaspedia.in/agriculture/agri-insurance/unified-package-insurance-scheme">Read more</a>
+				</ul>
+               
+          </div>
+	
+		</div>
+      
+ 
+			 </center> 
+			
+			
+			 <script type="text/javascript"> 
+            $(document).ready(function() { 
+                $("select").on('change', function() { 
+                    $(this).find("option:selected").each(function() { 
+                        var geeks = $(this).attr("value"); 
+                        if (geeks) { 
+                            $(".GFG").not("." + geeks).hide(); 
+                            $("." + geeks).show(); 
+                        } else { 
+                            $(".GFG").hide(); 
+                        } 
+  
+                    }); 
+                }).change(); 
+            }); 
+				 
+				
+				   
+        </script>
+			
+			
+		</div>
+              {% endblock content %}

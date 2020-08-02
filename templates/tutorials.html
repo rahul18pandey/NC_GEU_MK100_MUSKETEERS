@@ -1,0 +1,288 @@
+{% extends "farmerlayout.html" %}
+{% block content %}
+		<script>
+
+			
+			 document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction: 'left'
+    });
+  });
+		</script>
+	 	
+		<script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>
+	 
+ 
+		
+	
+  
+		<div class="maindiv" style="height: 100%;width: 100%;">
+			<div class="mastfont top_marg center-align" style="font-size: 100px;"><font color="black">Saksham Kisan</font></div>
+			
+			<div class="row">
+				<center>
+			<ul class=" col s12 collapsible popout " style="width: 100% ;margin-top: 3%;">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Summer</div>
+      <div class="collapsible-body">
+		   <div class="searchbar">
+					<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for crops.."> 
+				</div>
+				<table class="highlight" id="myTable" >
+  
+
+  <tr class="k_header">
+    <th style="width:30%;"> Crop Type</th>
+    <th style="width:20%;">Video</th>
+   
+  </tr>
+   
+  <tr>
+       
+      <td><a >Cucumber</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/xAS8ZDQMOHk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+
+	  
+    
+
+    </tr>
+    
+  <tr>
+      
+	  <td><a ></a>Watermelon</td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/Y7LaLOooO6g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+   
+  </tr>
+  <tr>
+      
+	  <td><a >Bitter gourd(Karela)</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/x8o-tqYoJUo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Cucumber</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/8_kqqXQNFMU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+   
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Bitter gourd(Karela)</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/efKBCJw96F0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+ 
+    
+  </tr>
+  <tr>
+	  <td><a >Watermelon</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/7nzhAGibR8Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Watermelon</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/MOiVc2KRaPk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Bitter gourd(Karela)</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/76nc7SFVH1s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+   
+    
+  </tr>
+
+</table>
+		</div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Winter</div>
+      <div class="collapsible-body">
+		   <div class="searchbar">
+					<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for crops.."> 
+				</div>
+				<table class="highlight" id="myTable" >
+  
+
+  <tr class="k_header">
+    <th style="width:30%;"> Crop Type</th>
+    <th style="width:20%;">Video</th>
+   
+  </tr>
+   
+  <tr>
+       
+      <td><a >Wheat</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/_ULc_pkwMPA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+
+	  
+    
+
+    </tr>
+    
+  <tr>
+      
+	  <td><a >Oat</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/JXBGa7fwdfM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+   
+  </tr>
+  <tr>
+      
+	  <td><a >Mustard</a></td>
+    <td><span ><iframe width="560" height="315" src="https://www.youtube.com/embed/JwPuetfmfT4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Almond</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/n318GyPgFX0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+   
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Broccoli</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/Ty_TxHd2a9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+ 
+    
+  </tr>
+  <tr>
+	  <td><a >Chickpea (Chana)</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/DAoljAn1DG4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Almond</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/-4YJygh5ZrU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Wheat</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/sFP1Q32N4Hg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+   
+    
+  </tr>
+
+</table>
+		</div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Rainy</div>
+      <div class="collapsible-body">
+
+		  <div class="searchbar">
+					<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for crops.."> 
+				</div>
+				<table class="highlight" id="myTable" >
+  
+
+  <tr class="k_header">
+    <th style="width:30%;">Crop Type</th>
+    <th style="width:20%;">Videos</th>
+   
+  </tr>
+   
+  <tr>
+       
+      <td><a >Rice</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/mDE-Xd2J6aA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+
+	  
+    
+
+    </tr>
+    
+  <tr>
+      
+	  <td><a >Corn</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/cWSICq994ek" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+   
+  </tr>
+  <tr>
+      
+	  <td><a >Sugarcane</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/HqqPi6-2NNU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Soyabean</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/gVUHm3hC0XY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+   
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Groundnut</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/2VExufCZdcs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+ 
+    
+  </tr>
+  <tr>
+	  <td><a >Cotton</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/TbYNf9vY5YU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Sugarcane</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/4Wa5dlNi1M8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+    
+    
+  </tr>
+  <tr>
+      
+	  <td><a >Cotton</a></td>
+    <td><span><iframe width="560" height="315" src="https://www.youtube.com/embed/EoqXhQ4bjgc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span></td>
+   
+    
+  </tr>
+
+</table>
+		</div>
+		
+    </li>
+  </ul>
+				</center>
+				</div>
+			
+  
+		</div>
+	
+{% endblock content %}
