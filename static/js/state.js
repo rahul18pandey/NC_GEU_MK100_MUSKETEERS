@@ -35,6 +35,7 @@ function logout() {
         .then(function () {
             // Sign-out successful.
             alert("Logged out!")
+            window.location = "/"
         })
         .catch(function (error) {
             // An error happened
