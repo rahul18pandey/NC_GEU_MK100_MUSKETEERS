@@ -99,17 +99,20 @@
                     kisan</a>
 
                 <ul class="right hide-on-med-and-down">
-                    <li class="only-to-farmer"><a href="/farmersell" id="navsell"><span lang-eng>Sell</span></a></li>
-                    <li class="only-to-farmer"><a href="/farmersell" id="navsell"><span class="lang-hin">बेचना</span></a></li>
-                    <li class="lang-eng"><a href="schemes.html">Schemes</a></li>
-                            <li class="lang-hin"><a href="schemes.html">योजनाओं</a></li>
-                            <li class="lang-eng"><a href="tutorials.html">Tutorials</a></li>
-                            <li class="lang-hin"><a href="tutorials.html">ट्यूटोरियल</a></li>
+                    <li class="only-to-farmer "><a href="/farmersell" id="navsell"><span class="lang-eng">Sell</span></a></li>
+                    <li class="only-to-farmer "><a href="/farmersell" id="navsell"><span class="lang-hin">बेचना</span></a></li>
+                    <li class="lang-eng"><a href="/schemes">Schemes</a></li>
+                            <li class="lang-hin"><a href="/schemes">योजनाओं</a></li>
+                            <li class="lang-eng"><a href="/tutorials">Tutorials</a></li>
+                            <li class="lang-hin"><a href="/tutorials">ट्यूटोरियल</a></li>
                     <li class="only-to-farmer"><a href="/farmerauction" id="navauction"><span class="lang-eng">Auction</span></a></li>
                     <li class="only-to-farmer"><a href="/farmerauction" id="navauction"><span class="lang-hin">नीलामी</span></a></li>
                     <!--		   Dropdown Trigger -->
-                    <li class="only-to-farmer"><a class="dropdown-trigger" href="#!" data-target="dropdown1" >Services<i
-                                class="material-icons right" id="navservices">arrow_drop_down</i></a></li>
+                    <li class="only-to-farmer"><a class="dropdown-trigger" href="#!" data-target="dropdown1" ><span class="lang-eng">Services<i
+                                class="material-icons right" id="navservices">arrow_drop_down</i></span></a></li>
+                    <li class="only-to-farmer"><a class="dropdown-trigger" href="#!" data-target="dropdown1" ><span class="lang-hin">सेवाओं<i
+                                    class="material-icons right" id="navservices">arrow_drop_down</i></span></a></li>
+                            
                     <li class="only-to-farmer"><a class="waves-effect waves-light btn" href="/farmerprofile" id="navprofile">Profile</a></li>
                     <li class="lang-hin"><a class="waves-effect waves-light btn" onclick="languageChanger()">भाषा</a></li>
                     <li class="lang-eng"><a class="waves-effect waves-light btn" onclick="languageChanger()">LANGUAGE</a></li>
@@ -123,13 +126,13 @@
         <ul class="hide-on-med-and-up">
             <ul id="slide-out" class="sidenav ">
                 <li class="only-to-farmer"><a href="/farmersell">Sell</a></li>
-                <li class="lang-eng"><a href="schemes.html">Schemes</a></li>
-                            <li class="lang-hin"><a href="schemes.html">योजनाओं</a></li>
-                            <li class="lang-eng"><a href="tutorials.html">Tutorials</a></li>
-                            <li class="lang-hin"><a href="tutorials.html">ट्यूटोरियल</a></li>
-                <li class="only-to-farmer"><a href="farmerauction.html">Auction</a></li>
+                <li class="lang-eng"><a href="/schemes">Schemes</a></li>
+                            <li class="lang-hin"><a href="/schemes">योजनाओं</a></li>
+                            <li class="lang-eng"><a href="/tutorials">Tutorials</a></li>
+                            <li class="lang-hin"><a href="/tutorials">ट्यूटोरियल</a></li>
+                <li class="only-to-farmer"><a href="/farmerauction">Auction</a></li>
                 <li class="only-to-farmer"><a class="dropdown-trigger" href="#!" data-target="dropdown2">Services<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li class="only-to-farmer"><a class="waves-effect waves-light btn" href="farmerprofile.html">Profile</a></li>
+                <li class="only-to-farmer"><a class="waves-effect waves-light btn" href="/farmerprofile">Profile</a></li>
                 <li><a class="waves-effect waves-light btn" id="lang_btn2" onclick="languageChanger()">भाषा</a></li>
                 <ul id="lgin_show" class="right hide-on-med-and-down" >
                     <li><a class="waves-effect waves-light btn" href="#" onclick="logout()">Logout</a></li>
@@ -167,12 +170,26 @@
        
       </div>
 
+
       <div class="fixed-action-btn modal-trigger" href="#modal1" style="float: left; margin-right: 5%;">
         <a class="btn-floating btn-large green" >
           <i class="large material-icons">info</i>
         </a>
        
       </div>
+
+      <div class="fixed-action-btn" style="float: left; margin-right: 10%;">
+        <a class="btn-floating btn-large yellow">
+          <i class="large material-icons">mode_edit</i>
+        </a>
+        <ul>
+          <li onclick="window.open('/chat'+'?user='+userEmail)"><a class="btn-floating blue"><i class="material-icons">chat</i></a></li>
+          
+          <li><a class="btn-floating pink"><i class="material-icons">cloud_queue</i></a></li>
+          
+        </ul>
+      </div>
+      
 
 
 
@@ -194,91 +211,91 @@
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
     </div> -->
-
-
+    
     <ul class="collapsible">
         <li>
-          <div class="collapsible-header">Farmer</div>
+          <div class="collapsible-header">Farmer |किसान</div>
           <div class="collapsible-body"><span>                 
                <ul>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 1:Register</h4>
-                   <li style="font-size: 20px;">Do fill all the asked credentials.(for new user) </li>
-                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/Register1.jpg')}}" alt="" srcset=""></li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 2:Login</h4>
-                   <li style="font-size: 20px;">Enter the valid credentials. </li>
-                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/Login1.jpg')}}" alt="" srcset=""></li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 3:Home Page</h4>
-                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/Home.jpg')}}" alt="" srcset=""></li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 4:Sell</h4>
-                   <li style="font-size: 20px;">Here crop of farmer is added:</li>
-                   <li style="font-size: 20px;"><u><h5>crop-type</h5></u>crop farmer has grown</li>
-                   <li style="font-size: 20px;"><u><h5>auction date</h5></u>date of auction(bidding)</li>
-                   <li style="font-size: 20px;"><u><h5>view date</h5></u>date till which crops can be visit(physically)</li>
-                   <li style="font-size: 20px;"><u><h5>quantity</h5></u>quantity of crops</li>
-                   <li style="font-size: 20px;"><u><h5>base price</h5></u>minimum price set by farmer</li>
+                <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 1:Register<span class="lang-hin">पंजीकृत करें</h4>
+                <li style="font-size: 20px;">Do fill all the asked credentials.(for new user)|सभी पूछे गए परिचय पत्र भरें। (नए उपयोगकर्ता के लिए) </li>
+                <li><img src="{{url_for('static', filename = 'theme_images/how_to/Register1.jpg')}}" alt="" srcset=""></li>
+                <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 2:Login|लॉगिन</h4>
+                <li style="font-size: 20px;">Enter the valid credentials. |वैध परिचय पत्र दर्ज करें।</li>
+                <li><img src="{{url_for('static', filename = 'theme_images/how_to/Login1.jpg')}}" alt="" srcset=""></li>
+                <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 3:Home Page |होम पेज</h4>
+                <li><img src="{{url_for('static', filename = 'theme_images/how_to/home.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 4:Sell |बेचना</h4>
+                   <li style="font-size: 20px;">Here crop of farmer is added: |यहां किसान की फसल जोड़ी जाती है:</li>
+                   <li style="font-size: 20px;"><u><h5>crop-type</h5></u>crop farmer has grown|<u><h5>फसल-प्रकार</h5></u>किसान की फसल</li>
+                   <li style="font-size: 20px;"><u><h5>auction date</h5></u>date of auction(bidding)|<u><h5>नीलामी की तारीख</h5></u>नीलामी की तारीख (बोली)</li>
+                   <li style="font-size: 20px;"><u><h5>view date</h5></u>date till which crops can be visit(physically)<span class="lang-hin"><u><h5>देखने की तारीख</h5></u>आज तक कि कौन सी फसलों की यात्रा की जा सकती है (शारीरिक रूप से)</li>
+                   <li style="font-size: 20px;"><u><h5>quantity</h5></u>quantity of crops<span class="lang-hin"><u><h5>मात्रा</h5></u>फसलों की मात्रा</li>
+                   <li style="font-size: 20px;"><u><h5>base price</h5></u>minimum price set by farmer<span class="lang-hin"><u><h5>आधार मूल्य</h5></u>किसान द्वारा निर्धारित न्यूनतम मूल्य</li>
                    
 
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/sell.jpg')}}" alt="" srcset=""></li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Auction</h4>
-                   <li style="font-size: 20px;">click on enter auction to enter the auction. </li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Auction |नीलामी</h4>
+                   <li style="font-size: 20px;">click on enter auction to enter the auction. |नीलामी में प्रवेश करने के लिए एंटर ऑक्शन पर क्लिक करें। </li>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/fauction.jpg')}}" alt="" srcset=""></li>
-                   <li style="font-size: 20px;">To enter in auction click the "enter auction" and then click the timer button to start the auction  </li>
+                   <li style="font-size: 20px;">To enter in auction click the "enter auction" and then click the timer button to start the auction <span class="lang-hin">नीलामी में प्रवेश करने के लिए क्लिक करें "नीलामी में प्रवेश करें" और फिर नीलामी शुरू करने के लिए टाइमर बटन पर क्लिक करें</li>
                    
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/fbidding.jpg')}}" alt="" srcset=""></li>
-                   <li style="font-size: 20px;">click the remove button if you want to remove that buyer from auction. </li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 6:Schemes</h4>
-                   <li style="font-size: 20px;"><u><h5>select your state</h5></u>show the schemes for specific states</li>
-                   <li style="font-size: 20px;"><u><h5>bank loans</h5></u>schemes for loans from banks</li>
-                   <li style="font-size: 20px;"><u><h5>insurance</h5></u>insurance facilities provided by govt.</li>
+                   <li style="font-size: 20px;">click the remove button if you want to remove that buyer from auction.<span class="lang-hin"> यदि आप नीलामी से उस खरीदार को हटाना चाहते हैं तो हटाने वाले बटन पर क्लिक करें।</li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 6:Schemes><span class="lang-hin">योजनाओं</h4>
+                   <li style="font-size: 20px;"><u><h5>select your state</h5></u>show the schemes for specific states<span class="lang-hin"><u><h5>अपने राज्य का चयन करें</h5></u>विशिष्ट राज्यों के लिए योजनाओं को दिखाएं</li>
+                   <li style="font-size: 20px;"><u><h5>bank loans</h5></u>schemes for loans from banks<span class="lang-hin"><u><h5>बैंक ऋण</h5></u>बैंकों से ऋण के लिए योजनाएं</li>
+                   <li style="font-size: 20px;"><u><h5>insurance</h5></u>insurance facilities provided by govt.<span class="lang-hin"><u><h5>बीमा</h5></u>सरकार द्वारा प्रदान की जाने वाली बीमा सुविधाएं</li>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/schemes.jpg')}}" alt="" srcset=""></li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Tutorials</h4>
-                   <li style="font-size: 20px;">tutorials for high yielding (seasonwise).</li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Tutorials<span class="lang-hin">ट्यूटोरियल</h4>
+                   <li style="font-size: 20px;">tutorials for high yielding (seasonwise).<span class="lang-hin">उच्च उपज के लिए ट्यूटोरियल। (मौसमी)</li>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/tutorials.jpg')}}" alt="" srcset=""></li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Services</h4>
-                   <li style="font-size: 20px;">when you click services options, following services will be shown:</li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Services<span class="lang-hin">सेवाओं</h4>
+                   <li style="font-size: 20px;">when you click services options, following services will be shown:|जब आप सेवाओं के विकल्पों पर क्लिक करते हैं, तो निम्नलिखित सेवाएं दिखाई जाएंगी:</li>
 
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/Services.jpg')}}" alt="" srcset=""></li>
-                   <li style="font-size: 20px;"><u><h5>Fertilisers</h5></u>others also have same UI.</li>
+                   <li style="font-size: 20px;"><u><h5>Fertilisers</h5></u>others also have same UI.<span class="lang-hin"><u><h5>उर्वरक</h5></u>दूसरों को भी एक ही यूआई है ।</li>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/Fertilisers.jpg')}}" alt="" srcset=""></li>
                   
-               </ul>
-                </span></div>
+               </ul></span>>
+                </div>
         </li>
         <li>
-          <div class="collapsible-header">Buyer</div>
+          <div class="collapsible-header">Buyer |खरीदार</div>
           <div class="collapsible-body"><span>
               <ul>
                    <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 1:Register</h4>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 1:<span class="lang-hin">पंजीकृत करें</h4>
                    <li style="font-size: 20px;">Do fill all the asked credentials.(for new user) </li>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/Register1.jpg')}}" alt="" srcset=""></li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 2:Login</h4>
-                   <li style="font-size: 20px;">Enter the valid credentials. </li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 2:Login|लॉगिन</h4>
+                   <li style="font-size: 20px;">Enter the valid credentials. |वैध परिचय पत्र दर्ज करें।</li>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/Login1.jpg')}}" alt="" srcset=""></li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 3:Home Page</h4>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 3:Home Page |होम पेज</h4>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/bhome.jpg')}}" alt="" srcset=""></li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 4:Buy</h4>
-                   <li style="font-size: 20px;">Here crop of farmer is added:</li>
-                   <li style="font-size: 20px;"><u><h5>crop-type</h5></u>crop buyer wanted.</li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 4:Buy|खरीद</h4>
+                   <li style="font-size: 20px;">Here crop that buyer wanted is added:|यहां फसल है कि खरीदार चाहता था जोड़ा जाता है:</li>
+                   <li style="font-size: 20px;"><u><h5>crop-type</h5></u>crop buyer wanted.|<u><h5>फसल-प्रकार</h5></u>फसल खरीदार चाहता था।</li>
                    
-                   <li style="font-size: 20px;"><u><h5>quantity</h5></u>quantity of crops</li>
+                   <li style="font-size: 20px;"><u><h5>quantity</h5></u>quantity of crops |<u><h5>मात्रा</h5></u>फसलों की मात्रा </li>
                    
                    
 
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/sell.jpg')}}" alt="" srcset=""></li>
-                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Auction</h4>
-                   <li style="font-size: 20px;">click on enter auction to enter the auction. </li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Auction |नीलामी</h4>
+                   <li style="font-size: 20px;">click on enter auction to enter the auction. |नीलामी में प्रवेश करने के लिए एंटर ऑक्शन पर क्लिक करें। </li>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/bauction.jpg')}}" alt="" srcset=""></li>
                    
-                   <li style="font-size: 20px;"> place you bid in blank input. </li>
+                   <li style="font-size: 20px;"> place you bid in blank input. | आप खाली इनपुट में बोली जगह है। </li>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/bbidding.jpg')}}" alt="" srcset=""></li>
                    
                   
-               </ul>
-          </span></div>
+               </ul></span>>
+          </div>
         </li>
         <li>
-          <div class="collapsible-header">Service Provider</div>
-          <div class="collapsible-body"><span></span></div>
+          <div class="collapsible-header">Service Provider |सर्विस प्रोवाइडर</div>
+          <div class="collapsible-body"><span></div>
         </li>
       </ul>
   </div>
