@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Chat2-512.png"
+        type="image/x-icon">
+    <link type="text/css" rel="stylesheet" href="../static/css/style.css">
+
+    <link rel='stylesheet prefetch'
+        href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+    <script src="../static/js/chat.js"></script>
+    <title>
+        SAKSHAM KISAN
+    </title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-analytics.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDH7kJ5CDLg2lcoK_MCAaKW43aZoccEzps",
+            authDomain: "saksham-kisan.firebaseapp.com",
+            databaseURL: "https://saksham-kisan.firebaseio.com",
+            projectId: "saksham-kisan",
+            storageBucket: "saksham-kisan.appspot.com",
+            messagingSenderId: "354803173877",
+            appId: "1:354803173877:web:a96feafd468fa8a8b178bc",
+            measurementId: "G-ZLQ6ZMLCWL"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        //firebase.analytics();
+
+        const db = firebase.firestore();
+    </script>
+
+
+</head>
+
+<body>
+
+    <div id="take_message">
+        <input type="email" id="inp_mesg" placeholder="Email" value="{{userid}}" style="display: none;" required>
+        <!-- <button class="favorite styled" >Chat</button><br> -->
+        <a class="waves-effect waves-light btn-large" onclick='users()'><i class="material-icons right">fast_forward</i>start chat</a>
+        
+    </div>
+    <script>
+    </script>
+
+    <!------------------------------------------------------------------------------------------------------------------->
+
+
+    <!---------------------------------------------------------------------------------------------------------------->
+    <div id="container">
+        <aside>
+            <!--------------------- search bar  ---------------------------------------->
+            <header>
+                <input type="text" placeholder="search" id="myInput" onkeyup="search()" title="Type in a name"
+                    style="display: none;">
+            </header>
+
+            <!------------------- users list ----------------------------------------------------------->
+            <ul id="myUL">
+            </ul>
+        </aside>
+        <!----------------- full message box --------------------------------------------->
+        <main id="textarea">
+
+            <!---------------- display the current chat reciever name ------------------------->
+            <header id="chat_user">
+            </header>
+
+            <!----------------dispalying all the chats ------------------------------------>
+            <section>
+                <ul id="chat" class="msg_container_base">
+
+                </ul>
+            </section>
+
+
+            <!----------------creating message input box and send button---------------------->
+            <footer id="send" style="display: none;">
+                <div class="message-input">
+                    <div class="wrap search-wrapper">
+                        <form>
+                            <input type="text" placeholder="Write your message..." id="msg" class="search-box"
+                                name="focus" />
+                            <button class="close-icon" type="reset"></button>
+                        </form>
+                        <div class="image-upload">
+                            <label for="photo">
+                                <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+                            </label>
+                            <input id="photo" type="file" class="file" name="mainimage" value="" onchange="getfile()"
+                                style="display: none;" />
+                            <br><br>
+
+                        </div>
+                        <button class="submit" onclick="send_messg()" id="submit"><i class="fa fa-paper-plane"
+                                aria-hidden="true"></i></button>
+                    </div>
+            </footer>
+
+
+        </main>
+    </div>
+    <script>
+        $("#submit").click(function () {
+            $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight }, 1000);
+        });
+    </script>
+</body>
+
+</html>
