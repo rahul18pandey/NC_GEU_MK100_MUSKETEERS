@@ -47,6 +47,7 @@
     <link type="text/css" rel="stylesheet"
         href="{{url_for('static', filename='fonts/beyond_the_mountains-webfont.css')}}" media="screen,projection" />
     <script type="text/javascript" src="{{url_for('static', filename='js/kisan.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/language.js')}}"></script>
 
 
 
@@ -83,10 +84,13 @@
             <ul id="slide-out" class="sidenav ">
                 <li><a href="/buyerbuy">Buy</a></li>
                 <li><a href="/buyerauction">Auction</a></li>
+                
 
-                <li id="profile_button_container"></li>
-                <li><a class="waves-effect waves-light btn" id="lang_btn" onclick="languageChanger()">भाषा</a></li>
-                <ul id="lgin_show" class="right hide-on-med-and-down" >
+                <li id="profile_button_container">
+                    <!-- ##################   from state buyer.js  ####### -->
+                </li>
+                <li><a class="waves-effect waves-light btn" id="lang_btn2" onclick="languageChanger()">भाषा</a></li>
+                <ul id="lgin_show">
                     <li><a class="waves-effect waves-light btn" href="#" onclick="logout()">Logout</a></li>
                 </ul>
             </ul>
@@ -104,26 +108,7 @@
         <!-- ################################################################################### -->
         {% endblock %}
     </main>
-    
-<!-- ################################################ -->
-<!-- ################  speech button   ############## -->
-<!-- ################################################ -->
-<div class="fixed-action-btn" onclick="startVoice()">
-    <a class="btn-floating btn-large red" id="btnGiveCommand" >
-      <i class="large material-icons">keyboard_voice</i>
-    </a>
-   
-  </div>
-
-
-    <div class="fixed-action-btn modal-trigger" href="#modal1" style="float: left; margin-right: 5%;">
-        <a class="btn-floating btn-large green" >
-          <i class="large material-icons">info</i>
-        </a>
-       
-      </div>
-
-
+ 
 
 
 
@@ -169,11 +154,12 @@
 
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/sell.jpg')}}" alt="" srcset=""></li>
                    <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Auction</h4>
-                   <li style="font-size: 20px;">click on enter auction to start/enter the auction. </li>
+                   <li style="font-size: 20px;">click on enter auction to enter the auction. </li>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/fauction.jpg')}}" alt="" srcset=""></li>
-                   <li style="font-size: 20px;">click the timer button. </li>
-                   <li style="font-size: 20px;">click the remove button if you want to remove that buyer from auction. </li>
+                   <li style="font-size: 20px;">To enter in auction click the "enter auction" and then click the timer button to start the auction  </li>
+                   
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/fbidding.jpg')}}" alt="" srcset=""></li>
+                   <li style="font-size: 20px;">click the remove button if you want to remove that buyer from auction. </li>
                    <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 6:Schemes</h4>
                    <li style="font-size: 20px;"><u><h5>select your state</h5></u>show the schemes for specific states</li>
                    <li style="font-size: 20px;"><u><h5>bank loans</h5></u>schemes for loans from banks</li>
@@ -194,7 +180,35 @@
         </li>
         <li>
           <div class="collapsible-header">Buyer</div>
-          <div class="collapsible-body"><span></span></div>
+          <div class="collapsible-body"><span>
+              <ul>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 1:Register</h4>
+                   <li style="font-size: 20px;">Do fill all the asked credentials.(for new user) </li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/Register1.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 2:Login</h4>
+                   <li style="font-size: 20px;">Enter the valid credentials. </li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/Login1.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 3:Home Page</h4>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/bhome.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 4:Buy</h4>
+                   <li style="font-size: 20px;">Here crop of farmer is added:</li>
+                   <li style="font-size: 20px;"><u><h5>crop-type</h5></u>crop buyer wanted.</li>
+                   
+                   <li style="font-size: 20px;"><u><h5>quantity</h5></u>quantity of crops</li>
+                   
+                   
+
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/sell.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Auction</h4>
+                   <li style="font-size: 20px;">click on enter auction to enter the auction. </li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/bauction.jpg')}}" alt="" srcset=""></li>
+                   
+                   <li style="font-size: 20px;"> place you bid in blank input. </li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/bbidding.jpg')}}" alt="" srcset=""></li>
+                   
+                  
+               </ul>
+          </span></div>
         </li>
         <li>
           <div class="collapsible-header">Service Provider</div>
@@ -207,6 +221,29 @@
 
 
 </div>
+
+<!-- ################################################ -->
+<!-- ################  speech button   ############## -->
+<!-- ################################################ -->
+<div class="fixed-action-btn" onclick="startVoice()">
+    <a class="btn-floating btn-large red" id="btnGiveCommand" >
+      <i class="large material-icons">keyboard_voice</i>
+    </a>
+   
+  </div>
+  
+<!-- ################################################### -->
+<!-- #################  information button ############# -->
+<!-- ################################################### -->
+
+  <div class="fixed-action-btn modal-trigger" href="#modal1" style="float: left; margin-right: 5%;">
+    <a class="btn-floating btn-large green" >
+      <i class="large material-icons">info</i>
+    </a>
+   
+  </div>
+
+
 
 
     <footer class="row white-text z-depth-1" style="background-color: limegreen;">
