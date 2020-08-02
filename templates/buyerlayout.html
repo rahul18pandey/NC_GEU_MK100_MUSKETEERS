@@ -85,7 +85,10 @@
                 <li><a href="/buyerauction">Auction</a></li>
 
                 <li id="profile_button_container"></li>
-                <li><a class="waves-effect waves-light btn" href="#">Language</a></li>
+                <li><a class="waves-effect waves-light btn" id="lang_btn" onclick="languageChanger()">भाषा</a></li>
+                <ul id="lgin_show" class="right hide-on-med-and-down" >
+                    <li><a class="waves-effect waves-light btn" href="#" onclick="logout()">Logout</a></li>
+                </ul>
             </ul>
 
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -101,8 +104,109 @@
         <!-- ################################################################################### -->
         {% endblock %}
     </main>
+    
+<!-- ################################################ -->
+<!-- ################  speech button   ############## -->
+<!-- ################################################ -->
+<div class="fixed-action-btn" onclick="startVoice()">
+    <a class="btn-floating btn-large red" id="btnGiveCommand" >
+      <i class="large material-icons">keyboard_voice</i>
+    </a>
+   
+  </div>
 
 
+    <div class="fixed-action-btn modal-trigger" href="#modal1" style="float: left; margin-right: 5%;">
+        <a class="btn-floating btn-large green" >
+          <i class="large material-icons">info</i>
+        </a>
+       
+      </div>
+
+
+
+
+
+
+
+
+<!-- ################   delete   ####################################### -->
+
+  
+
+  <!-- Modal Structure -->
+   <div id="modal1" class="modal" style="width: 90%;">
+    <div class="modal-content">
+      <!-- <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div> -->
+
+
+    <ul class="collapsible">
+        <li>
+          <div class="collapsible-header">Farmer</div>
+          <div class="collapsible-body"><span>                 
+               <ul>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 1:Register</h4>
+                   <li style="font-size: 20px;">Do fill all the asked credentials.(for new user) </li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/Register1.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 2:Login</h4>
+                   <li style="font-size: 20px;">Enter the valid credentials. </li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/Login1.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 3:Home Page</h4>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/Home.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 4:Sell</h4>
+                   <li style="font-size: 20px;">Here crop of farmer is added:</li>
+                   <li style="font-size: 20px;"><u><h5>crop-type</h5></u>crop farmer has grown</li>
+                   <li style="font-size: 20px;"><u><h5>auction date</h5></u>date of auction(bidding)</li>
+                   <li style="font-size: 20px;"><u><h5>view date</h5></u>date till which crops can be visit(physically)</li>
+                   <li style="font-size: 20px;"><u><h5>quantity</h5></u>quantity of crops</li>
+                   <li style="font-size: 20px;"><u><h5>base price</h5></u>minimum price set by farmer</li>
+                   
+
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/sell.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Auction</h4>
+                   <li style="font-size: 20px;">click on enter auction to start/enter the auction. </li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/fauction.jpg')}}" alt="" srcset=""></li>
+                   <li style="font-size: 20px;">click the timer button. </li>
+                   <li style="font-size: 20px;">click the remove button if you want to remove that buyer from auction. </li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/fbidding.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 6:Schemes</h4>
+                   <li style="font-size: 20px;"><u><h5>select your state</h5></u>show the schemes for specific states</li>
+                   <li style="font-size: 20px;"><u><h5>bank loans</h5></u>schemes for loans from banks</li>
+                   <li style="font-size: 20px;"><u><h5>insurance</h5></u>insurance facilities provided by govt.</li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/schemes.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Tutorials</h4>
+                   <li style="font-size: 20px;">tutorials for high yielding (seasonwise).</li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/tutorials.jpg')}}" alt="" srcset=""></li>
+                   <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Services</h4>
+                   <li style="font-size: 20px;">when you click services options, following services will be shown:</li>
+
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/Services.jpg')}}" alt="" srcset=""></li>
+                   <li style="font-size: 20px;"><u><h5>Fertilisers</h5></u>others also have same UI.</li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/Fertilisers.jpg')}}" alt="" srcset=""></li>
+                  
+               </ul>
+                </span></div>
+        </li>
+        <li>
+          <div class="collapsible-header">Buyer</div>
+          <div class="collapsible-body"><span></span></div>
+        </li>
+        <li>
+          <div class="collapsible-header">Service Provider</div>
+          <div class="collapsible-body"><span></span></div>
+        </li>
+      </ul>
+  </div>
+
+
+
+
+</div>
 
 
     <footer class="row white-text z-depth-1" style="background-color: limegreen;">
@@ -130,6 +234,7 @@
             $('select').formSelect();
             $('.collapsible').collapsible();
             $(".dropdown-trigger").dropdown();
+            $('.modal').modal();
         });
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -139,7 +244,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>
