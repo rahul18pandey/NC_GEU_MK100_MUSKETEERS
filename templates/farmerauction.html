@@ -1,0 +1,53 @@
+{% extends "farmerlayout.html" %}
+{% block content %}
+
+<script>
+    const pageName = "farmerauction"
+</script>
+<!--		maindiv -->
+<main>
+
+
+    <div class="maindiv" style="height: 100%;width: 100%;">
+
+        <div class="container mastfont" style="height:80px;width: 100px;"></div>
+        <div class=" mastfont"
+            style=" background-color: transparent;height: 100px;width: 100px;font-size: 80px;margin-left: 40%; margin-bottom: 3%;">
+            Auction</div>
+
+        <div class="col s12" id="auctiontable_container">
+
+            <!-- ################################### -->
+            <!-- #######  from farmer bid js  ###### -->
+            <!-- ################################### -->
+        </div>
+
+    </div>
+</main>
+
+
+
+
+
+<!--		for read more-->
+<script>
+    function myFunction() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more";
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less";
+            moreText.style.display = "inline";
+        }
+    }
+</script>
+<script src="{{url_for('static', filename='js/farmerbid.js')}}"></script>
+
+
+{% endblock content %}
