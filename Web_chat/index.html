@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Chat2-512.png"
+        type="image/x-icon">
+    <link type="text/css" rel="stylesheet" href="style.css">
+
+    <link rel='stylesheet prefetch'
+        href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+    <script src="chat.js"></script>
+    <title>
+        SAKSHAM KISAN
+    </title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-analytics.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDH7kJ5CDLg2lcoK_MCAaKW43aZoccEzps",
+            authDomain: "saksham-kisan.firebaseapp.com",
+            databaseURL: "https://saksham-kisan.firebaseio.com",
+            projectId: "saksham-kisan",
+            storageBucket: "saksham-kisan.appspot.com",
+            messagingSenderId: "354803173877",
+            appId: "1:354803173877:web:a96feafd468fa8a8b178bc",
+            measurementId: "G-ZLQ6ZMLCWL"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+        
+        //firebase.analytics();
+
+        const db = firebase.firestore();
+    </script>
+
+
+</head>
+
+<body>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+        onclick="users()">Lets Chat</button>
+    <!-- <button type="button" onclick="del()">delete</button> -->
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div id="container">
+                    <aside>
+                        <!--------------------- search bar  ---------------------------------------->
+                        <header>
+                            <input type="text" placeholder="search" id="myInput" onkeyup="search()"
+                                title="Type in a name" style="display: none;">
+                        </header>
+
+                        <!------------------- users list ----------------------------------------------------------->
+                        <ul id="myUL">
+                        </ul>
+                    </aside>
+                    <!----------------- full message box --------------------------------------------->
+                    <main id="textarea">
+
+                        <!---------------- display the current chat reciever name ------------------------->
+                        <header id="chat_user">
+                        </header>
+
+                        <!----------------dispalying all the chats ------------------------------------>
+                        <section>
+                            <ul id="chat" class="msg_container_base">
+
+                            </ul>
+                        </section>
+
+
+                        <!----------------creating message input box and send button---------------------->
+                        <footer id="send" style="display: none;">
+                            <div class="message-input">
+                                <div class="wrap search-wrapper">
+                                        <input type="text" placeholder="Write your message..." id="msg"
+                                            class="search-box" name="focus" />
+                                        <button class="close-icon" type="reset"></button>
+                                    <div class="image-upload">
+                                        <label for="photo">
+                                            <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+                                        </label>
+                                        <input id="photo" type="file" class="file" name="mainimage" value=""
+                                            onchange="getfile()" style="display: none;" />
+                                        <br><br>
+
+                                    </div>
+                                    <button class="submit" onclick="send_messg()" id="submit"><i
+                                            class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                </div>
+                        </footer>
+
+
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#submit").click(function () {
+            $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight }, 1000);
+        });
+
+
+
+
+
+        
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
