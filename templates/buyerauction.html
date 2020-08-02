@@ -1,0 +1,56 @@
+{% extends "buyerlayout.html" %}
+{% block content %}
+<script>
+    const pageName = "buyerauction"
+</script>
+
+<!--		maindiv -->
+<div class="maindiv" style="height: 100%;width: 100%;">
+
+    <!--			<div class="container mastfont"  style="height:80px;width: 100px;"></div>-->
+    <div class=" mastfont"
+        style=" height: 100px;width: 100px;font-size: 120px;margin-left: 40%; margin-bottom: 5%;margin-top: 3%;"><span class="lang-eng">Auction</span>
+        <span class="lang-hin">नीलामी</span>
+    </div>
+
+    <div class="col s12">
+        <!--    <h2 class="header">Horizontal Card</h2>-->
+
+
+        <div class="col s12" id="auctiontable_container">
+
+            <!-- ################################### -->
+            <!-- #######  from buyer bid js  ###### -->
+            <!-- ################################### -->
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!--		for read more-->
+<script>
+    function myFunction() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more";
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less";
+            moreText.style.display = "inline";
+        }
+    }
+</script>
+<script src="{{url_for('static', filename='js/buyerbid.js')}}"></script>
+
+
+{% endblock content %}
