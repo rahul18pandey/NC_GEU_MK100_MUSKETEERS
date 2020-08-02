@@ -1,0 +1,280 @@
+{% extends "farmerlayout.html" %}
+{% block content %}
+<script>
+
+  pageName = "farmerpayment";
+ 
+
+
+</script>
+<div id="buyeremail" style="display: none;">{{buyer}}</div>
+<input type="text" id="croptype" value="{{crop}}" style="display: none;">
+<input type="text" id="bidvalue" value="{{bidvalue}}" style="display: none;">
+
+
+<!--		maindiv -->
+
+
+<div class="maindiv" style="height: 100%; width: 100%;">
+
+  <div class="container mastfont" style="height:80px;width: 100px;"></div>
+
+  <div class=" mastfont"
+    style=" background-color: transparent;height: 100px;width: 100px;font-size: 80px;margin-left: 40%; margin-bottom: 3%;">
+    Payment</div>
+
+  <div class="container row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s6 m6 l6"><a href="#buyer">BUYER</a></li>
+        <li class="tab col s3 m6 l6"><a href="#service">SERVICE PROVIDER</a></li>
+
+      </ul>
+    </div>
+    <div id="buyer">
+
+      <div class="col s12">
+        <!--    <h2 class="header">Horizontal Card</h2>-->
+        <div class="card horizontal s12" style="margin-left: 10%;margin-top: 5%; width: 70%">
+
+          <div id="irr_img1">
+            <img src="../static/theme_images/winter_sun.jpg" alt="pic:)"
+              style="height: 200px;width: 200px;border-radius:  50%;">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <div class="col" style="width: 100%;">
+
+
+
+
+
+
+                <table>
+
+          
+                  <tbody>
+                    <tr>
+                      <td><h5>Crop type</h5></td>
+                      <td>{{crop}}</td>
+                    </tr>
+                    <tr>
+                      <td><h5>Price</h5></td>
+                      <td id="price_container"></td>
+                    </tr>
+                    <tr>
+                      <td><h5>Buyer name</h5></td>
+                      <td id="buyername_container"></td>
+                    </tr>
+                    <tr>
+                      <td><h5>Quantity</h5></td>
+                      <td id="qyantity_container"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+              </div>
+              <div class="card-action">
+                <div class="row">
+
+                </div>
+
+                  <div class="stars">
+                    <input id="star-5" onclick="setrate(5)" type="radio" name="star" />
+                    <label for="star-5"></label>
+                    <input id="star-4" onclick="setrate(4)" type="radio" name="star" />
+                    <label for="star-4"></label>
+                    <input id="star-3" onclick="setrate(3)" type="radio" name="star" />
+                    <label for="star-3"></label>
+                    <input id="star-2" onclick="setrate(2)" type="radio" name="star" />
+                    <label for="star-2"></label>
+                    <input id="star-1" onclick="setrate(1)" type="radio" name="star" />
+                    <label for="star-1"></label>
+                  </div>
+
+                </div>
+                <button onclick="farmer_rate()" class="btn" style="width: 30%; margin-left: 10%;">Submit</button>
+ 
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div id="service" class="col s12">
+      <div class="col s12">
+        <!--    <h2 class="header">Horizontal Card</h2>-->
+        <div class="card horizontal s12" style="margin-left: 10%;margin-top: 5%; width: 70%">
+
+          <div id="irr_img1">
+            <img src="images/IMG-20190418-WA0147.jpg" alt="pic:)"
+              style="height: 200px;width: 200px;border-radius:  50%;">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content mastfont">
+              <div class="col" style="width: 100%;">
+
+
+                <div class="row" style="height: 35%;background-color: transparent;">
+                  <div id="auc_crop1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;">
+                    <font color="black"> <b> PRODUCT NAME:</b></font>
+                  </div>
+                  <div id="auc_crop1_val"
+                    style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">
+                    kirti</div>
+                </div>
+
+
+
+                <div class="row" style="height: 35%;background-color: transparent;">
+                  <div id="auc_base1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;">
+                    <font color="black"><b> PRICE:</b></font>
+                  </div>
+                  <div id="auc_base1_val"
+                    style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">
+                    100</div>
+
+                </div>
+                <div class="row" style="height: 35%;background-color: transparent;">
+                  <div id="auc_view1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;">
+                    <font color="black"> <b>PROVIDER NAME:</b></font>
+                  </div>
+                  <div id="auc_view1_val"
+                    style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">
+                    kirti</div>
+
+                </div>
+                <div class="row" style="height: 35%;background-color: transparent;">
+                  <div id="auc_date1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;">
+                    <font color="black"> <b> QUANTITY:</b></font>
+                  </div>
+                  <div id="auc_date1_val"
+                    style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">
+                    kirti</div>
+
+                </div>
+
+
+
+              </div>
+              <div class="card-action">
+                <div class="row">
+                  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">PAYMENT</a>
+
+
+
+                </div>
+                <div class="form-popup" id="myForm1">
+
+                  <div class="stars">
+                    <input id="star-5" onclick="setrate(5)" type="radio" name="star" />
+                    <label for="star-5"></label>
+                    <input id="star-4" onclick="setrate(4)" type="radio" name="star" />
+                    <label for="star-4"></label>
+                    <input id="star-3" onclick="setrate(3)" type="radio" name="star" />
+                    <label for="star-3"></label>
+                    <input id="star-2" onclick="setrate(2)" type="radio" name="star" />
+                    <label for="star-2"></label>
+                    <input id="star-1" onclick="setrate(1)" type="radio" name="star" />
+                    <label for="star-1"></label>
+                  </div>
+                  <button onclick="farmer_rate()" class="btn">Submit</button>
+                  <!-- Modal Trigger -->
+
+                  <!-- Modal Structure -->
+                  <div id="modal1" class="modal">
+                    <div class="modal-content">
+                      <div class="container mastfont" style="height:80px;width: 100px;"></div>
+                      <center>
+                        <img src="images/gpay.jpg" alt="pic:)" style="height:700px;width: 400px;">
+                      </center>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
+                  </div>
+
+                  <script>
+                    rateValue = 0
+                    function setrate(r) {
+                      rateValue = r
+                    }
+                   
+                  </script>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+
+</div>
+</main>
+
+
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+</script>
+
+<script>
+  function openForm1() {
+    document.getElementById("myForm1").style.display = "block";
+  }
+
+  function closeForm1() {
+    document.getElementById("myForm1").style.display = "none";
+  }
+</script>
+
+<script src="{{url_for('static', filename = 'js/payment.js')}}"></script>
+
+
+ <!-- Modal Trigger -->
+ <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+ <!-- Modal Structure -->
+ <div id="modal1" class="modal">
+   <div class="modal-content">
+     <h4>Modal Header</h4>
+     <p>A bunch of text</p>
+   </div>
+   <div class="modal-footer">
+     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+   </div>
+ </div>
+
+{% endblock content %}
