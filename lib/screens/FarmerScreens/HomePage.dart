@@ -1,9 +1,9 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter/material.dart';
 import 'package:kisan_app/Components/dialog_helper.dart';
+import 'package:kisan_app/screens/FarmerScreens/Checkprice.dart';
 import 'package:kisan_app/screens/FarmerScreens/recenttransaction.dart';
 import 'package:kisan_app/sign_in.dart';
 import 'package:kisan_app/youtube/screens/home_screen.dart';
@@ -13,6 +13,7 @@ import '../../crud.dart';
 import '../chat_screen.dart';
 import '../weather.dart';
 import 'Branding.dart';
+import 'DailyPrice.dart';
 import 'Help.dart';
 import 'Transportation.dart';
 import 'Fertilizers.dart';
@@ -74,11 +75,11 @@ class _HomeScreenState extends State<HomeScreen> {
     _speechRecognition = SpeechRecognition();
     _speechRecognition.setRecognitionCompleteHandler(onRecognitionComplete);
     _speechRecognition.setRecognitionStartedHandler(
-      () => setState(() => _isListening = true),
+          () => setState(() => _isListening = true),
     );
     _currentLocale = Localizations.localeOf(context);
     _speechRecognition.setRecognitionResultHandler(
-      (String speech) => setState(() {
+          (String speech) => setState(() {
         resultText = speech;
       }),
     );
@@ -286,7 +287,7 @@ class _HomeScreenState extends State<HomeScreen> {
         } else if (resultText == "branding") {
           if (!count) {
             tts.speak("Please wait");
-           Navigator.push(
+            Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Collaboration()));
             resultText = "";
           }
@@ -329,10 +330,10 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: new AppBar(
           title: Center(
               child: (Text(
-            AppLocalizations.of(context).translate('first_string'),
-            style: TextStyle(
-                fontFamily: 'Montserrat', fontWeight: FontWeight.w600),
-          ))),
+                AppLocalizations.of(context).translate('first_string'),
+                style: TextStyle(
+                    fontFamily: 'Montserrat', fontWeight: FontWeight.w600),
+              ))),
           brightness: Brightness.dark,
           elevation: 0,
           backgroundColor: Color(0xFF637BFF),
@@ -481,7 +482,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 child: ListTile(
                   title: Text(
-                    "Transaction",
+                    (AppLocalizations.of(context).translate('74')),
                     style: TextStyle(
                         fontFamily: 'Montserrat',
                         fontSize: 15,
@@ -723,11 +724,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(20)),
+                      borderRadius: BorderRadius.circular(5),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black26,
@@ -780,8 +777,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/test1.png',
-                                )),
+                                      'images/test1.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context).translate('3')),
                                   style: TextStyle(
@@ -808,8 +805,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/test2.png',
-                                )),
+                                      'images/test2.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context).translate('4')),
                                   style: TextStyle(
@@ -836,8 +833,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/test.png',
-                                )),
+                                      'images/test.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context).translate('5')),
                                   style: TextStyle(
@@ -872,11 +869,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(20)),
+                      borderRadius: BorderRadius.circular(5),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black26,
@@ -951,10 +944,38 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Card(
                               color: Colors.white,
                               child: ListTile(
+                                leading: Icon(
+                                  Icons.directions_bus,
+                                  color: Colors.black,
+                                ),
+                                title: Text(
+                                  "Check Daily Price",
+                                  style: TextStyle(
+                                    color: Colors.teal,
+                                    fontSize: 20.0,
+                                    letterSpacing: 1.2,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "Montserrat",
+                                  ),
+                                ),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DailyPrice()),
+                              );
+                            },
+                          ),
+                          FlatButton(
+                            child: Card(
+                              color: Colors.white,
+                              child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/test3.png',
-                                )),
+                                      'images/test3.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context).translate('8')),
                                   style: TextStyle(
@@ -981,8 +1002,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/irrigation.png',
-                                )),
+                                      'images/irrigation.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context).translate('9')),
                                   style: TextStyle(
@@ -1008,8 +1029,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/branding.png',
-                                )),
+                                      'images/branding.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context)
                                       .translate('10')),
@@ -1035,8 +1056,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/fertilizer.png',
-                                )),
+                                      'images/fertilizer.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context)
                                       .translate('11')),
@@ -1064,8 +1085,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/package.png',
-                                )),
+                                      'images/package.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context)
                                       .translate('12')),
@@ -1093,8 +1114,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/warehouse.png',
-                                )),
+                                      'images/warehouse.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context)
                                       .translate('13')),
@@ -1122,8 +1143,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/govern.png',
-                                )),
+                                      'images/govern.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context)
                                       .translate('14')),
@@ -1151,8 +1172,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/insurance.png',
-                                )),
+                                      'images/insurance.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context)
                                       .translate('20')),
@@ -1180,8 +1201,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListTile(
                                 leading: Image(
                                     image: AssetImage(
-                                  'images/tut.png',
-                                )),
+                                      'images/tut.png',
+                                    )),
                                 title: Text(
                                   (AppLocalizations.of(context)
                                       .translate('15')),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kisan_app/Constants/loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kisan_app/crud.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../app_localizations.dart';
 import 'farmersidebidderlist.dart';
 
@@ -18,7 +19,7 @@ class _ShowCropState extends State<ShowCrop> {
   QuerySnapshot cropdata;
   QuerySnapshot farmerdata;
   String a;
-
+  String dummyurl='https://firebasestorage.googleapis.com/v0/b/saksham-kisan.appspot.com/o/noImageUploaded.png?alt=media&token=e70e4293-b204-4571-86fe-667c0ef0408c';
   FirebaseUser user;
   @override
   void initState() {
@@ -75,6 +76,7 @@ class _ShowCropState extends State<ShowCrop> {
     a = user.email;
 
     if (a == cropdata.documents[i].data['Email']) {
+      print(cropdata.documents[i].data['URL']);
       int q=int.parse(cropdata.documents[i].data['Quantity']);
       if(q>100) {
         return new Container(
@@ -82,7 +84,7 @@ class _ShowCropState extends State<ShowCrop> {
         width: double.infinity,
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(5),
             boxShadow: [
               BoxShadow(
                 color: Colors.black26,
@@ -98,6 +100,32 @@ class _ShowCropState extends State<ShowCrop> {
           padding: const EdgeInsets.all(15.0),
           child: Column(
             children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Container(
+                    width:150,
+                    height:150,
+                    child: Image.network(
+                      cropdata.documents[i].data['URL']==''?dummyurl:cropdata.documents[i].data['URL'],
+                    ),
+                  ),
+                  RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(12.0),
+                        side: BorderSide(color: Colors.grey)),
+                    color: Colors.blue,
+                    onPressed: () async{
+                      if (await canLaunch(cropdata.documents[i].data['URL'])) {
+                        await launch(cropdata.documents[i].data['URL']);
+                      } else {
+                        throw 'Could not launch URL';
+                      }
+
+                    },
+                    child: Text("View Image"),
+                  )
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 4.0, bottom: 10.0),
                 child: Row(children: <Widget>[
@@ -204,7 +232,7 @@ class _ShowCropState extends State<ShowCrop> {
           width: double.infinity,
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(5),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
@@ -220,6 +248,32 @@ class _ShowCropState extends State<ShowCrop> {
             padding: const EdgeInsets.all(15.0),
             child: Column(
               children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Container(
+                      width:150,
+                      height:150,
+                      child: Image.network(
+                        cropdata.documents[i].data['URL']==''?dummyurl:cropdata.documents[i].data['URL'],
+                      ),
+                    ),
+                    RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(12.0),
+                          side: BorderSide(color: Colors.grey)),
+                      color: Colors.blue,
+                      onPressed: () async{
+                        if (await canLaunch(cropdata.documents[i].data['URL'])) {
+                          await launch(cropdata.documents[i].data['URL']);
+                        } else {
+                          throw 'Could not launch URL';
+                        }
+
+                      },
+                      child: Text("View Image"),
+                    )
+                  ],
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 4.0, bottom: 10.0),
                   child: Row(children: <Widget>[

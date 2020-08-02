@@ -145,7 +145,7 @@ class _MiddleSeasonState extends State<MiddleSeason> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text((AppLocalizations.of(context).translate('6')),style: TextStyle(fontFamily: 'Montserrat',fontWeight: FontWeight.w600),),
+        title: Text((AppLocalizations.of(context).translate('4')),style: TextStyle(fontFamily: 'Montserrat',fontWeight: FontWeight.w600),),
         backgroundColor: Color(0xFF637BFF),
         elevation: 0,
         automaticallyImplyLeading: true,

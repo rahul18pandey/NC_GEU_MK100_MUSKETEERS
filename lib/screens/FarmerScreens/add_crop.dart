@@ -1,16 +1,18 @@
 
-
-
-
+import 'dart:typed_data';
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:kisan_app/constants.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:kisan_app/crud.dart';
+import 'package:kisan_app/screens/FarmerScreens/HomePage.dart';
 import 'package:speech_recognition/speech_recognition.dart';
 
 import '../../app_localizations.dart';
@@ -26,7 +28,7 @@ class _AddCropState extends State<AddCrop> {
 
   crudMethods fobj=new crudMethods();
   final TextEditingController _controller = new TextEditingController();
-
+  StorageReference storageReference = FirebaseStorage.instance.ref().child("crop photos");
   FirebaseUser user;
   String quantity='0';
   String address='';
@@ -35,13 +37,22 @@ class _AddCropState extends State<AddCrop> {
   DateTime viewdate;
   String phone='';
   String price='';
+  File _imageFile;
   SpeechRecognition _speechRecognition;
   bool _isAvailable=true;
   bool _isListening=true ;
   final FlutterTts tts=FlutterTts();
   Locale _currentLocale;
   String resultText = "";
+  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
   bool count=false;
+  Future getImage() async {
+    File image;
+    image = (await ImagePicker.pickImage(source: ImageSource.camera)) as File;
+    setState(() {
+      _imageFile = image;
+    });
+  }
 
   Widget _buildTypeTF() {
     var items = [(AppLocalizations.of(context).translate('57')), (AppLocalizations.of(context).translate('58')), (AppLocalizations.of(context).translate('59')),(AppLocalizations.of(context).translate('60')),(AppLocalizations.of(context).translate('61')),(AppLocalizations.of(context).translate('62')),(AppLocalizations.of(context).translate('63')),(AppLocalizations.of(context).translate('64')),];
@@ -50,7 +61,12 @@ class _AddCropState extends State<AddCrop> {
       children: <Widget>[
         Text(
           (AppLocalizations.of(context).translate('56')),
-          style: kLabelStyle,
+          style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w600,
+              fontSize: 18
+          ),
         ),
 
         Container(
@@ -61,7 +77,7 @@ class _AddCropState extends State<AddCrop> {
                 child: new Row(
                   children: <Widget>[
                     new Expanded(
-                        child: new TextField(controller: _controller),
+                      child: new TextField(controller: _controller),
                     ),
                     new PopupMenuButton<String>(
                       icon: const Icon(Icons.arrow_drop_down),
@@ -96,10 +112,15 @@ class _AddCropState extends State<AddCrop> {
         children: <Widget>[
           Text(
             (AppLocalizations.of(context).translate('65'))+" : ",
-            style: kLabelStyle,
+            style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w500,
+                fontSize: 18
+            ),
           ),
 
-          SizedBox(height: 5.0),
+          SizedBox(height: 10.0),
           Container(
             alignment: Alignment.centerLeft,
             decoration: kBoxDecorationStyle,
@@ -107,7 +128,7 @@ class _AddCropState extends State<AddCrop> {
             child: TextField(
               keyboardType: TextInputType.number,
               onChanged: (value){
-               this.quantity=value;
+                this.quantity=value;
               },
               style: TextStyle(
                 color: Colors.black,
@@ -129,7 +150,7 @@ class _AddCropState extends State<AddCrop> {
                   side: BorderSide(color: Colors.grey)
               ),
               color: Colors.green,
-              child: Text("go",style: TextStyle(color: Colors.black),),
+              child: Text("Go",style: TextStyle(color: Colors.white,fontSize: 16,fontFamily: "Montserrat"),),
               onPressed: (){
                 (context as Element).reassemble();
               },
@@ -146,7 +167,12 @@ class _AddCropState extends State<AddCrop> {
       children: <Widget>[
         Text(
           (AppLocalizations.of(context).translate('67'))+" : ",
-          style: kLabelStyle,
+          style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w500,
+              fontSize: 18
+          ),
         ),
 
         SizedBox(height: 5.0),
@@ -180,7 +206,12 @@ class _AddCropState extends State<AddCrop> {
       children: <Widget>[
         Text(
           (AppLocalizations.of(context).translate('66'))+" : ",
-          style: kLabelStyle,
+          style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w500,
+              fontSize: 18
+          ),
         ),
         SizedBox(height: 5.0),
         Container(
@@ -210,44 +241,49 @@ class _AddCropState extends State<AddCrop> {
 
   Widget _buildauctionTF() {
     int q=int.parse(this.quantity);
-  if(q>100) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          (AppLocalizations.of(context).translate('46'))+" : ",
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 5.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 50.0,
-       child:Column(
-         mainAxisAlignment: MainAxisAlignment.center,
-         children: <Widget>[
+    if(q>100) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            (AppLocalizations.of(context).translate('46'))+" : ",
+            style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w500,
+                fontSize: 18
+            ),
+          ),
+          SizedBox(height: 5.0),
+          Container(
+              alignment: Alignment.centerLeft,
+              decoration: kBoxDecorationStyle,
+              height: 50.0,
+              child:Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
 
-    FlatButton(
-      child: Text(auctiondate==null ? '                                                        ' : auctiondate.toString()),
-      onPressed: (){
-        showDatePicker(
-            context: context,
-            initialDate: auctiondate == null ? DateTime.now() : auctiondate,
-            firstDate: DateTime(2020),
-            lastDate: DateTime(2021)
-        ).then((date) {
-          setState(() {
-            auctiondate = date;
-          });
-        });
-      }
-    )
-         ],
-       )
-        ),
-      ],
-    );
-  }return Container(
+                  FlatButton(
+                      child: Text(auctiondate==null ? '                                                        ' : auctiondate.toString()),
+                      onPressed: (){
+                        showDatePicker(
+                            context: context,
+                            initialDate: auctiondate == null ? DateTime.now() : auctiondate,
+                            firstDate: DateTime(2020),
+                            lastDate: DateTime(2021)
+                        ).then((date) {
+                          setState(() {
+                            auctiondate = date;
+                          });
+                        });
+                      }
+                  )
+                ],
+              )
+          ),
+        ],
+      );
+    }return Container(
       width: 0.0,
       height: 0.0,
     );
@@ -259,7 +295,12 @@ class _AddCropState extends State<AddCrop> {
       children: <Widget>[
         Text(
           (AppLocalizations.of(context).translate('68'))+" : ",
-          style: kLabelStyle,
+          style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w500,
+              fontSize: 18
+          ),
         ),
         SizedBox(height: 5.0),
         Container(
@@ -293,13 +334,18 @@ class _AddCropState extends State<AddCrop> {
       children: <Widget>[
         Text(
           (AppLocalizations.of(context).translate('69'))+" : ",
-          style: kLabelStyle,
+          style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w500,
+              fontSize: 18
+          ),
         ),
         SizedBox(height: 5.0),
         Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 50.0,
+            alignment: Alignment.centerLeft,
+            decoration: kBoxDecorationStyle,
+            height: 50.0,
             child:Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -354,44 +400,85 @@ class _AddCropState extends State<AddCrop> {
       ),
     );
   }
-  submitCrop(){
+  submitCrop()async{
     user= fobj.getUser();
-    Navigator.of(context).pop();
     int q=int.parse(this.quantity);
-    if(q>100) {
-      fobj.addcropdata({
-      'Quantity': this.quantity,
-      'Auction_date': "${auctiondate.day}-${auctiondate.month}-${auctiondate.year}",
-      'Address': this.address,
-      'Phone':this.phone,
-      'View_date':"${viewdate.day}-${viewdate.month}-${viewdate.year}",
-      'Type':this.type,
-      'Base_price':this.price,
-      'Email':user.email,
-      'Current_bid':0,
-    }).then((result) {
-      dialogTrigger(context);
-    }).catchError((e) {
-      print(e);
-    });
-    }else{
-      fobj.addcropdata({
-        'Quantity': this.quantity,
-        'Address': this.address,
-        'Phone':this.phone,
-        'View_date':"${viewdate.day}-${viewdate.month}-${viewdate.year}",
-        'Type':this.type,
-        'Base_price':this.price,
-        'Email':user.email,
-      }).then((result) {
-        dialogTrigger(context);
-      }).catchError((e) {
-        print(e);
-      });
+    if(_imageFile!=null) {
+      showLoadingDialog(context, _keyLoader);
+      final StorageReference firebaseStorgaeRef = FirebaseStorage
+          .instance.ref().child("crop photos"+"/"+fobj.user.email+this.quantity+this.phone+this.price);
+      // ignore: deprecated_member_use
+      final StorageUploadTask task = firebaseStorgaeRef.putFile(_imageFile);
+      StorageTaskSnapshot taskSnapshot = await task.onComplete;
+      String url = await taskSnapshot.ref.getDownloadURL();
+      if (q > 100) {
+        fobj.addcropdata({
+          'Quantity': this.quantity,
+          'Auction_date': "${auctiondate.day}-${auctiondate.month}-${auctiondate
+              .year}",
+          'Address': this.address,
+          'Phone': this.phone,
+          'View_date': "${viewdate.day}-${viewdate.month}-${viewdate.year}",
+          'Type': this.type,
+          'Base_price': this.price,
+          'Email': user.email,
+          'Current_bid': 0,
+          'URL':url
+        }).then((result) {
+          Navigator.of(
+              _keyLoader.currentContext,
+              rootNavigator: true).pop();
+          dialogTrigger(context);
+        }).catchError((e) {
+          print(e);
+        });
+      } else {
+        fobj.addcropdata({
+          'Quantity': this.quantity,
+          'Address': this.address,
+          'Phone': this.phone,
+          'View_date': "${viewdate.day}-${viewdate.month}-${viewdate.year}",
+          'Type': this.type,
+          'Base_price': this.price,
+          'Email': user.email,
+          'URL':url
+        }).then((result) {
+          Navigator.of(
+              _keyLoader.currentContext,
+              rootNavigator: true).pop();
+          dialogTrigger(context);
+        }).catchError((e) {
+          print(e);
+        });
+      }
+    }
+    else{
+      imagedialog(context);
     }
   }
 
-
+  static Future<void> showLoadingDialog(
+      BuildContext context, GlobalKey key) async {
+    return showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return new WillPopScope(
+              onWillPop: () async => false,
+              child: SimpleDialog(
+                  key: key,
+                  backgroundColor: Colors.black54,
+                  children: <Widget>[
+                    Center(
+                      child: Column(children: [
+                        CircularProgressIndicator(),
+                        SizedBox(height: 10,),
+                        Text("Please Wait Uploading....",style: TextStyle(color: Colors.blueAccent,fontFamily: 'BeVietnam',),)
+                      ]),
+                    )
+                  ]));
+        });
+  }
 
   Future<bool> dialogTrigger(BuildContext context) async {
     return showDialog(
@@ -405,7 +492,10 @@ class _AddCropState extends State<AddCrop> {
               child: Text((AppLocalizations.of(context).translate('72')),),
               textColor: Colors.blue,
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                    builder: (context) => HomeScreen()));
               },
             )
           ],
@@ -414,7 +504,26 @@ class _AddCropState extends State<AddCrop> {
     );
   }
 
-
+  Future<bool> imagedialog(BuildContext context) async {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("please add crop image", style: TextStyle(fontSize: 15.0)),
+          actions: <Widget>[
+            FlatButton(
+              child: Text((AppLocalizations.of(context).translate('72')),),
+              textColor: Colors.blue,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -428,74 +537,86 @@ class _AddCropState extends State<AddCrop> {
       body:DecoratedBox(
         position: DecorationPosition.background,
         decoration: BoxDecoration(
-        gradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        stops: [0.0, 1.0],
-        colors: [Color(0xFF637BFF),Color(0XFF21C8F6)],
-    ),
-    ),
-     child: quantity=='0'?takequantity():AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: <Widget>[
-
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-
-              ),
-              Container(
-                height: double.infinity,
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 60.0,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      _buildTypeTF(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      _buildphoneTF(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-
-                      _buildAddressTF(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      _buildpriceTF(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      _buildviewTF(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      _buildauctionTF(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-
-
-
-                      _buildsubmitBtn(),
-
-                    ],
-                  ),
-                ),
-              )
-            ],
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [0.0, 1.0],
+            colors: [Color(0xFF637BFF),Color(0XFF21C8F6)],
           ),
         ),
-      ),
+        child: quantity=='0'?takequantity():AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.light,
+          child: GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: Stack(
+              children: <Widget>[
+
+                Container(
+                  height: double.infinity,
+                  width: double.infinity,
+
+                ),
+                Container(
+                  height: double.infinity,
+                  child: SingleChildScrollView(
+                    physics: AlwaysScrollableScrollPhysics(),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 40.0,
+                      vertical: 60.0,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        _buildTypeTF(),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        _buildphoneTF(),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+
+                        _buildAddressTF(),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        _buildpriceTF(),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        _buildviewTF(),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        _buildauctionTF(),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(12.0),
+                                side: BorderSide(color: Colors.grey)),
+                            color: Colors.blue,
+                          child: Text("add crop image"),
+                          onPressed: getImage
+                        ),
+                        Container(
+                          child: _imageFile==null?Text(""):Image.file(_imageFile,height: 300.0,width: 300.0,),
+                        ),
+
+
+                        _buildsubmitBtn(),
+
+
+
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
 
       ),
       floatingActionButton: FloatingActionButton(

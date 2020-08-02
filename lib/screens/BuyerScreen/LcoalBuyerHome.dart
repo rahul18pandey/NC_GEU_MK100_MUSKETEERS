@@ -5,6 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kisan_app/Components/dialog_helper.dart';
 import 'package:kisan_app/screens/BuyerScreen/transaction.dart';
+import 'package:kisan_app/screens/FarmerScreens/Packaging.dart';
+import 'package:kisan_app/screens/FarmerScreens/Transportation.dart';
+import 'package:kisan_app/screens/FarmerScreens/Warehouse.dart';
 import 'package:kisan_app/sign_in.dart';
 
 import '../../app_localizations.dart';
@@ -188,25 +191,6 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                   child: Card(
                     color: Colors.white,
                     child: ListTile(
-                      leading: Image(image: AssetImage('images/collab.png'),width: 36,height: 36,),
-                      title: Text(
-                        "Collaboration",
-                        style: TextStyle(
-                            color: Colors.teal,
-                            fontSize: 20.0,
-                            fontFamily: "Source Sans Pro"),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => BuyerCollaboration()));
-                  },
-                ),
-
-                FlatButton(
-                  child: Card(
-                    color: Colors.white,
-                    child: ListTile(
                       leading: Image(
                           image: AssetImage(
                             'images/user.png',
@@ -222,6 +206,84 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                   ),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => BuyerProfilePage()));
+                  },
+                ),
+                FlatButton(
+                  child: Card(
+                    color: Colors.white,
+                    child: ListTile(
+                      leading: Image(
+                          image: AssetImage(
+                            'images/package.png',
+                          )),
+                      title: Text(
+                        "Packaging",
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 20.0,
+                          fontFamily: "Source Sans Pro",
+                        ),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Packaging()),
+                    );
+                  },
+                ),
+                FlatButton(
+                  child: Card(
+                    color: Colors.white,
+                    child: ListTile(
+                      leading: Image(
+                          image: AssetImage(
+                            'images/warehouse.png',
+                          )),
+                      title: Text(
+                        "WareHouse",
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 20.0,
+                          fontFamily: "Source Sans Pro",
+                        ),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => WareHouse()),
+                    );
+                  },
+                ),
+                FlatButton(
+                  child: Card(
+                    color: Colors.white,
+                    child: ListTile(
+                      leading: Image(
+                          image: AssetImage(
+                            'images/test3.png',
+                          )),
+                      title: Text(
+                        "Transport",
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 20.0,
+                          fontFamily: "Source Sans Pro",
+                        ),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Transportation()),
+                    );
                   },
                 ),
                 SizedBox(height: 150,),

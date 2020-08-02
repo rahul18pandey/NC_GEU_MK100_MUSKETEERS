@@ -88,7 +88,7 @@ class _IrrigationSystemState extends State<IrrigationSystem> {
         width: double.infinity,
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(5),
           boxShadow: [
           BoxShadow(
           color: Colors.black26,
@@ -130,7 +130,7 @@ class _IrrigationSystemState extends State<IrrigationSystem> {
                 child: Row(children: <Widget>[
                   Text(
                     (AppLocalizations.of(context).translate('26')), style: new TextStyle(fontSize: 17.0,fontWeight: FontWeight.w600,fontFamily: 'Montserrat'),),
-                  Text("${servicedata1.documents[i].data['Charges']}.",
+                  Text("₹ ${servicedata1.documents[i].data['Charges']}.",
                     style: new TextStyle(
                         fontSize: 17.0, fontFamily: 'Montserrat'),),
                   Spacer(),
@@ -141,7 +141,7 @@ class _IrrigationSystemState extends State<IrrigationSystem> {
                 child: Row(children: <Widget>[
                   Text(
                     (AppLocalizations.of(context).translate('27')), style: new TextStyle(fontSize: 17.0,fontWeight: FontWeight.w600,fontFamily: 'Montserrat'),),
-                  Text("₹ ${name} ",
+                  Text("${name} ",
                       style: new TextStyle(
                           fontSize: 17.0,fontFamily: 'Montserrat')
                   ),
@@ -175,7 +175,7 @@ class _IrrigationSystemState extends State<IrrigationSystem> {
                             "yes",fobj.user.email,servicedata1.documents[i].data['Email'],servicedata1.documents[i].data['Type']
                         )));
                       },
-                      child: Text("Buy now",style: TextStyle(fontFamily:'Montserrat',fontWeight: FontWeight.bold,color:Colors.white,fontSize: 17.0),),
+                      child: Text((AppLocalizations.of(context).translate('84')),style: TextStyle(fontFamily:'Montserrat',fontWeight: FontWeight.bold,color:Colors.white,fontSize: 17.0),),
                     ),
                     SizedBox(width: 5,),
                     RaisedButton(
@@ -187,7 +187,7 @@ class _IrrigationSystemState extends State<IrrigationSystem> {
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceProfile(servicedata1.documents[i].data['Email'])));
                       },
-                      child: Text("Profile",style: TextStyle(fontFamily:'Montserrat',fontWeight: FontWeight.bold,color:Colors.white,fontSize: 17.0),),
+                      child: Text((AppLocalizations.of(context).translate('85')),style: TextStyle(fontFamily:'Montserrat',fontWeight: FontWeight.bold,color:Colors.white,fontSize: 17.0),),
                     ),
                     SizedBox(width: 5,),
                     RaisedButton(shape: RoundedRectangleBorder(

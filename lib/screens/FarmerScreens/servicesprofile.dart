@@ -1,43 +1,33 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:kisan_app/Constants/loading.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kisan_app/Constants/myheader.dart';
-
+import 'package:kisan_app/sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kisan_app/crud.dart';
-import 'package:speech_recognition/speech_recognition.dart';
-
 import '../../app_localizations.dart';
-class FarmerProfilePage extends StatefulWidget {
+class ServiceProfile extends StatefulWidget {
+  String useremail;
+  ServiceProfile(this.useremail);
   @override
-  _FarmerProfilePageState createState() => _FarmerProfilePageState();
+  _ServiceProfileState createState() => _ServiceProfileState();
 }
 
-class _FarmerProfilePageState extends State<FarmerProfilePage> {
+class _ServiceProfileState extends State<ServiceProfile> {
   crudMethods fobj = new crudMethods();
-  QuerySnapshot farmerprofiledata;
+  QuerySnapshot serviceprofiledata,transactiondata;
   String a;
   FirebaseUser user;
   double rating;
-  SpeechRecognition _speechRecognition;
-  bool _isAvailable=true;
-  bool _isListening=true ;
-  final FlutterTts tts=FlutterTts();
-  Locale _currentLocale;
-  String resultText = "";
-  bool count=false;
-  QuerySnapshot transactiondata;
   @override
   void initState() {
-    fobj.getFarmerData().then((results) {
+    fobj.getServiceData().then((results) {
       setState(() {
-        farmerprofiledata = results;
+        serviceprofiledata = results;
       });
     });
     fobj.gettransaction().then((results) {
@@ -47,116 +37,47 @@ class _FarmerProfilePageState extends State<FarmerProfilePage> {
     });
     super.initState();
   }
-  void initSpeechRecognizer() {
-    tts.speak("How can i help you");
-    //print("inside Second speech recognizer");
-    _speechRecognition = SpeechRecognition();
-    _speechRecognition.setRecognitionCompleteHandler(onRecognitionComplete);
-    _speechRecognition.setRecognitionStartedHandler(
-          () => setState(() => _isListening = true),
-    );
-    _currentLocale = Localizations.localeOf(context);
-    _speechRecognition.setRecognitionResultHandler(
-
-          (String speech) => setState(() {
-        resultText = speech;
-        if(resultText!=null|| resultText!="");
-        //  launchURL(resultText);
-        //print("your last result is function "+resultText);
-      }),
-    );
-    _speechRecognition.stop();
-
-  }
-  void onRecognitionComplete() {
-    setState(() {
-      if(resultText!=null|| resultText!="") {
-        // tts.speak("Please wait");
-        launchURL(resultText);
-      }
-
-    });
-  }
-  int count1=0;
-  launchURL(String resultText) {
-    if ((resultText != null && resultText != "")) {
-      count1++;
-      // print(count1);
-      if ((resultText=="back")) {
-         if (resultText == "back") {
-          if (!count) {
-            tts.speak("Please wait");
-            Navigator.pop(context,false);
-            resultText="";
-          }
-          count = true;
-        }
-      }
-
-      else if (count1 >=2) {
-        print(count1);
-        count1=0;
-
-        tts.speak(resultText + "not able to process");
-        resultText="";
-
-      }
-
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     user = fobj.getUser();
-    if(transactiondata!=null){
+    if(serviceprofiledata!=null&&transactiondata!=null) {
       int count=0;
       rating=0.0;
       for(int i=0;i<transactiondata.documents.length;i++){
-        if(transactiondata.documents[i].data['Farmer_email']==user.email){
-          if(transactiondata.documents[i].data['Farmer_Rating']!=""){
+        if(transactiondata.documents[i].data['Email']==fobj.user.email){
+          if(transactiondata.documents[i].data['Service_Rating']!=""){
             count=count+1;
-            rating=(rating+int.parse(transactiondata.documents[i].data['Farmer_Rating']));
+            rating=(rating+int.parse(transactiondata.documents[i].data['Service_Rating']));
           }
         }
       }
-     if(rating!=0)
-      rating=rating/count;
+      if(rating!=0)
+        rating=rating/count;
       print(rating);
-    }
-
-    return new Scaffold(
+      return new Scaffold(
       resizeToAvoidBottomPadding: false,
       extendBody: true,
+      body:_showProfile(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          initSpeechRecognizer();
-          if (_isAvailable && _isListening) {
-            _speechRecognition
-                .listen(locale: "${_currentLocale}")
-                .then((result) => print(result));
-            count=false;
-            count1=0;
-          }
-          else{
-            print("Mar gya");
-          }
-
           // Add your onPressed code here!
         },
         child: Icon(Icons.settings_voice),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.indigoAccent,
       ),
-      body:_showProfile(),
     );
+    }else{
+      return Loading();
+    }
   }
   _showProfile(){
     String a=user.email;
-    if (farmerprofiledata!= null) {
-      for(int i=0;i<farmerprofiledata.documents.length;i++)
+    if (serviceprofiledata!= null) {
+      for(int i=0;i<serviceprofiledata.documents.length;i++)
       {
-        if(a==farmerprofiledata.documents[i].documentID)
+        if(widget.useremail==serviceprofiledata.documents[i].documentID)
         {
-          return  SingleChildScrollView(
+          return SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 MyHeader(
@@ -194,7 +115,7 @@ class _FarmerProfilePageState extends State<FarmerProfilePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Text(
-                                  farmerprofiledata.documents[i]
+                                  serviceprofiledata.documents[i]
                                       .data['Name'],
                                   style: TextStyle(
                                     color: Colors.black,
@@ -238,14 +159,14 @@ class _FarmerProfilePageState extends State<FarmerProfilePage> {
                                     horizontal: 12, vertical: 1),
                                 leading: Icon(Icons.star, color: Colors.orange,),
                                 title: Text((AppLocalizations.of(context).translate('86'))),
-                                subtitle: Text( rating==0.0?"No one has rated yet" :"${rating}"),
+                                subtitle: Text(rating==0.0?"Noone has rated yet":"${rating}"),
                               ),
                               ListTile(
                                 contentPadding: EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 1),
                                 leading: Icon(Icons.phone),
                                 title: Text((AppLocalizations.of(context).translate('28'))),
-                                subtitle: Text(farmerprofiledata.documents[i]
+                                subtitle: Text(serviceprofiledata.documents[i]
                                     .data['Phone']),
                               ),
                               ListTile(
@@ -253,31 +174,31 @@ class _FarmerProfilePageState extends State<FarmerProfilePage> {
                                     horizontal: 12, vertical: 1),
                                 leading: Icon(Icons.email),
                                 title: Text((AppLocalizations.of(context).translate('34'))),
-                                subtitle: Text(farmerprofiledata.documents[i]
+                                subtitle: Text(serviceprofiledata.documents[i]
                                     .data['Email']),
                               ),
                               ListTile(
                                 contentPadding: EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 1),
                                 leading: Icon(Icons.lock_outline),
-                                title: Text((AppLocalizations.of(context).translate('35'))),
-                                subtitle: Text(farmerprofiledata.documents[i]
-                                    .data['Aadhar']),
+                                title: Text((AppLocalizations.of(context).translate('87'))),
+                                subtitle: Text(serviceprofiledata.documents[i]
+                                    .data['GST']),
                               ),
                               ListTile(
                                 contentPadding: EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 1),
                                 leading: Icon(Icons.home),
-                                title: Text((AppLocalizations.of(context).translate('36'))),
-                                subtitle: Text(farmerprofiledata.documents[i]
-                                    .data['House']),
+                                title: Text((AppLocalizations.of(context).translate('88'))),
+                                subtitle: Text(serviceprofiledata.documents[i]
+                                    .data['License']),
                               ),
                               ListTile(
                                 contentPadding: EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 1),
                                 leading: Icon(Icons.map),
                                 title: Text((AppLocalizations.of(context).translate('37'))),
-                                subtitle: Text( farmerprofiledata.documents[i]
+                                subtitle: Text(serviceprofiledata.documents[i]
                                     .data['City'],),
                               ),
                               ListTile(
@@ -285,7 +206,7 @@ class _FarmerProfilePageState extends State<FarmerProfilePage> {
                                     horizontal: 12, vertical: 1),
                                 leading: Icon(Icons.my_location),
                                 title: Text((AppLocalizations.of(context).translate('39'))),
-                                subtitle: Text(farmerprofiledata.documents[i]
+                                subtitle: Text(serviceprofiledata.documents[i]
                                     .data['District'],),
                               ),
                               ListTile(
@@ -293,7 +214,7 @@ class _FarmerProfilePageState extends State<FarmerProfilePage> {
                                     horizontal: 12, vertical: 1),
                                 leading: Icon(Icons.my_location),
                                 title: Text( (AppLocalizations.of(context).translate('40'))),
-                                subtitle: Text(farmerprofiledata.documents[i]
+                                subtitle: Text(serviceprofiledata.documents[i]
                                     .data['State'],),
                               ),
                               ListTile(
@@ -301,7 +222,7 @@ class _FarmerProfilePageState extends State<FarmerProfilePage> {
                                     horizontal: 12, vertical: 1),
                                 leading: Icon(Icons.my_location),
                                 title: Text((AppLocalizations.of(context).translate('41'))),
-                                subtitle: Text(farmerprofiledata.documents[i]
+                                subtitle: Text(serviceprofiledata.documents[i]
                                     .data['Address'],),
                               ),
                               ListTile(
@@ -309,26 +230,10 @@ class _FarmerProfilePageState extends State<FarmerProfilePage> {
                                     horizontal: 12, vertical: 1),
                                 leading: Icon(Icons.my_location),
                                 title: Text((AppLocalizations.of(context).translate('42'))),
-                                subtitle: Text(farmerprofiledata.documents[i]
-                                    .data['Pin_code'],),
+                                subtitle: Text(serviceprofiledata.documents[i]
+                                    .data['Pin'],),
                               ),
-                              ListTile(
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 1),
-                                leading: Icon(Icons.my_location),
-                                title: Text((AppLocalizations.of(context).translate('43'))),
-                                subtitle: Text(farmerprofiledata.documents[i]
-                                    .data['Post'],),
-                              ),
-                              ListTile(
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 1),
-                                leading: Icon(Icons.my_location),
-                                title: Text((AppLocalizations.of(context).translate('44'))),
-                                subtitle: Text(farmerprofiledata.documents[i]
-                                    .data['Police'],),
-                              ),
-                              ],
+                            ],
                           ),
                         ],
                       ),
@@ -345,7 +250,7 @@ class _FarmerProfilePageState extends State<FarmerProfilePage> {
       }
     }
     else {
-      return Loading();
+      return Text('Loading, Please wait..');
     }
   }
 }

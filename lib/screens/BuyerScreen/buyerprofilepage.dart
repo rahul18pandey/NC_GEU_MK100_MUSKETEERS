@@ -215,7 +215,7 @@ _showProfile(){
                                 leading: Icon(Icons.my_location),
                                 title: Text((AppLocalizations.of(context).translate('42'))),
                                 subtitle: Text(buyerprofiledata.documents[i]
-                                    .data['Pin'],),
+                                    .data['Pin_code'],),
                               ),
                             ],
                           ),
