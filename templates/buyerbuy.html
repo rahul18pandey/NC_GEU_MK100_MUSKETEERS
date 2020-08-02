@@ -1,0 +1,106 @@
+{% extends "buyerlayout.html" %}
+{% block content %}
+
+
+
+
+
+
+
+<div class="maindiv">
+    <h1 class="mastfont center-align" style="font-size: 120px;margin-top: 3%;"><span class="lang-eng">Our Sellers</span><span class="lang-hin">हमारे विक्रेता</span></h1>
+    <div class="container">
+
+        <center>
+            <div class="row" style="align-items: center;">
+
+                <form class="col s12">
+
+                    <div class="row" style="width: 100%;">
+                        <div class="input-field col s12 m6 l6">
+                            <i class="material-icons prefix">local_florist</i>
+                            <input id="crop_type" type="text" onkeyup="myFunction()" class="validate">
+                            <label for="crop_type"><span class="lang-eng">Crop type</span><span class="lang-hin">फसल-प्रकार</span></label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <i class="material-icons prefix">phone</i>
+                            <input id="crop_quantity" type="text" class="validate">
+                            <label for="crop_quantity"><span class="lang-eng">Quantity</span><span class="lang-hin">मात्रा</span></label>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </center>
+
+        <button class="btn waves-effect waves-light top_marg " style="margin-top: -5%;margin-left: 45%;" type="submit"
+            name="action" onclick="buyerbuy()">Submit
+            <i class="material-icons right">submit</i>
+        </button>
+
+
+
+
+        <div class="searchbar">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for crops..">
+        </div>
+        <table class="highlight" id="myTable">
+
+
+            <tr class="k_header">
+                <th style="width:30%;"> <span class="lang-eng">Farmer's Name</span><span class="lang-hin">किसान का नाम</span></th>
+                <th style="width:20%;"><span class="lang-eng">Address</span><span class="lang-hin">पता</span></th>
+                <th style="width:20%;"><span class="lang-eng">Crop-type</span><span class="lang-hin">फसल-प्रकार</span></th>
+                <th style="width:15%;"><span class="lang-eng">Base Price</span><span class="lang-hin">आधार मूल्य</span></th>
+                <th style="width:20%;"><span class="lang-eng">Quantity</span><span class="lang-hin">मात्रा</span></th>
+                <th style="width:20%;"><span class="lang-eng">View Date</span><span class="lang-hin">देखने की तारीख</span></th>
+                <th style="width:20%;"><span class="lang-eng">Auction Date</span><span class="lang-hin">नीलामी की तारीख</span></th>
+
+                <th colspan="2" style="width:30%;"><span class="lang-eng">Action</span><span class="lang-hin">कार्रवाई</span></th>
+            </tr>
+            <tbody id="farmerlist">
+
+            </tbody>
+
+
+        </table>
+
+    </div>
+
+</div>
+
+
+
+<div class="row"></div>
+<div class="row"></div>
+
+
+
+
+<script>
+    function myFunction() {
+        // Declare variables 
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+<script src="{{url_for('static', filename='js/buyerbuy.js')}}"></script>
+{% endblock content %}
