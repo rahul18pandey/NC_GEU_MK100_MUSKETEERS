@@ -1,4 +1,4 @@
-# sih2020
+# kisan_app
 
 A new Flutter application.
 
