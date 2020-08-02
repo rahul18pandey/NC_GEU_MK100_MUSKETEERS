@@ -1,5 +1,5 @@
 //state persistance.
-var userEmail = ""
+var userEmail = "";
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
@@ -8,13 +8,26 @@ firebase.auth().onAuthStateChanged(function (user) {
 
         const buyer = db.collection('Buyer').doc(userEmail).get().then(function (doc) {
             if (doc.exists) {
-                //console.log(doc.data())
+                
+                if(doc.data().Type == "local"){//console.log(doc.data())
                 document.getElementById("buy_auction_button_container").innerHTML = `<li><a href="/buyerbuy">Buy</a></li>
-                <li><a href="/buyerauction">Auction</a></li>
 
                 <li id="profile_button_container"></li>
-                <li><a class="waves-effect waves-light btn" href="#">Language</a></li>
+                <li class="lang-hin"><a class="waves-effect waves-light btn" onclick="languageChanger()">भाषा</a></li>
+                <li class="lang-eng"><a class="waves-effect waves-light btn" onclick="languageChanger()">LANGUAGE</a></li>
+                <li><a class="waves-effect waves-light btn" href="#" onclick="logout()">Logout</a></li>
+            `}else{
+                //console.log(doc.data())
+                document.getElementById("buy_auction_button_container").innerHTML = `<li><a href="/buyerbuy">Buy</a></li>
+                <li><a href="/buyerauction" id="auction_nav">Auction</a></li>
+
+                <li id="profile_button_container"></li>
+                <li class="lang-hin"><a class="waves-effect waves-light btn" onclick="languageChanger()">भाषा</a></li>
+                <li class="lang-eng"><a class="waves-effect waves-light btn" onclick="languageChanger()">LANGUAGE</a></li>
+                <li><a class="waves-effect waves-light btn" href="#" onclick="logout()">Logout</a></li>
+
             `
+            }
                 try {
                     selEle = document.getElementById("profile_button_container");
                     if (doc.data().Type == 'big') {
@@ -28,7 +41,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 
                         document.getElementById("bigsellerphone1").innerText = doc.data().Phone;
                         document.getElementById("bigsellerpin").innerText = doc.data().Pin_code;
-                        document.getElementById("bigselleraddress").innerText = doc.data().Address;
+                        document.getElementById("bigselleremail").innerText = doc.data().Email;
+                        document.getElementById("bigselleraddress1").innerText = doc.data().Address;
                         document.getElementById("bigsellergst").innerText = doc.data().GST;
                         document.getElementById("bigsellerlicense").innerText = doc.data().License;
                         document.getElementById("bigsellerstate").innerText = doc.data().State;
