@@ -8,13 +8,12 @@ body {
 }
 
 #container {
-    width: 100%;
-    /* width: 750px; */
+    width: 750px;
     height: 800px;
     background: #eff3f7;
     margin: 0 auto;
     font-size: 0;
-    /* border-radius: 5px; */
+    border-radius: 5px;
     overflow: hidden;
 }
 
@@ -90,7 +89,6 @@ aside li img {
     width:50px;
     border: 5px solid #555;
     margin-top: 5px;
-
 }
 
 aside li div {
@@ -150,15 +148,11 @@ main header img:first-child {
     border-radius: 50%;
     width: 20%;
     margin-top: -20px;
-    border: 3px solid chartreuse;
-
-    
-}
+    border: 3px solid chartreuse;}
 
 main header img:last-child {
     width: 24px;
     margin-top: 8px;
-    padding-top: 10px;
 }
 
 main header div {
@@ -223,11 +217,14 @@ main header h3 {
 
 #chat .you .message {
     background-color: #58b666;
+
+
 }
 
 #chat .me .message {
     background-color: #6fbced;
 }
+
 
 #chat .triangle {
     width: 0;
@@ -303,7 +300,7 @@ main footer {
     color: #435f7a;
     opacity: 1;
     cursor: pointer;
-    margin-top: -40px;
+    margin-top: -30px;
     padding-right: 10px;
 
   }
@@ -325,7 +322,7 @@ main footer {
     cursor: pointer;
     background: #32465a;
     color: #f5f5f5;
-    margin-top: -95px;
+    margin-top: -80px;
     margin-right: 25px;
     border-radius: 5px;
 
@@ -386,6 +383,7 @@ main footer {
     top: 0;
     bottom: 0;
     margin: auto;
+    padding: 2px;
     border-radius: 50%;
     text-align: center;
     color: white;
