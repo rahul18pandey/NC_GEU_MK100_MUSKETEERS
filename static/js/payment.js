@@ -49,5 +49,22 @@ db.collection("Buyer").doc(document.getElementById("buyeremail").innerText).get(
 })
 
 function farmer_rate() {
-    console.log("rate", rateValue)
+    console.log("rate", rateValue);
+    db.collection("Transaction").doc().set({
+        Buyer_Rating: rateValue,
+        Counter: 1,
+        Email: thisbuyer,
+        Farmer_Rating: "",
+        Farmer_email: userEmail,
+        Quantity: thisquantity,
+        Remain_quantity: thisquantity,
+        Service_Rating: "",
+        Type: thiscrop,
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
   }
