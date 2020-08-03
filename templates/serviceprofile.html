@@ -1,0 +1,120 @@
+{% extends "servicelayout.html" %}
+{% block content %}
+
+<!--		maindiv -->
+<div class="maindiv" style="height:100%;width: 100%;background-color: transparent;">
+	<div style="height: 100px;width: 100%;background-color: transparent;"></div>
+
+	<div class="row">
+		<div class="col s6 push-s1" style="height:700px;width:400px;">
+			<div class="container" style="margin-top: 5%;">
+				<img src="../static/theme_images/winter_sun.jpg" style="height: 300px;width: 300px;">
+			</div>
+			<div class="container col l12" style="margin-top: 20%;font-size: 25px;">
+				<div id="servicename" style="margin-left: 45%;margin-top: 3%;"> kirti</div>
+				<div id="serviceaddress" style="margin-left: 45%;margin-top: 3%;"> saharanpur</div>
+				<div id="serviceprofession" style="margin-left: 45%;margin-top: 3%;"> fertilisers</div>
+
+
+			</div>
+		</div>
+		<div class="col s12 l3 m12 push-s1"
+			style="height: auto;width:60%;background-color: transparent;margin-left: 8%; ">
+
+
+			<a class="waves-effect waves-light btn-large mastfont" style="height: 70px;margin-left: 2%;font-size: 25px;"
+				href="serviceedit.html">Edit Profile</a>
+			<a class="waves-effect waves-light btn-large "
+				style="height: 70px;margin-left: 2%;font-size: 25px;">Payment</a>
+			<!--
+				<a class="waves-effect waves-light btn-large dropdown-trigger btn mastfont"  href='#' data-target='dropdown3' style="height: 70px;margin-left: 2%;font-size: 25px;" >Brand</a>
+				
+				
+
+   Dropdown Structure 
+  <ul id='dropdown3' class='dropdown-content mastfont'>
+    <li><a href="#!">
+		Self</a></li>
+    <li><a href="#!">Collaboration</a></li>
+
+  </ul>
+-->
+			<a class="waves-effect waves-light btn-large mastfont" style="height: 70px;margin-left: 2%;font-size: 25px;"
+				href="servicerecent.html">Recent History</a>
+
+			<hr>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s6 offset-s6" style="height: auto;width:500px;margin-top: -30%; ">
+			<ul class="collapsible">
+				<li>
+					<div class="collapsible-header" style="height: 80px;font-size: 25px;"><i
+							class="material-icons"></i>Contact Details</div>
+					<div class="collapsible-body " style="font-size: 20px;"><span>Phone number:</span>
+						<span id="servicephone">13654</span></div>
+					<div class="collapsible-body " style="font-size: 20px;"><span>Email Address:</span>
+						<span id="serviceemail">kisan@gmail.com</span></div>
+
+
+				</li>
+				<li>
+					<div class="collapsible-header" style="height: 80px;font-size: 25px;"><i
+							class="material-icons"></i>Additional Details</div>
+
+
+					<div class="collapsible-body " style="font-size: 20px;"><span>Pin Code:</span>
+						<span id="servicepin">13654</span>
+					</div>
+					<div class="collapsible-body " style="font-size: 20px;"><span>Address:</span><span
+							id="serviceaddress1">13654</span></div>
+					<div class="collapsible-body " style="font-size: 20px;"><span>District:</span><span
+							id="servicedist">13654</span></div>
+					<div class="collapsible-body " style="font-size: 20px;"><span>City:</span><span
+							id="servicecity">13654</span></div>
+					<div class="collapsible-body " style="font-size: 20px;"><span>GST Number:</span><span
+							id="servicegst">13654</span></div>
+					<div class="collapsible-body " style="font-size: 20px;"><span>License Number:</span><span
+							id="servicelicense">13654</span>
+					</div>
+
+					<div class="collapsible-body" style="font-size: 20px;"><span>State:</span>
+						<span id="servicestate">13654</span></div>
+
+
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+	<div class="container center z-depth-2 white">
+		<br>
+		<br>
+	<div class="container center">
+		<h4>Price Details</h4>
+	<table class="striped white center">
+        <thead>
+          <tr>
+              <th>Service Type</th>
+              <th>Price</th>
+          </tr>
+        </thead>
+
+        <tbody id="addedserviceholder">
+          
+        </tbody>
+	  </table>
+	  <br>
+	  <br>
+	</div>
+	</div>
+	
+
+</div>
+<br>
+<br>
+<br>
+<br>
+{% endblock content %}
