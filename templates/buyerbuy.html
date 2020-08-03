@@ -4,6 +4,38 @@
 
 
 
+<!-- Modal Trigger -->
+<a class="waves-effect red waves-light btn modal-trigger" href="#modal-data"
+style="float:right; position:fixed; margin-left: 90%; margin-top:100px;" onclick="getData()">Today's Price</a>
+
+
+
+<!-- Modal Structure -->
+<div id="modal-data" class="modal">
+<div class="modal-content">
+  <h4 style="text-align: center;">Current Daily Price of Various Commodities from Various Markets (Mandi)</h4>
+  <input type="text" id="myInput" onkeyup="myFunctiondist()" placeholder="Search for District.." title="Type in a name">
+  <table id="my-table">
+    <thead>
+      <tr>
+        <td>State</td>
+        <td>District</td>
+        <td>Commodity</td>
+        <td>Variety</td>
+        <td>Min Price(in Rs)</td>
+        <td>Max Price(in Rs)</td>
+
+      </tr>
+    </thead>
+    <tbody id="tablebody">
+
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+</div>
+</div>
 
 
 
@@ -44,7 +76,7 @@
 
 
         <div class="searchbar">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for crops..">
+            <input type="text" id="myInput1" onkeyup="myFunction()" placeholder="Search for crops..">
         </div>
         <table class="highlight" id="myTable">
 
@@ -83,7 +115,7 @@
     function myFunction() {
         // Declare variables 
         var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
+        input = document.getElementById("myInput1");
         filter = input.value.toUpperCase();
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
@@ -102,5 +134,7 @@
         }
     }
 </script>
+
+
 <script src="{{url_for('static', filename='js/buyerbuy.js')}}"></script>
 {% endblock content %}
