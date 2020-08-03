@@ -1,5 +1,6 @@
 # NC_GEU_MK100_MUSKETEERS
 # Website
+- `latest version of Chrome 84.0.4147.105`
 ## User Stories
 - install `python3`
 - `pip3 install flask`
