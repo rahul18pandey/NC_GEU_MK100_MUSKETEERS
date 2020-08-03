@@ -48,6 +48,7 @@
         href="{{url_for('static', filename='fonts/beyond_the_mountains-webfont.css')}}" media="screen,projection" />
     <script type="text/javascript" src="{{url_for('static', filename='js/kisan.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/language.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/data.js')}}"></script>
 
 
 
@@ -82,8 +83,8 @@
 
         <ul class="hide-on-med-and-up">
             <ul id="slide-out" class="sidenav ">
-                <li><a href="/buyerbuy"><span class="lang-eng">Buy</span></a></li>
-                <li><a href="/buyerauction"><span class="lang-hin">Auction</span></a></li>
+                <li><a href="/buyerbuy" id="navbuy"><span class="lang-eng">Buy</span></a></li>
+                <li><a href="/buyerauction"><span class="lang-eng">Auction</span></a></li>
                 
 
                 <li id="profile_button_container">
@@ -199,7 +200,7 @@
                    
                    
 
-                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/buy.jpg')}}" alt="" srcset=""></li>
+                   <li><img src="{{url_for('static', filename = 'theme_images/how_to/sell.jpg')}}" alt="" srcset=""></li>
                    <h4 style="margin-top: 1%;margin-bottom: 1%;">Step 5:Auction |नीलामी</h4>
                    <li style="font-size: 20px;">click on enter auction to enter the auction. |नीलामी में प्रवेश करने के लिए एंटर ऑक्शन पर क्लिक करें। </li>
                    <li><img src="{{url_for('static', filename = 'theme_images/how_to/bauction.jpg')}}" alt="" srcset=""></li>
@@ -212,7 +213,6 @@
           </div>
         </li>
         <li>
-          <div class="collapsible-header">Service Provider|सर्विस प्रोवाइडर</div>
           <div class="collapsible-body"><span></div>
         </li>
       </ul>
@@ -223,6 +223,7 @@
 
 </div>
 
+
 <!-- ################################################ -->
 <!-- ################  speech button   ############## -->
 <!-- ################################################ -->
@@ -232,10 +233,7 @@
     </a>
    
   </div>
-  
-<!-- ################################################### -->
-<!-- #################  information button ############# -->
-<!-- ################################################### -->
+
 
   <div class="fixed-action-btn modal-trigger" href="#modal1" style="float: left; margin-right: 5%;">
     <a class="btn-floating btn-large green" >
@@ -249,14 +247,13 @@
       <i class="large material-icons">mode_edit</i>
     </a>
     <ul>
-      <li><a class="btn-floating blue"><i class="material-icons">chat</i></a></li>
+        <li onclick="window.open('/chat'+'?user='+userEmail)"><a class="btn-floating blue"><i class="material-icons">chat</i></a></li>
+
       
-      <li><a class="btn-floating pink"><i class="material-icons">cloud_queue</i></a></li>
+      <li><a class="btn-floating pink" href="https://weatherappopen.herokuapp.com"><i class="material-icons">cloud_queue</i></a></li>
       
     </ul>
   </div>
-
-
 
 
     <footer class="row white-text z-depth-1" style="background-color: limegreen;">
