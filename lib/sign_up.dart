@@ -39,122 +39,126 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
         SingleChildScrollView(
-          child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(height: 50,),
-                  Container(
-                    //margin: EdgeInsets.only(top: 20),
-                    alignment: Alignment.center,
-                    height: 200,
-                    child: Image(image: AssetImage('assets/images/icon.png',)),
-                  ),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(height: 50,),
+                    Container(
+                      //margin: EdgeInsets.only(top: 20),
+                      alignment: Alignment.center,
+                      height: 200,
+                      child: Image(image: AssetImage('assets/images/icon.png',)),
+                    ),
 
-                  SizedBox(height: 20,),
-                  Stack(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(left: 32.0),
-                        child: Text(
-                          "Sign Up",
-                          style:
-                          TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4.0),
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      decoration: kBoxDecorationStyle,
-                      margin: EdgeInsets.symmetric(vertical: 20),
-                      height: 60,
-                      child: TextFormField(
-                        validator: validateEmail,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.all(15.0),
-                          prefixIcon: Icon(
-                            Icons.mail,
-                            color: Colors.teal,
-                            size: 30,
+                    SizedBox(height: 20,),
+                    Stack(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 32.0),
+                          child: Text(
+                            "Sign Up",
+                            style:
+                            TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
                           ),
-                          hintText: 'Enter your Email',
-                          hintStyle: kHintTextStyle,
                         ),
-                        onSaved: (input) => _email = input,
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4.0),
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 20),
+                        height: 60,
+                        child: TextFormField(
+                          validator: validateEmail,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(15.0),
+                            prefixIcon: Icon(
+                              Icons.mail,
+                              color: Colors.teal,
+                              size: 30,
+                            ),
+                            hintText: 'Enter your Email',
+                            hintStyle: kHintTextStyle,
+                          ),
+                          onSaved: (input) => _email = input,
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4.0),
-                    child: Container(
-                      decoration: kBoxDecorationStyle,
-                      height: 60,
-                      child: TextFormField(
-                        validator: validatePassword,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.all(18.0),
-                          prefixIcon: Icon(
-                            Icons.lock,
-                            color: Colors.teal,
-                            size: 30,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4.0),
+                      child: Container(
+                        decoration: kBoxDecorationStyle,
+                        height: 60,
+                        child: TextFormField(
+                          validator: validatePassword,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(18.0),
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: Colors.teal,
+                              size: 30,
+                            ),
+                            hintText: 'Enter your Password',
+                            hintStyle: kHintTextStyle,
                           ),
-                          hintText: 'Enter your Password',
-                          hintStyle: kHintTextStyle,
+                          onSaved: (input) => _password = input,
+                          obscureText: true,
                         ),
-                        onSaved: (input) => _password = input,
-                        obscureText: true,
                       ),
                     ),
-                  ),
 
-                  SizedBox(height: 30,),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: RaisedButton(
-                      padding: const EdgeInsets.fromLTRB(40.0, 16.0, 30.0, 16.0),
-                      color: Colors.yellow,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30.0),
-                              bottomLeft: Radius.circular(30.0))),
-                      onPressed: signUp,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Text(
-                            "Sign Up".toUpperCase(),
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16.0),
-                          ),
-                          const SizedBox(width: 40.0),
-                          Icon(
-                            Icons.arrow_forward,
-                            size: 18.0,
-                          )
-                        ],
+                    SizedBox(height: 30,),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: RaisedButton(
+                        padding: const EdgeInsets.fromLTRB(40.0, 16.0, 30.0, 16.0),
+                        color: Colors.yellow,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(30.0),
+                                bottomLeft: Radius.circular(30.0))),
+                        onPressed: signUp,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(
+                              "Sign Up".toUpperCase(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16.0),
+                            ),
+                            const SizedBox(width: 40.0),
+                            Icon(
+                              Icons.arrow_forward,
+                              size: 18.0,
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 20,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("Already Registered?",style: TextStyle(fontSize: 20),),
-                      FlatButton( child: Text("Sign in!",style: TextStyle(fontSize: 20,color: Colors.blue),),
-                        onPressed: (){
-                          Navigator.pop(context);
-                        },)
-                    ],
-                  )
-                ],
-              )
+                    SizedBox(height: 20,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Already Registered?",style: TextStyle(fontSize: 20),),
+                        FlatButton( child: Text("Sign in!",style: TextStyle(fontSize: 20,color: Colors.blue),),
+                          onPressed: (){
+                            Navigator.pop(context);
+                          },)
+                      ],
+                    )
+                  ],
+                )
+            ),
           ),
         ),
         ],),

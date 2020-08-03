@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 import 'package:sih2020/sign_up.dart';
+import 'getgstverified.dart';
 import 'sign_in.dart';
 import 'constants.dart';
 
@@ -927,6 +928,15 @@ class _BuyerPageState extends State<BuyerPage> {
                 onPressed: () {
                   Navigator.of(context).pop();
 
+                },
+              ),
+              FlatButton(
+                child: Text('Steps to get GST'),
+                textColor: Colors.blue,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GetGSTVerified()));
                 },
               ),
             ],
