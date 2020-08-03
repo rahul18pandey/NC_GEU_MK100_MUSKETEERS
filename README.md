@@ -1,4 +1,4 @@
-<h1>NC_GEU_MK100_MUSKETEERS</h1>
+# NC_GEU_MK100_MUSKETEERS
 # Website
 ## User Stories
 - install `python3`
@@ -16,5 +16,7 @@ A weather application to get the temperature, weather condition and whether it i
 - `cd <root directory>`
 - `cd weather_app`
 - `source myvenv/bin/activate`
-- `python3 app.py`
+- `cd geo`
+- `pip3 install -r requirements.txt`
+- `python3 manage.py runserver`
 - visit `localhost:8000`
