@@ -2,7 +2,14 @@ import 'dart:io';
 //import 'dart:js';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:kisan_app/screens/BuyerScreen/LcoalBuyerHome.dart';
+import 'package:kisan_app/screens/BuyerScreen/bigbuyerhome.dart';
+import 'package:kisan_app/screens/BuyerScreen/mandibuyerhome.dart';
+import 'package:kisan_app/screens/FarmerScreens/HomePage.dart';
+import 'package:kisan_app/screens/ServiceScreen/ServiceHome.dart';
 import 'usertype.dart';
+import 'app_localizations.dart';
+import 'package:kisan_app/Components/dialog_helper.dart';
 
 import 'Constants/loading.dart';
 import 'crud.dart';
@@ -37,28 +44,28 @@ class _LoginPageState extends State<LoginPage> {
   QuerySnapshot servicedata;
   String a;
 
-@override
+  @override
   void initState() {
-  _checkInternetConnectivity();
-  Future.delayed(Duration(seconds: 5),()
-  {
-    crudObj.getData().then((results) {
-      setState(() {
-        buyersdata = results;
+    _checkInternetConnectivity();
+    Future.delayed(Duration(seconds: 5),()
+    {
+      crudObj.getData().then((results) {
+        setState(() {
+          buyersdata = results;
+        });
       });
-    });
-    crudObj.getFarmerData().then((results) {
-      setState(() {
-        farmersdata = results;
+      crudObj.getFarmerData().then((results) {
+        setState(() {
+          farmersdata = results;
+        });
       });
-    });
-    crudObj.getServiceData().then((results) {
-      setState(() {
-        servicedata = results;
+      crudObj.getServiceData().then((results) {
+        setState(() {
+          servicedata = results;
+        });
       });
+      super.initState();
     });
-    super.initState();
-  });
   }
 
 
@@ -67,205 +74,205 @@ class _LoginPageState extends State<LoginPage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     Size size = MediaQuery.of(context).size;
-  if(farmersdata!=null && servicedata!=null && buyersdata!=null) {
+    if(farmersdata!=null && servicedata!=null && buyersdata!=null) {
 
-    return  WillPopScope(
-     // onWillPop: () async {
-       // return await DialogHelper.exit(context);
-      //},
-      child: Scaffold(
-        body: Stack(
-          children: <Widget>[
-            Positioned(
-              top: 0,
-              left: 0,
-              child: Image.asset(
-                'assets/images/main_top.png',
-                width: size.width * 0.4,
+      return  WillPopScope(
+        onWillPop: () async {
+          return await DialogHelper.exit(context);
+        },
+        child: Scaffold(
+          body: Stack(
+            children: <Widget>[
+              Positioned(
+                top: 0,
+                left: 0,
+                child: Image.asset(
+                  'assets/images/main_top.png',
+                  width: size.width * 0.4,
+                ),
               ),
-            ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: Image.asset(
-                'assets/images/login_bottom.png',
-                width: size.width * 0.45,
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Image.asset(
+                  'assets/images/login_bottom.png',
+                  width: size.width * 0.45,
+                ),
               ),
-            ),
-           SingleChildScrollView(
-             child: Container(
-               width: MediaQuery.of(context).size.width,
-               height: MediaQuery.of(context).size.height,
-               child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-
-                      SizedBox(height: 50,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Image.asset(
-                            'assets/images/icon.png',
-                            width: 200,
-                            height: 200,
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20,),
-                      Stack(
+              SingleChildScrollView(
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
 
-                          Padding(
-                            padding: const EdgeInsets.only(left: 32.0),
-                            child: Text(
-                              "Log In",
-                              style:
-                              TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4.0),
-                        child: Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          height: 60,
-                          child: TextFormField(
-                            validator: validateEmail,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.all(15.0),
-                              prefixIcon: Icon(
-                                Icons.mail,
-                                color: Colors.teal,
-                                size: 30,
-                              ),
-                              hintText: 'Enter your Email',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onSaved: (input) => _email = input,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4.0),
-                        child: Container(
-
-                          decoration: kBoxDecorationStyle,
-                          height: 60,
-                          child: TextFormField(
-                            validator: validatePassword,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.all(20.0),
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                color: Colors.teal,
-                                size: 30,
-                              ),
-                              hintText: 'Enter your Password',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onSaved: (input) => _password = input,
-                            obscureText: true,
-                          ),
-                        ),
-                      ),
-
-                      SizedBox(height: 30,),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: RaisedButton(
-                          padding: const EdgeInsets.fromLTRB(40.0, 16.0, 30.0, 16.0),
-                          color: Colors.yellow,
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(30.0),
-                                  bottomLeft: Radius.circular(30.0))),
-                          onPressed: () {
-                            _handleSubmit(context);
-                          },
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
+                          SizedBox(height: 50,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
-                              Text(
-                                "Sign In".toUpperCase(),
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16.0),
+                              Image.asset(
+                                'assets/images/icon.png',
+                                width: 200,
+                                height: 200,
                               ),
-                              const SizedBox(width: 40.0),
-                              Icon(
-                                Icons.arrow_forward,
-                                size: 18.0,
-                              )
                             ],
                           ),
-                        ),
-                      ),
-                      SizedBox(height: 10,),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text("New User here?",style: TextStyle(fontSize: 20),),
-                            FlatButton( child: Text("Sign Up!",style: TextStyle(fontSize: 20,color: Colors.blue),),
-                              onPressed: (){
-                                _checkInternetConnectivity();
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
-                              },)
-                          ],
-                        ),
+                          SizedBox(height: 20,),
+                          Stack(
+                            children: <Widget>[
+
+                              Padding(
+                                padding: const EdgeInsets.only(left: 32.0),
+                                child: Text(
+                                  (AppLocalizations.of(context).translate('75')),
+                                  style:
+                                  TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4.0),
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              decoration: kBoxDecorationStyle,
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              height: 60,
+                              child: TextFormField(
+                                validator: validateEmail,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.all(15.0),
+                                  prefixIcon: Icon(
+                                    Icons.mail,
+                                    color: Colors.teal,
+                                    size: 30,
+                                  ),
+                                  hintText: (AppLocalizations.of(context).translate('76')),
+                                  hintStyle: kHintTextStyle,
+                                ),
+                                onSaved: (input) => _email = input,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4.0),
+                            child: Container(
+
+                              decoration: kBoxDecorationStyle,
+                              height: 60,
+                              child: TextFormField(
+                                validator: validatePassword,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.all(20.0),
+                                  prefixIcon: Icon(
+                                    Icons.lock,
+                                    color: Colors.teal,
+                                    size: 30,
+                                  ),
+                                  hintText: (AppLocalizations.of(context).translate('77')),
+                                  hintStyle: kHintTextStyle,
+                                ),
+                                onSaved: (input) => _password = input,
+                                obscureText: true,
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(height: 30,),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: RaisedButton(
+                              padding: const EdgeInsets.fromLTRB(40.0, 16.0, 30.0, 16.0),
+                              color: Colors.yellow,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(30.0),
+                                      bottomLeft: Radius.circular(30.0))),
+                              onPressed: () {
+                                _handleSubmit(context);
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Text(
+                                    (AppLocalizations.of(context).translate('75')).toUpperCase(),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold, fontSize: 16.0),
+                                  ),
+                                  const SizedBox(width: 40.0),
+                                  Icon(
+                                    Icons.arrow_forward,
+                                    size: 18.0,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text((AppLocalizations.of(context).translate('78')),style: TextStyle(fontSize: 20),),
+                                FlatButton( child: Text((AppLocalizations.of(context).translate('79'))+"!",style: TextStyle(fontSize: 20,color: Colors.blue),),
+                                  onPressed: (){
+                                    _checkInternetConnectivity();
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
+                                  },)
+                              ],
+                            ),
+                          )
+                        ],
                       )
-                    ],
-                  )
-          ),
-             ),
-           ),
-          ],),
-      ),
-    );
-  }else{
-    return Scaffold(
-        body: ListView(
-          children: <Widget>[
-            Padding(padding: EdgeInsets.only(top: height/3)),
-            SpinKitWave(
-              color: Colors.blue,
-              type: SpinKitWaveType.center,
+                  ),
+                ),
+              ),
+            ],),
+        ),
+      );
+    }else{
+      return Scaffold(
+          body: ListView(
+            children: <Widget>[
+              Padding(padding: EdgeInsets.only(top: height/3)),
+              SpinKitWave(
+                color: Colors.blue,
+                type: SpinKitWaveType.center,
 
-            ),
-            ColorizeAnimatedTextKit(
-              text: ['Saksham Kisan'],
+              ),
+              ColorizeAnimatedTextKit(
+                text: ['Saksham Kisan'],
 
-              colors: [
-                Colors.purple,
-                Colors.blue,
-                Colors.yellow,
-                Colors.red,
-              ],
+                colors: [
+                  Colors.purple,
+                  Colors.blue,
+                  Colors.yellow,
+                  Colors.red,
+                ],
 
-              textAlign: TextAlign.center,
-              //alignment: AlignmentDirectional.topStart,
-              textStyle: TextStyle(
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.bold,
-                  fontFamily:'Rowdies'
+                textAlign: TextAlign.center,
+                //alignment: AlignmentDirectional.topStart,
+                textStyle: TextStyle(
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily:'Rowdies'
+                ),
+
               ),
 
-            ),
+            ],
 
-          ],
-
-        )
-    );
-  }
+          )
+      );
+    }
   }
   String validateEmail(String value) {
     Pattern pattern =
@@ -273,7 +280,7 @@ class _LoginPageState extends State<LoginPage> {
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value)) {
 
-      return 'Enter Valid Email';
+      return (AppLocalizations.of(context).translate('82'));
     }
     else {
 
@@ -284,7 +291,7 @@ class _LoginPageState extends State<LoginPage> {
 // Indian Mobile number are of 10 digit only
     if (value.length < 6) {
 
-      return 'Password must be of atleast 6 digit';
+      return (AppLocalizations.of(context).translate('81'));
     }
     else {
 
@@ -364,7 +371,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(children: [
                         CircularProgressIndicator(),
                         SizedBox(height: 10,),
-                        Text("Please Wait....",style: TextStyle(color: Colors.blueAccent),)
+                        Text((AppLocalizations.of(context).translate('128')),style: TextStyle(color: Colors.blueAccent),)
                       ]),
                     )
                   ]));
@@ -373,83 +380,83 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _handleSubmit(BuildContext context) async {
     try {
 
-     //invoking login
-       if(_formKey.currentState.validate()){
-         _formKey.currentState.save();
-         showLoadingDialog(context, _keyLoader);
-         try{
-           AuthResult result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
-           _saveDeviceToken(_email);
-           user = result.user;
-           a=user.email;
-           print(a);
+      //invoking login
+      if(_formKey.currentState.validate()){
+        _formKey.currentState.save();
+        showLoadingDialog(context, _keyLoader);
+        try{
+          AuthResult result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+          _saveDeviceToken(_email);
+          user = result.user;
+          a=user.email;
+          print(a);
 
-           for(int i=0;i<buyersdata.documents.length;i++)
-           {
+          for(int i=0;i<buyersdata.documents.length;i++)
+          {
 
-             if(a==buyersdata.documents[i].documentID)
-             {
+            if(a==buyersdata.documents[i].documentID)
+            {
 
-               if("local"==buyersdata.documents[i].data['Type'])
-               {
+              if("local"==buyersdata.documents[i].data['Type'])
+              {
                 Navigator.of(_keyLoader.currentContext,rootNavigator: true).pop();
-                 //Navigator.push(context, MaterialPageRoute(builder: (context) => BuyerHomeScreen()));
-                 break;
-               }
-               else if("mandi"==buyersdata.documents[i].data['Type'])
-               {
-                 Navigator.of(_keyLoader.currentContext,rootNavigator: true).pop();
-                // Navigator.push(context, MaterialPageRoute(builder: (context) => MandiBuyerHome()));
-                 break;
-               }
-               else if("big"==buyersdata.documents[i].data['Type'])
-               {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => BuyerHomeScreen()));
+                break;
+              }
+              else if("mandi"==buyersdata.documents[i].data['Type'])
+              {
                 Navigator.of(_keyLoader.currentContext,rootNavigator: true).pop();
-                // Navigator.push(context, MaterialPageRoute(builder: (context) =>BigBuyerHome()));
-                 break;
-               }
-             }
-           }
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MandiBuyerHome()));
+                break;
+              }
+              else if("big"==buyersdata.documents[i].data['Type'])
+              {
+                Navigator.of(_keyLoader.currentContext,rootNavigator: true).pop();
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>BigBuyerHome()));
+                break;
+              }
+            }
+          }
 
 
-           for(int j=0;j<farmersdata.documents.length;j++)
-           {
+          for(int j=0;j<farmersdata.documents.length;j++)
+          {
 
-             if(a==farmersdata.documents[j].documentID)
-             {
-               Navigator.of(_keyLoader.currentContext,rootNavigator: true).pop();
-               //Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-               break;
-             }
-             else
-             {
-               Loading();
-             }
-           }
+            if(a==farmersdata.documents[j].documentID)
+            {
+              Navigator.of(_keyLoader.currentContext,rootNavigator: true).pop();
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+              break;
+            }
+            else
+            {
+              Loading();
+            }
+          }
 
-           for(int j=0;j<servicedata.documents.length;j++)
-           {
+          for(int j=0;j<servicedata.documents.length;j++)
+          {
 
-             if(a==servicedata.documents[j].documentID)
-             {
-             Navigator.of(_keyLoader.currentContext,rootNavigator: true).pop();
+            if(a==servicedata.documents[j].documentID)
+            {
+              Navigator.of(_keyLoader.currentContext,rootNavigator: true).pop();
 
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceHomeScreen()));
-               break;
-             }
-             else
-             {
-               Loading();
-             }
-           }
-         } catch(e){
-           _addDialog(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceHomeScreen()));
+              break;
+            }
+            else
+            {
+              Loading();
+            }
+          }
+        } catch(e){
+          _addDialog(context);
 
-           return (e.message);
-         }
+          return (e.message);
+        }
 
-       }
-     //close the dialoge
+      }
+      //close the dialoge
 
     } catch (error) {
       Navigator.of(_keyLoader.currentContext,rootNavigator: true).pop();

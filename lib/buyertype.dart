@@ -2,8 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
-import 'package:sih2020/sign_up.dart';
-import 'getgstverified.dart';
+import 'package:kisan_app/getgstverified.dart';
+import 'package:kisan_app/sign_up.dart';
+import 'app_localizations.dart';
 import 'sign_in.dart';
 import 'constants.dart';
 
@@ -80,7 +81,7 @@ class _BuyerPageState extends State<BuyerPage> {
         fobj.addData1({
           'GST': this.GST,
           'Phone': this.phone,
-          'Pin': this.pin,
+          'Pin_code': this.pin,
           'Address': this.address,
           'Type':"big",
           'Email':this.email,
@@ -114,7 +115,7 @@ class _BuyerPageState extends State<BuyerPage> {
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/Background-image.jpg"),
+              image: AssetImage("images/Background-image.jpeg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -123,7 +124,7 @@ class _BuyerPageState extends State<BuyerPage> {
               SizedBox(height: MediaQuery.of(context).size.height*.15,),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 50),
-                child: Text("Sign Up as ", style: TextStyle(fontSize: 30,fontFamily: 'Montserrat', fontWeight: FontWeight.w600,color: Colors.white),),
+                child: Text((AppLocalizations.of(context).translate('108')), style: TextStyle(fontSize: 30,fontFamily: 'Montserrat', fontWeight: FontWeight.w600,color: Colors.white),),
               ),
 
 
@@ -132,7 +133,7 @@ class _BuyerPageState extends State<BuyerPage> {
                   margin: EdgeInsets.symmetric(vertical: 25),
                   child: ListTile(
                     title: Text(
-                      "Local Buyer",
+                      (AppLocalizations.of(context).translate('132')),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20.0,
@@ -151,7 +152,7 @@ class _BuyerPageState extends State<BuyerPage> {
                   margin: EdgeInsets.symmetric(vertical: 25),
                   child: ListTile(
                     title: Text(
-                      "Mandi Buyer",
+                      (AppLocalizations.of(context).translate('133')),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20.0,
@@ -169,7 +170,7 @@ class _BuyerPageState extends State<BuyerPage> {
                   margin: EdgeInsets.symmetric(vertical: 25),
                   child: ListTile(
                     title: Text(
-                      "Big Organization",
+                      (AppLocalizations.of(context).translate('134')),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20.0,
@@ -199,208 +200,206 @@ class _BuyerPageState extends State<BuyerPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             contentPadding: EdgeInsets.only(left: 15, right: 15),
-            title: Center(child: Text("Information")),
+            title: Center(child: Text((AppLocalizations.of(context).translate('112')))),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20.0))),
 
-            content: SingleChildScrollView(
-              child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  child:SingleChildScrollView(
-                    child:Column(
+            content: Container(
+                width: MediaQuery.of(context).size.width,
+                child:SingleChildScrollView(
+                  child:Column(
 
-                      children: <Widget>[
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Name';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Name',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.email= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Name';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('113')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.name= input,
                         ),
+                      ),
 
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Email';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Email',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.email= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Email';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('114')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.email= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
+                        child: TextFormField(
 
-                            keyboardType: TextInputType.number,
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Phone number';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Phone Number',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.phone = input,
+                          keyboardType: TextInputType.number,
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Phone number';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('116')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.phone = input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Aadhar';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Aadhar Number',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.aadhar= input,
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Aadhar';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('115')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.aadhar= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Address';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Address',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.address= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Address';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('129')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.address= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide City';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your City',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.city= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide City';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('120')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.city= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide State';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your State',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.state = input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide State';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('122')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.state = input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide District';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your District',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.district= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide District';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('121')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.district= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Pin Code';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Pin Code',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.pin= input,
-
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Pin Code';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('124')),
+                            hintStyle: kHintTextStyle,
                           ),
-                        ),
-                      ],
-                    ),
-                  )
+                          onChanged: (input) => this.pin= input,
 
-              ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+
             ),
             actions: <Widget>[
               FlatButton(
@@ -417,13 +416,13 @@ class _BuyerPageState extends State<BuyerPage> {
                 onPressed: () {
                   Navigator.of(context).pop();
                   Fluttertoast.showToast(
-                    msg: "Sign up successful",
+                    msg: (AppLocalizations.of(context).translate('125')),
                     toastLength: Toast.LENGTH_LONG,
                   );
                   fobj.addData1({
 
                     'Phone': this.phone,
-                    'Pin': this.pin,
+                    'Pin_code': this.pin,
                     'Address': this.address,
                     'State':this.state,
                     'City': this.city,
@@ -435,7 +434,7 @@ class _BuyerPageState extends State<BuyerPage> {
 
                   }).then((result) {
                     Fluttertoast.showToast(
-                      msg: "Sign up successful",
+                      msg: (AppLocalizations.of(context).translate('125')),
                       toastLength: Toast.LENGTH_LONG,
                     );
                     Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
@@ -461,229 +460,227 @@ class _BuyerPageState extends State<BuyerPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             contentPadding: EdgeInsets.only(left: 25, right: 25),
-            title: Center(child: Text("Information")),
+            title: Center(child: Text((AppLocalizations.of(context).translate('112')))),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20.0))),
 
-            content: SingleChildScrollView(
-              child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  child:SingleChildScrollView(
-                    child:Column(
+            content: Container(
+                width: MediaQuery.of(context).size.width,
+                child:SingleChildScrollView(
+                  child:Column(
 
-                      children: <Widget>[
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide name';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Name',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.name= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide name';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('113')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.name= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Email';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Email',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.email= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Email';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('114')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.email= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Phone number';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Phone Number',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.phone = input,
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Phone number';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('116')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.phone = input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide GST';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your GST Number',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.GST= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide GST';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('126')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.GST= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide License';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your License Number',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.license= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide License';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('127')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.license= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Address';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Address',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.address= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Address';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('129')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.address= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide City';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your City',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.city= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide City';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('120')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.city= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide State';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your State',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.state = input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide State';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('122')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.state = input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide District';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your District',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.district= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide District';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('121')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.district= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Pin Code';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Pin Code',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.pin= input,
-
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Pin Code';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('124')),
+                            hintStyle: kHintTextStyle,
                           ),
-                        ),
-                      ],
-                    ),
-                  )
+                          onChanged: (input) => this.pin= input,
 
-              ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+
             ),
             actions: <Widget>[
               FlatButton(
-                child: Text('Back'),
+                child: Text((AppLocalizations.of(context).translate('130'))),
                 textColor: Colors.blue,
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -691,7 +688,7 @@ class _BuyerPageState extends State<BuyerPage> {
                 },
               ),
               FlatButton(
-                child: Text('Add'),
+                child: Text((AppLocalizations.of(context).translate('131'))),
                 textColor: Colors.blue,
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -715,170 +712,168 @@ class _BuyerPageState extends State<BuyerPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             contentPadding: EdgeInsets.only(left: 25, right: 25),
-            title: Center(child: Text("Information")),
+            title: Center(child: Text((AppLocalizations.of(context).translate('112')))),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20.0))),
 
-            content: SingleChildScrollView(
-              child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  child:SingleChildScrollView(
-                    child:Column(
+            content: Container(
+                width: MediaQuery.of(context).size.width,
+                child:SingleChildScrollView(
+                  child:Column(
 
-                      children: <Widget>[
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Name';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Name',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.name= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Name';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('113')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.name= input,
                         ),
+                      ),
 
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Email';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Email',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.email= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Email';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('114')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.email= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Phone number';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Phone Number',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.phone = input,
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Phone number';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('116')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.phone = input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide GST';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your GST Number',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.GST= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide GST';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('126')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.GST= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide License';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your License Number',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.license= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide License';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('127')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.license= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 5),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 5),
 
-                          child: TextFormField(
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Address';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Address',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.address= input,
+                        child: TextFormField(
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Address';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('129')),
+                            hintStyle: kHintTextStyle,
                           ),
+                          onChanged: (input) => this.address= input,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          decoration: kBoxDecorationStyle,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        margin: EdgeInsets.symmetric(vertical: 8),
 
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            validator: (input) {
-                              if(input.isEmpty){
-                                return 'Provide Pin Code';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(5.0),
-                              border: InputBorder.none,
-                              hintText: 'Enter your Pin Code',
-                              hintStyle: kHintTextStyle,
-                            ),
-                            onChanged: (input) => this.pin= input,
-
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          validator: (input) {
+                            if(input.isEmpty){
+                              return 'Provide Pin Code';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(5.0),
+                            border: InputBorder.none,
+                            hintText: (AppLocalizations.of(context).translate('124')),
+                            hintStyle: kHintTextStyle,
                           ),
-                        ),
-                      ],
-                    ),
-                  )
+                          onChanged: (input) => this.pin= input,
 
-              ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+
             ),
             actions: <Widget>[
               FlatButton(
-                child: Text('Back'),
+                child: Text((AppLocalizations.of(context).translate('130'))),
                 textColor: Colors.blue,
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -886,7 +881,7 @@ class _BuyerPageState extends State<BuyerPage> {
                 },
               ),
               FlatButton(
-                  child: Text('Add'),
+                  child: Text((AppLocalizations.of(context).translate('131'))),
                   textColor: Colors.blue,
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -908,22 +903,20 @@ class _BuyerPageState extends State<BuyerPage> {
         builder: (BuildContext context){
           return AlertDialog(
             contentPadding: EdgeInsets.only(left: 25, right: 25,top: 10),
-            content: SingleChildScrollView(
-              child: Container(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        child: new Text("unable to register "+message),
-                      ),
-                    ],
-                  ),
+            content: Container(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      child: new Text("unable to register "+message),
+                    ),
+                  ],
                 ),
               ),
             ),
             actions: <Widget>[
               FlatButton(
-                child: Text('Back'),
+                child: Text((AppLocalizations.of(context).translate('130'))),
                 textColor: Colors.blue,
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -931,7 +924,7 @@ class _BuyerPageState extends State<BuyerPage> {
                 },
               ),
               FlatButton(
-                child: Text('Steps to get GST'),
+                child: Text((AppLocalizations.of(context).translate('135'))),
                 textColor: Colors.blue,
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -960,7 +953,7 @@ class _BuyerPageState extends State<BuyerPage> {
                       child: Column(children: [
                         CircularProgressIndicator(),
                         SizedBox(height: 10,),
-                        Text("Please Wait....",style: TextStyle(color: Colors.blueAccent),)
+                        Text((AppLocalizations.of(context).translate('128')),style: TextStyle(color: Colors.blueAccent),)
                       ]),
                     )
                   ]));

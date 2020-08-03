@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
+import 'app_localizations.dart';
 
-import 'package:sih2020/sign_up.dart';
+import 'package:kisan_app/sign_up.dart';
 import 'sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'constants.dart';
@@ -69,7 +70,7 @@ class _UserPageState extends State<UserPage> {
         }).then((result) {
           Navigator.of(_keyLoader.currentContext,rootNavigator: true).pop();
           Fluttertoast.showToast(
-            msg: "Sign up successful",
+            msg: (AppLocalizations.of(context).translate('125')),
             toastLength: Toast.LENGTH_LONG,
           );
           Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
@@ -95,7 +96,7 @@ class _UserPageState extends State<UserPage> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      child: new Text("unable to register"+message),
+                      child: new Text("Unable to Register "+message),
                     ),
                   ],
                 ),
@@ -103,11 +104,10 @@ class _UserPageState extends State<UserPage> {
             ),
             actions: <Widget>[
               FlatButton(
-                child: Text('Back'),
+                child: Text('Back!'),
                 textColor: Colors.blue,
                 onPressed: () {
                   Navigator.of(context).pop();
-
                 },
               ),
             ],
@@ -119,16 +119,16 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("images/Background-image.jpg"),
-            fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/Background-image.jpeg"),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               SizedBox(height: MediaQuery.of(context).size.height*.15,),
@@ -136,7 +136,7 @@ class _UserPageState extends State<UserPage> {
 
               Container(
                 margin: EdgeInsets.symmetric(vertical: 20),
-                child: Text("Sign Up as ",style: TextStyle(fontSize: 30,fontFamily: 'Montserrat', fontWeight: FontWeight.w600,color: Colors.white),),
+                child: Text((AppLocalizations.of(context).translate('108')),style: TextStyle(fontSize: 30,fontFamily: 'Montserrat', fontWeight: FontWeight.w600,color: Colors.white),),
               ),
 
               FlatButton(
@@ -144,7 +144,7 @@ class _UserPageState extends State<UserPage> {
                   margin: EdgeInsets.symmetric(vertical: 20),
                   child: ListTile(
                     title: Text(
-                      "Farmer",
+                      (AppLocalizations.of(context).translate('109')),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20.0,
@@ -163,7 +163,7 @@ class _UserPageState extends State<UserPage> {
                   margin: EdgeInsets.symmetric(vertical: 20),
                   child: ListTile(
                     title: Text(
-                      "Buyer",
+                      (AppLocalizations.of(context).translate('110')),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20.0,
@@ -181,7 +181,7 @@ class _UserPageState extends State<UserPage> {
                   margin: EdgeInsets.symmetric(vertical: 20),
                   child: ListTile(
                     title: Text(
-                      "Service Provider",
+                      (AppLocalizations.of(context).translate('111')),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20.0,
@@ -210,7 +210,7 @@ class _UserPageState extends State<UserPage> {
         barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Center(child: Text("Information")),
+            title: Center(child: Text((AppLocalizations.of(context).translate('112')))),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20.0))),
 
@@ -235,7 +235,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your Name',
+                          hintText: (AppLocalizations.of(context).translate('113')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.name = input,
@@ -255,7 +255,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your Email',
+                          hintText: (AppLocalizations.of(context).translate('114')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.email = input,
@@ -276,7 +276,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your Aadhar Number',
+                          hintText: (AppLocalizations.of(context).translate('115')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.aadhar= input,
@@ -298,7 +298,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your Phone Number',
+                          hintText: (AppLocalizations.of(context).translate('116')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.phone = input,
@@ -318,7 +318,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your Farm Area',
+                          hintText: (AppLocalizations.of(context).translate('117')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.area= input,
@@ -339,7 +339,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your House Number',
+                          hintText: (AppLocalizations.of(context).translate('118')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.house= input,
@@ -359,7 +359,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your Address',
+                          hintText: (AppLocalizations.of(context).translate('129')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.address = input,
@@ -379,7 +379,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your Police station',
+                          hintText: (AppLocalizations.of(context).translate('119')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.police = input,
@@ -399,7 +399,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your City',
+                          hintText: (AppLocalizations.of(context).translate('120')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.city= input,
@@ -420,7 +420,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your District',
+                          hintText: (AppLocalizations.of(context).translate('121')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.district = input,
@@ -440,7 +440,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your state',
+                          hintText: (AppLocalizations.of(context).translate('122')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.state = input,
@@ -460,7 +460,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your Post Office',
+                          hintText: (AppLocalizations.of(context).translate('123')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.post = input,
@@ -481,7 +481,7 @@ class _UserPageState extends State<UserPage> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5.0),
                           border: InputBorder.none,
-                          hintText: 'Enter your Pin Code',
+                          hintText: (AppLocalizations.of(context).translate('124')),
                           hintStyle: kHintTextStyle,
                         ),
                         onChanged: (input) => this.pin= input,
@@ -493,7 +493,7 @@ class _UserPageState extends State<UserPage> {
             ),
             actions: <Widget>[
               FlatButton(
-                child: Text('Back'),
+                child: Text((AppLocalizations.of(context).translate('130'))),
                 textColor: Colors.blue,
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -501,7 +501,7 @@ class _UserPageState extends State<UserPage> {
                 },
               ),
               FlatButton(
-                child: Text('Add'),
+                child: Text((AppLocalizations.of(context).translate('131'))),
                 textColor: Colors.blue,
                 onPressed: () {
 
@@ -523,7 +523,7 @@ class _UserPageState extends State<UserPage> {
 
                   }).then((result) {
                     Fluttertoast.showToast(
-                      msg: "Sign up successful",
+                      msg: (AppLocalizations.of(context).translate('125')),
                       toastLength: Toast.LENGTH_LONG,
                     );
                     Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
@@ -548,7 +548,7 @@ class _UserPageState extends State<UserPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             contentPadding: EdgeInsets.only(left: 25, right: 25),
-            title: Center(child: Text("Information")),
+            title: Center(child: Text((AppLocalizations.of(context).translate('112')))),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20.0))),
 
@@ -572,7 +572,7 @@ class _UserPageState extends State<UserPage> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5.0),
                             border: InputBorder.none,
-                            hintText: 'Enter your Name',
+                            hintText: (AppLocalizations.of(context).translate('113')),
                             hintStyle: kHintTextStyle,
                           ),
                           onChanged: (input) => this.name = input,
@@ -592,7 +592,7 @@ class _UserPageState extends State<UserPage> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5.0),
                             border: InputBorder.none,
-                            hintText: 'Enter your Email',
+                            hintText: (AppLocalizations.of(context).translate('114')),
                             hintStyle: kHintTextStyle,
                           ),
                           onChanged: (input) => this.email = input,
@@ -613,7 +613,7 @@ class _UserPageState extends State<UserPage> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5.0),
                             border: InputBorder.none,
-                            hintText: 'Enter your Phone Number',
+                            hintText: (AppLocalizations.of(context).translate('116')),
                             hintStyle: kHintTextStyle,
                           ),
                           onChanged: (input) => this.phone = input,
@@ -633,7 +633,7 @@ class _UserPageState extends State<UserPage> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5.0),
                             border: InputBorder.none,
-                            hintText: 'Enter your GST number',
+                            hintText: (AppLocalizations.of(context).translate('126')),
                             hintStyle: kHintTextStyle,
                           ),
                           onChanged: (input) => this.GST= input,
@@ -653,7 +653,7 @@ class _UserPageState extends State<UserPage> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5.0),
                             border: InputBorder.none,
-                            hintText: 'Enter your License Number',
+                            hintText: (AppLocalizations.of(context).translate('127')),
                             hintStyle: kHintTextStyle,
                           ),
                           onChanged: (input) => this.license = input,
@@ -674,7 +674,7 @@ class _UserPageState extends State<UserPage> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5.0),
                             border: InputBorder.none,
-                            hintText: 'Enter your Address',
+                            hintText: (AppLocalizations.of(context).translate('129')),
                             hintStyle: kHintTextStyle,
                           ),
                           onChanged: (input) => this.address = input,
@@ -694,7 +694,7 @@ class _UserPageState extends State<UserPage> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5.0),
                             border: InputBorder.none,
-                            hintText: 'Enter your City',
+                            hintText: (AppLocalizations.of(context).translate('120')),
                             hintStyle: kHintTextStyle,
                           ),
                           onChanged: (input) => this.city= input,
@@ -715,7 +715,7 @@ class _UserPageState extends State<UserPage> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5.0),
                             border: InputBorder.none,
-                            hintText: 'Enter your District',
+                            hintText: (AppLocalizations.of(context).translate('121')),
                             hintStyle: kHintTextStyle,
                           ),
                           onChanged: (input) => this.district = input,
@@ -735,7 +735,7 @@ class _UserPageState extends State<UserPage> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5.0),
                             border: InputBorder.none,
-                            hintText: 'Enter your state',
+                            hintText: (AppLocalizations.of(context).translate('122')),
                             hintStyle: kHintTextStyle,
                           ),
                           onChanged: (input) => this.state = input,
@@ -756,7 +756,7 @@ class _UserPageState extends State<UserPage> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5.0),
                             border: InputBorder.none,
-                            hintText: 'Enter your Pin Code',
+                            hintText: (AppLocalizations.of(context).translate('124')),
                             hintStyle: kHintTextStyle,
                           ),
                           onChanged: (input) => this.pin= input,
@@ -767,7 +767,7 @@ class _UserPageState extends State<UserPage> {
                         child: new Column(
                           children: [
                             new Padding(
-                              padding: const EdgeInsets.all(24.0),
+                              padding: const EdgeInsets.all(12.0),
                               child: new Row(
                                 children: <Widget>[
                                   new Expanded(
@@ -805,7 +805,7 @@ class _UserPageState extends State<UserPage> {
             ),
             actions: <Widget>[
               FlatButton(
-                child: Text('Back'),
+                child: Text((AppLocalizations.of(context).translate('130'))),
                 textColor: Colors.blue,
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -813,7 +813,7 @@ class _UserPageState extends State<UserPage> {
                 },
               ),
               FlatButton(
-                child: Text('Add'),
+                child: Text((AppLocalizations.of(context).translate('131'))),
                 textColor: Colors.blue,
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -845,7 +845,7 @@ class _UserPageState extends State<UserPage> {
                       child: Column(children: [
                         CircularProgressIndicator(),
                         SizedBox(height: 10,),
-                        Text("Please Wait....",style: TextStyle(color: Colors.blueAccent),)
+                        Text((AppLocalizations.of(context).translate('128')),style: TextStyle(color: Colors.blueAccent),)
                       ]),
                     )
                   ]));
