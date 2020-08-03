@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 final kHintTextStyle = TextStyle(
   color: Colors.black,
   fontFamily: 'OpenSans',
-  fontWeight: FontWeight.w200,
+  fontWeight: FontWeight.w400,
 );
 
 final kLabelStyle = TextStyle(
   color: Colors.black,
-  fontWeight: FontWeight.w200,
+  fontWeight: FontWeight.w400,
   fontFamily: 'OpenSans',
 );
 final kdraw = TextStyle(

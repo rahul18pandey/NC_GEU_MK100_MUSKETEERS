@@ -77,8 +77,8 @@ class _LoginPageState extends State<LoginPage> {
     if(farmersdata!=null && servicedata!=null && buyersdata!=null) {
 
       return  WillPopScope(
-        onWillPop: () async {
-          return await DialogHelper.exit(context);
+         onWillPop: () async {
+         return await DialogHelper.exit(context);
         },
         child: Scaffold(
           body: Stack(
