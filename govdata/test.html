@@ -1,0 +1,59 @@
+<html>
+
+<head>
+  <title>data page</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.modal').modal();
+    });
+  </script>
+  <script src="data.js"></script>
+</head>
+
+<body>
+
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1"
+    style="float:right; position:fixed; margin-left: 90%; margin-top:100px;" onclick="getData()">Modal</a>
+
+
+  <div style="height:1800px;"></div>
+
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 style="text-align: center;">Current Daily Price of Various Commodities from Various Markets (Mandi)</h4>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for District.." title="Type in a name">
+      <table id="my-table">
+        <thead>
+          <tr>
+            <td>State</td>
+            <td>District</td>
+            <td>Commodity</td>
+            <td>Variety</td>
+            <td>Min Price(in Rs)</td>
+            <td>Max Price(in Rs)</td>
+
+          </tr>
+        </thead>
+        <tbody id="tablebody">
+
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+</body>
+
+</html>
