@@ -1,22 +1,15 @@
 from flask import Flask, render_template, request, jsonify, make_response, json
-# import firebase_admin
-# from firebase_admin import credentials
-# from firebase_admin import firestore
-app = Flask(__name__)
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
 # Use a service account
-# cred = credentials.Certificate('./firepy-7e705-firebase-adminsdk-iffv4-ab6fbe1767.json')
-# firebase_admin.initialize_app(cred)
+cred = credentials.Certificate('./firepy-7e705-firebase-adminsdk-iffv4-ab6fbe1767.json')
+firebase_admin.initialize_app(cred)
 
-# db = firestore.client()
+db = firestore.client()
+app = Flask(__name__)
 
-
-
-# doc_ref = db.collection(u'users').document(u'alovelace')
-# doc_ref.set({
-#     u'first': u'Ada',
-#     u'last': u'Lovelace',
-#     u'born': 1815
-# })
 
 def login_auth():
     pass
@@ -120,6 +113,12 @@ def mandibuyerprofile():
 def buyerbuy():
     return render_template('buyerbuy.html', title = 'Saksham Kisan - BUY', user="buyer") #other users could be "kisan", "sprovider", "buyer"
 
+@app.route('/upload', methods=['GET'])
+def upload():
+    id = request.args.get('id')
+    return render_template('upload.html', title = 'Saksham Kisan - UPLOAD', user="buyer", userid= id) #other users could be "kisan", "sprovider", "buyer"
+
+
 
 ########  buyer auction ##########
 
@@ -139,11 +138,54 @@ def buyerbidding():
 
 
 
+######################################################
+##################  service provider  ################
+######################################################
+
+@app.route('/servicehome', methods=['GET'])
+def servicehome():
+    return render_template('servicehome.html', title = 'Saksham Kisan - HOME', user="SERVICE") #other users could be "kisan", "sprovider", "buyer"
+
+@app.route('/serviceprofile', methods=['GET'])
+def serviceprofile():
+    return render_template('serviceprofile.html', title = 'Saksham Kisan - PROFILE', user="SERVICE") #other users could be "kisan", "sprovider", "buyer"
+
+@app.route('/serviceaddservices', methods=['GET'])
+def serviceaddservices():
+    return render_template('serviceaddservices.html', title = 'Saksham Kisan - ADD', user="SERVICE") #other users could be "kisan", "sprovider", "buyer"
 
 
 
 
 
+
+
+
+
+
+
+
+
+# chat added
+@app.route('/chat', methods=['GET'])
+def chat():
+    user = request.args.get('user')
+    return render_template('chat.html', title = 'Saksham Kisan - ', userid = user) #other users could be "kisan", "sprovider", "buyer"
+
+
+
+
+
+
+############### api
+@app.route('/api', methods=['GET'])
+def api():
+    docs = db.collection(u'Farmer').stream()
+    data = []
+    for doc in docs:
+        print(doc.to_dict())
+        data.append("ASDF")
+    return data
 
 
 
