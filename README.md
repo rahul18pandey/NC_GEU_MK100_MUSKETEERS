@@ -21,3 +21,4 @@ A weather application to get the temperature, weather condition and whether it i
 - `python3 manage.py runserver`
 - visit `localhost:8000`
 - `localhost:8000/?location=<your location>`
+- or you can directly go on `https://weatherappopen.herokuapp.com/?location=<your location>`
