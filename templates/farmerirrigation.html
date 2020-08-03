@@ -1,0 +1,639 @@
+<html>
+	<head>
+		
+			<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!--		for delete row-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!--		for hide snippet-->
+<!--
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+-->
+		
+		
+		
+		 <script type="text/javascript" src="js/materialize.min.js"></script>
+		
+		   <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="common/k-style.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="fonts/beyond_the_mountains-webfont.css"  media="screen,projection"/>
+		<script type="text/javascript" src="saksham-kisan/js/kisan.js"></script>
+		
+		
+		<script>
+			 $(document).ready(function(){
+$(".dropdown-trigger").dropdown();
+			 $('.sidenav').sidenav();
+				  
+				 
+				  });
+			
+			 document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction: 'left'
+    });
+  });
+			
+//			for collapsible
+			$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+    
+		</script>
+		
+		<style>
+#more {display: none;}
+</style>
+
+	</head>
+	<main>
+	<body>
+	      		<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating pulse blue"><i class="material-icons">chat</i></a></li>
+    <li><a class="btn-floating yellow pulse darken-1"><i class="material-icons">notifications</i></a></li>
+    <li><a class="btn-floating pulse green"><i class="material-icons">power_settings_new</i></a></li>
+    
+  </ul>
+</div>
+
+  
+		 	          
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="farmerirrigation.html">Irrigation</a></li>
+  <li><a href="farmerfertilisers.html">Fertilisers</a></li>
+  <li><a href="farmerpackaging.html">Packaging</a></li>
+  <li><a href="farmertransport.html">Transport</a></li>
+  <li><a href="farmerwarehouse.html">Warehouse</a></li>
+</ul>
+
+		
+
+		<ul id="dropdown2" class="dropdown-content">
+   <li><a href="farmerirrigation.html">Irrigation</a></li>
+  <li><a href="farmerfertilisers.html">Fertilisers</a></li>
+  <li><a href="farmerpackaging.html">Packaging</a></li>
+  <li><a href="farmertransport.html">Transport</a></li>
+  <li><a href="farmerwarehouse.html">Warehouse</a></li>
+</ul>
+
+		
+			<nav style="background-color: limegreen;">
+    <div class="nav-wrapper">
+      <a href="farmerhome.html" class="brand-logo mastfont" style="font-size: 50px; height: auto;">Saksham kisan</a>
+      
+      <ul class="right hide-on-med-and-down">
+        <li><a href="farmersell.html">Sell</a></li>
+        <li><a href="schemes.html">Schemes</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="farmerauction.html">Auction</a></li>
+<!--		   Dropdown Trigger -->
+		<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Services<i class="material-icons right">arrow_drop_down</i></a></li>
+		  <li><a class="waves-effect waves-light btn" href="farmerprofile.html">Profile</a></li>
+       <li><a class="waves-effect waves-light btn" href="#">Language</a></li>
+      </ul>
+    </div>
+  </nav>
+		
+	<ul class="hide-on-med-and-up">	
+	<ul id="slide-out" class="sidenav ">
+  <li><a href="farmersell.html">Sell</a></li>
+        <li><a href="schemes.html">Schemes</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="farmerauction.html">Auction</a></li>
+		
+	<li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Services<i class="material-icons right">arrow_drop_down</i></a></li>  
+	  <li><a class="waves-effect waves-light btn" href="farmerprofile.html">Profile</a></li>
+       <li><a class="waves-effect waves-light btn" href="#">Language</a></li>
+  </ul>
+		
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		</ul>
+<!--		maindiv -->
+		<div class="maindiv" style="height: 100%;width: 100%;">
+
+			<div class="container mastfont"  style="height:80px;width: 100px;"></div>
+				<div class=" mastfont"  style=" background-color: transparent;height: 100px;width: 100px;font-size: 80px;margin-left: 40%">Irrigation</div>
+			<div class="row">
+			<div class="col s12" style="margin-top: 5%;" >
+				<span class="mastfont "  style=" background-color: transparent;height: 80px;width: 50%;margin-top:8%;font-size: 60px;margin-left: 40%;">Best Sellers</span></div></div>
+		
+				<div class="row" style="height: auto;width: 100%;margin-top:5%;">
+				
+				
+				<div class ="col s12 l3 m6">
+					<div id="seller1">
+						<a href="serviceprofileirrifarmer.html"><img src="images/winter-sun12-568x720.jpg" style="height: 250px;width: 250px;border-radius: 50%;margin-left: 10%;"></a></div>
+					<div id="sellername" >
+						<ul class="collapsible" style="width:80%;">
+    <li>
+      <div class="collapsible-header mastfont" id="seller1name" style="font-size: 25px;"><i class="material-icons">filter_drama</i>kanu</div>
+      <div class="collapsible-body mastfont" id="seller1phone" style="font-size: 20px;"><span>885855.</span></div>
+      <div class="collapsible-body mastfont" id="seller1city" style="font-size: 20px;"><span>saharanpur.</span></div>
+    </li>
+    
+  </ul>
+					
+						</div>
+						
+					
+					
+				</div>
+				
+					<div class ="col s12 l3 m6">
+					<div id="seller2">
+						<a href="serviceprofileirrifarmer.html"><img src="images/winter-sun12-568x720.jpg" style="height: 250px;width: 250px;border-radius: 50%;margin-left: 10%;"></a></div>
+					<div id="sellername" >
+						<ul class="collapsible" style="width:80%;">
+     <li>
+      <div class="collapsible-header mastfont" id="seller2name" style="font-size: 25px;"><i class="material-icons">filter_drama</i>kanu</div>
+      <div class="collapsible-body mastfont" id="seller2phone" style="font-size: 20px;"><span>885855.</span></div>
+      <div class="collapsible-body mastfont" id="seller2city" style="font-size: 20px;"><span>saharanpur.</span></div>
+    </li>
+    
+  </ul>
+					
+						</div>
+						
+					
+					
+				</div>
+				
+					<div class ="col s12 l3 m6">
+					<div id="seller3">
+						<a href="serviceprofileirrifarmer.html"><img src="images/winter-sun12-568x720.jpg" style="height: 250px;width: 250px;border-radius: 50%;margin-left: 10%;"></a></div>
+					<div id="sellername" >
+						<ul class="collapsible" style="width:80%;">
+    <li>
+      <div class="collapsible-header mastfont" id="seller3name" style="font-size: 25px;"><i class="material-icons">filter_drama</i>kanu</div>
+      <div class="collapsible-body mastfont" id="seller3phone" style="font-size: 20px;"><span>885855.</span></div>
+      <div class="collapsible-body mastfont" id="seller3city" style="font-size: 20px;"><span>saharanpur.</span></div>
+    </li>
+  </ul>
+					
+						</div>
+						
+					
+					
+				</div>
+				
+					<div class ="col s12 l3 m6">
+					<div id="seller4">
+						<a href="serviceprofileirrifarmer.html"><img src="images/winter-sun12-568x720.jpg" style="height: 250px;width: 250px;border-radius: 50%;margin-left: 10%;"></a></div>
+					<div id="sellername" >
+						<ul class="collapsible" style="width:80%;">
+   <li>
+      <div class="collapsible-header mastfont" id="seller4name" style="font-size: 25px;"><i class="material-icons">filter_drama</i>kanu</div>
+      <div class="collapsible-body mastfont" id="seller4phone" style="font-size: 20px;"><span>885855.</span></div>
+      <div class="collapsible-body mastfont" id="seller4city" style="font-size: 20px;"><span>saharanpur.</span></div>
+    </li>
+    
+  </ul>
+					
+						</div>
+						
+					
+					
+				</div>
+	
+			</div>
+			
+			
+			
+			
+			
+			</div>
+		
+		<div class="seconddiv" style="height:auto;width: 100%">
+		<div class="col s12">
+<!--    <h2 class="header">Horizontal Card</h2>-->
+    <div class="card horizontal" style="margin-left: 10%;margin-top: 0%; width: 70%">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content mastfont">
+        	<div class="col">
+	
+				
+				<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_crop1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> FIRM'S NAME:</b></font></div>
+				<div id="auc_crop1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+				</div>
+				
+				
+				
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_base1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black" ><b> PRODUCT NAME:</b></font></div>
+				<div id="auc_base1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirit</div>
+				
+				</div>
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_view1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> PRICE:</b></font></div>
+				<div id="auc_view1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+			
+				</div>
+				<div class="row"  style="height: 35%;background-color: transparent;">
+			<div id="auc_date1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> ADDRESS:</b></font></div>
+				<div id="auc_date1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+
+				</div>
+
+			
+			
+        </div>
+        </div>
+        <div class="card-action">
+          <a href="serviceprofileirrifarmer.html">This is a link to profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+			
+		</div>
+		
+		<div class="thirddiv" style="height: auto;width: 100%;">
+	<span id="dots">...</span>
+	<div id="more">
+		    <div class="card horizontal" style="margin-left: 10%;margin-top: 0%; width: 70%">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content mastfont">
+				<div class="col">
+	
+				
+				<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_crop1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> FIRM'S NAME:</b></font></div>
+				<div id="auc_crop1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+				</div>
+				
+				
+				
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_base1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black" ><b> PRODUCT NAME:</b></font></div>
+				<div id="auc_base1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirit</div>
+				
+				</div>
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_view1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> PRICE:</b></font></div>
+				<div id="auc_view1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+			
+				</div>
+				<div class="row"  style="height: 35%;background-color: transparent;">
+			<div id="auc_date1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> ADDRESS:</b></font></div>
+				<div id="auc_date1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+
+				</div>
+
+			
+			
+        </div>
+         
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link to profile </a>
+        </div>
+      </div>
+    </div>
+		
+		 <div class="card horizontal" style="margin-left: 10%;margin-top: 0%; width: 70%">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content mastfont">
+          	<div class="col">
+	
+				
+				<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_crop1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> FIRM'S NAME:</b></font></div>
+				<div id="auc_crop1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+				</div>
+				
+				
+				
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_base1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black" ><b> PRODUCT NAME:</b></font></div>
+				<div id="auc_base1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirit</div>
+				
+				</div>
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_view1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> PRICE:</b></font></div>
+				<div id="auc_view1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+			
+				</div>
+				<div class="row"  style="height: 35%;background-color: transparent;">
+			<div id="auc_date1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> ADDRESS:</b></font></div>
+				<div id="auc_date1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+
+				</div>
+
+			
+			
+        </div>
+        </div>
+        <div class="card-action">
+          <a href="serviceprofileirrifarmer.html">This is a link to profile</a>
+        </div>
+      </div>
+    </div>
+		
+		
+		 <div class="card horizontal" style="margin-left: 10%;margin-top: 0%; width: 70%">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content mastfont">
+         	<div class="col">
+	
+				
+				<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_crop1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> FIRM'S NAME:</b></font></div>
+				<div id="auc_crop1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+				</div>
+				
+				
+				
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_base1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black" ><b> PRODUCT NAME:</b></font></div>
+				<div id="auc_base1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirit</div>
+				
+				</div>
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_view1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> PRICE:</b></font></div>
+				<div id="auc_view1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+			
+				</div>
+				<div class="row"  style="height: 35%;background-color: transparent;">
+			<div id="auc_date1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> ADDRESS:</b></font></div>
+				<div id="auc_date1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+
+				</div>
+
+			
+			
+        </div>
+        </div>
+        <div class="card-action">
+          <a href="serviceprofileirrifarmer.html">This is a link to profile</a>
+        </div>
+      </div>
+    </div>
+		
+		
+		 <div class="card horizontal" style="margin-left: 10%;margin-top: 0%; width: 70%">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content mastfont">
+         	<div class="col">
+	
+				
+				<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_crop1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> FIRM'S NAME:</b></font></div>
+				<div id="auc_crop1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+				</div>
+				
+				
+				
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_base1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black" ><b> PRODUCT NAME:</b></font></div>
+				<div id="auc_base1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirit</div>
+				
+				</div>
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_view1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> PRICE:</b></font></div>
+				<div id="auc_view1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+			
+				</div>
+				<div class="row"  style="height: 35%;background-color: transparent;">
+			<div id="auc_date1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> ADDRESS:</b></font></div>
+				<div id="auc_date1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+
+				</div>
+
+			
+			
+        </div>
+        </div>
+        <div class="card-action">
+          <a href="serviceprofileirrifarmer.html">This is a link to profile</a>
+        </div>
+      </div>
+    </div>
+		
+		 <div class="card horizontal" style="margin-left: 10%;margin-top: 0%; width: 70%">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content mastfont">
+         	<div class="col">
+	
+				
+				<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_crop1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> FIRM'S NAME:</b></font></div>
+				<div id="auc_crop1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+				</div>
+				
+				
+				
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_base1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black" ><b> PRODUCT NAME:</b></font></div>
+				<div id="auc_base1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirit</div>
+				
+				</div>
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_view1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> PRICE:</b></font></div>
+				<div id="auc_view1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+			
+				</div>
+				<div class="row"  style="height: 35%;background-color: transparent;">
+			<div id="auc_date1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> ADDRESS:</b></font></div>
+				<div id="auc_date1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+
+				</div>
+
+			
+			
+        </div>
+        </div>
+        <div class="card-action">
+          <a href="serviceprofileirrifarmer.html">This is a link to profile</a>
+        </div>
+      </div>
+    </div>
+		
+		 <div class="card horizontal" style="margin-left: 10%;margin-top: 0%; width: 70%">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content mastfont">
+         	<div class="col">
+	
+				
+				<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_crop1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> FIRM'S NAME:</b></font></div>
+				<div id="auc_crop1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+				</div>
+				
+				
+				
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_base1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black" ><b> PRODUCT NAME:</b></font></div>
+				<div id="auc_base1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirit</div>
+				
+				</div>
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_view1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> PRICE:</b></font></div>
+				<div id="auc_view1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+			
+				</div>
+				<div class="row"  style="height: 35%;background-color: transparent;">
+			<div id="auc_date1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> ADDRESS:</b></font></div>
+				<div id="auc_date1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+
+				</div>
+
+			
+			
+        </div>
+        </div>
+        <div class="card-action">
+          <a href="serviceprofileirrifarmer.html">This is a link to profile</a>
+        </div>
+      </div>
+    </div>
+		 <div class="card horizontal" style="margin-left: 10%;margin-top: 0%; width: 70%">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content mastfont">
+         	<div class="col">
+	
+				
+				<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_crop1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> FIRM'S NAME:</b></font></div>
+				<div id="auc_crop1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+				</div>
+				
+				
+				
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_base1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black" ><b> PRODUCT NAME:</b></font></div>
+				<div id="auc_base1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirit</div>
+				
+				</div>
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_view1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> PRICE:</b></font></div>
+				<div id="auc_view1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+			
+				</div>
+				<div class="row"  style="height: 35%;background-color: transparent;">
+			<div id="auc_date1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> ADDRESS:</b></font></div>
+				<div id="auc_date1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+
+				</div>
+
+			
+			
+        </div>
+        </div>
+        <div class="card-action">
+          <a href="serviceprofileirrifarmer.html">This is a link to profile</a>
+        </div>
+      </div>
+    </div>
+		 <div class="card horizontal" style="margin-left: 10%;margin-top: 0%; width: 70%">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content mastfont">
+         	<div class="col">
+	
+				
+				<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_crop1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> FIRM'S NAME:</b></font></div>
+				<div id="auc_crop1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+				</div>
+				
+				
+				
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_base1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black" ><b> PRODUCT NAME:</b></font></div>
+				<div id="auc_base1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirit</div>
+				
+				</div>
+			<div class="row"  style="height: 35%;background-color: transparent;">
+				<div id="auc_view1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> PRICE:</b></font></div>
+				<div id="auc_view1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+			
+				</div>
+				<div class="row"  style="height: 35%;background-color: transparent;">
+			<div id="auc_date1" class="k_heading" style="height: 20px;width: 25%;background-color: transparent;"><font color="black"> <b> ADDRESS:</b></font></div>
+				<div id="auc_date1_val" style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">kirti</div>
+
+				</div>
+
+			
+			
+        </div>
+        </div>
+        <div class="card-action">
+          <a href="serviceprofileirrifarmer.html">This is a link to profile</a>
+        </div>
+      </div>
+    </div>
+		
+		
+	</div>
+		</div>
+	
+		<button onclick="myFunction()" id="myBtn" class="mastfont" style="background-color: limegreen;font-size: 25px;">Read more</button>
+
+		
+<script>
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+</script>
+		
+	</body>
+			<!--		footer-->
+		
+		<div id="footer" style="height: 400px;width: 100%;"></div>
+		
+	</main>
+</html>
