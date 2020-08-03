@@ -1,0 +1,250 @@
+{% extends "farmerlayout.html" %}
+{% block content %}
+<input type="text" id="data_field" value="{{data}}" style="display: none;">
+<script>
+	const pageName = "farmertransport";
+	const pageName_data1 = document.getElementById("data_field").value;
+	const pageName_data = pageName_data1.toLowerCase()
+	console.log(pageName_data)
+	//const pageName_data = "transport";
+</script>
+<!--		maindiv -->
+<div class="maindiv" style="height: 100%;width: 100%;">
+
+	<div class="container mastfont" style="height:80px;width: 100px;"></div>
+	<div class=" mastfont"
+		style=" background-color: transparent;height: 100px;width: 100px;font-size: 80px;margin-left: 40%">{{data}}
+	</div>
+	<!-- <div class="row">
+		<div class="col s12" style="margin-top: 5%;">
+			<span class="mastfont "
+				style=" background-color: transparent;height: 80px;width: 50%;margin-top:8%;font-size: 60px;margin-left: 40%;">Best
+				Sellers</span></div>
+	</div>
+	<div class="row" style="height: auto;width: 100%;margin-top:5%;">
+
+
+		<div class="col s12 l3 m6">
+			<div id="seller1">
+				<a href="farmertransport.html"><img src="images/winter-sun12-568x720.jpg"
+						style="height: 250px;width: 250px;border-radius: 50%;margin-left: 10%;"></a></div>
+			<div id="sellername">
+				<ul class="collapsible" style="width:80%;">
+					<li>
+						<div class="collapsible-header mastfont" id="seller1name" style="font-size: 25px;"><i
+								class="material-icons">filter_drama</i>kanu</div>
+						<div class="collapsible-body mastfont" id="seller1phone" style="font-size: 20px;">
+							<span>885855.</span></div>
+						<div class="collapsible-body mastfont" id="seller1city" style="font-size: 20px;">
+							<span>saharanpur.</span></div>
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="col s12 l3 m6">
+			<div id="seller2">
+				<a href="farmertransport.html"><img src="images/winter-sun12-568x720.jpg"
+						style="height: 250px;width: 250px;border-radius: 50%;margin-left: 10%;"></a></div>
+			<div id="sellername">
+				<ul class="collapsible" style="width:80%;">
+					<li>
+						<div class="collapsible-header mastfont" id="seller2name" style="font-size: 25px;"><i
+								class="material-icons">filter_drama</i>kanu</div>
+						<div class="collapsible-body mastfont" id="seller2phone" style="font-size: 20px;">
+							<span>885855.</span></div>
+						<div class="collapsible-body mastfont" id="seller2city" style="font-size: 20px;">
+							<span>saharanpur.</span></div>
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="col s12 l3 m6">
+			<div id="seller3">
+				<a href="farmertransport.html"><img src="images/winter-sun12-568x720.jpg"
+						style="height: 250px;width: 250px;border-radius: 50%;margin-left: 10%;"></a></div>
+			<div id="sellername">
+				<ul class="collapsible" style="width:80%;">
+					<li>
+						<div class="collapsible-header mastfont" id="seller3name" style="font-size: 25px;"><i
+								class="material-icons">filter_drama</i>kanu</div>
+						<div class="collapsible-body mastfont" id="seller3phone" style="font-size: 20px;">
+							<span>885855.</span></div>
+						<div class="collapsible-body mastfont" id="seller3city" style="font-size: 20px;">
+							<span>saharanpur.</span></div>
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="col s12 l3 m6">
+			<div id="seller4">
+				<a href="farmertransport.html"><img src="images/winter-sun12-568x720.jpg"
+						style="height: 250px;width: 250px;border-radius: 50%;margin-left: 10%;"></a></div>
+			<div id="sellername">
+				<ul class="collapsible" style="width:80%;">
+					<li>
+						<div class="collapsible-header mastfont" id="seller4name" style="font-size: 25px;"><i
+								class="material-icons">filter_drama</i>kanu</div>
+						<div class="collapsible-body mastfont" id="seller4phone" style="font-size: 20px;">
+							<span>885855.</span></div>
+						<div class="collapsible-body mastfont" id="seller4city" style="font-size: 20px;">
+							<span>saharanpur.</span></div>
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+
+
+	</div> -->
+
+
+
+
+</div>
+
+<div class="seconddiv_container" style="height:auto;width: 100%">
+	<div class="col s12" id="seconddiv_container">
+		<!--    <h2 class="header">Horizontal Card</h2>-->
+		
+
+	</div>
+
+</div>
+
+
+
+
+<script>
+	function myFunction() {
+		var dots = document.getElementById("dots");
+		var moreText = document.getElementById("more");
+		var btnText = document.getElementById("myBtn");
+
+		if (dots.style.display === "none") {
+			dots.style.display = "inline";
+			btnText.innerHTML = "Read more";
+			moreText.style.display = "none";
+		} else {
+			dots.style.display = "none";
+			btnText.innerHTML = "Read less";
+			moreText.style.display = "inline";
+		}
+	}
+</script>
+
+<script>
+	selEle = document.getElementById("seconddiv_container");
+	serviceref = db.collection("Service").get().then(function (querySnapshot) {
+		querySnapshot.forEach(function (docserv) {
+			// doc.data() is never undefined for query doc snapshots
+			console.log(docserv.id, " => ", docserv.data());
+
+
+
+			db.collection("Added_Service").where("Type", "==", pageName_data)
+				.get()
+				.then(function (querySnapshot) {
+					querySnapshot.forEach(function (doc) {
+						// doc.data() is never undefined for query doc snapshots
+						console.log(doc.id, " => ", doc.data());
+
+						if (docserv.data().Email == doc.data().Email) {
+
+							selEle.innerHTML += `
+			<div class="col s12">
+				<!--    <h2 class="header">Horizontal Card</h2>-->
+				<div class="card horizontal" style="margin-left: 10%;margin-top: 0%; width: 70%">
+					<div class="card-image">
+						<img src="https://lorempixel.com/100/190/nature/6">
+					</div>
+					<div class="card-stacked">
+						<div class="card-content mastfont">
+							<div class="col">
+		
+		
+								<div class="row" style="height: 35%;background-color: transparent;">
+									<div id="auc_crop1" class="k_heading"
+										style="height: 20px;width: 25%;background-color: transparent;">
+										<font color="black"> <b> FIRM'S NAME:</b></font>
+									</div>
+									<div id="auc_crop1_val"
+										style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">
+										`+docserv.data().Type+`</div>
+								</div>
+		
+		
+		
+								
+								<div class="row" style="height: 35%;background-color: transparent;">
+									<div id="auc_view1" class="k_heading"
+										style="height: 20px;width: 25%;background-color: transparent;">
+										<font color="black"> <b> PRICE(per km):</b></font>
+									</div>
+									<div id="auc_view1_val"
+										style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">
+										`+doc.data().Charges+`</div>
+		
+								</div>
+								<div class="row" style="height: 35%;background-color: transparent;">
+									<div id="auc_date1" class="k_heading"
+										style="height: 20px;width: 25%;background-color: transparent;">
+										<font color="black"> <b> ADDRESS:</b></font>
+									</div>
+									<div id="auc_date1_val"
+										style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">
+										`+docserv.data().Address+`</div>
+		
+								</div>
+								<div class="row" style="height: 35%;background-color: transparent;">
+									<div id="auc_date1" class="k_heading"
+										style="height: 20px;width: 25%;background-color: transparent;">
+										<font color="black"> <b> PHONE:</b></font>
+									</div>
+									<div id="auc_date1_val"
+										style="margin-left:40%;height: 20px;width: 50%;background-color: transparent;margin-top: -2.5%;font-size: 25px;">
+										`+docserv.data().Phone+`</div>
+		
+								</div>
+		
+		
+		
+							</div>
+						</div>
+						<div class="card-action">
+						</div>
+					</div>
+				</div>
+		
+		
+		
+			</div>
+			`;
+
+						}
+
+					});
+				})
+				.catch(function (error) {
+					console.log("Error getting documents: ", error);
+				});
+
+		});
+	});
+</script>
+
+{% endblock content %}
