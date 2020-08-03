@@ -1,0 +1,131 @@
+{% extends "farmerlayout.html" %}
+{% block content %}
+
+<!-- Modal Trigger -->
+<a class="waves-effect red waves-light btn modal-trigger" href="#modal-data"
+style="float:right; position:fixed; margin-left: 90%; margin-top:100px;" onclick="getData()">Today's Price</a>
+
+
+
+<!-- Modal Structure -->
+<div id="modal-data" class="modal">
+<div class="modal-content">
+  <h4 style="text-align: center;">Current Daily Price of Various Commodities from Various Markets (Mandi)</h4>
+  <input type="text" id="myInput" onkeyup="myFunctiondist()" placeholder="Search for District.." title="Type in a name">
+  <table id="my-table">
+    <thead>
+      <tr>
+        <td>State</td>
+        <td>District</td>
+        <td>Commodity</td>
+        <td>Variety</td>
+        <td>Min Price(in Rs)</td>
+        <td>Max Price(in Rs)</td>
+
+      </tr>
+    </thead>
+    <tbody id="tablebody">
+
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+</div>
+</div>
+
+<div class="maindiv">
+    <h1 class="mastfont center-align" style="font-size: 120px;">Our Buyers</h1>
+    <div class="container">
+        <div class="row">
+            <div class="input-field col s12 m6 l2">
+                <i class="material-icons prefix">local_florist</i>
+                <input id="crop_type" type="text" onkeyup="myFunction()" class="validate">
+                <label for="crop_type">Crop type</label>
+            </div>
+            <div class="input-field col s12 m6 l2">
+                <i class="material-icons prefix">phone</i>
+                <input id="quantity" type="text" class="validate">
+                <label for="quantity">Quantity</label>
+            </div>
+            <div class="input-field col s12 m6 l3">
+                <i class="material-icons prefix">event</i>
+                <input type="date" id="view_date" class="datepicker">
+                <label for="view_date">View Date</label>
+            </div>
+            <div class="input-field col s12 m6 l3">
+                <i class="material-icons prefix">event</i>
+                <input type="date" id="auction_date" class="datepicker">
+                <label for="auction_date">Auction Date</label>
+            </div>
+            <div class="input-field col s12 m6 l2">
+                <i class="material-icons prefix">phone</i>
+                <input id="base_price" type="text" class="validate">
+                <label for="base_price">Base Price</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light top_marg " style="margin-top: -5%;margin-left: 80%;" type="submit"
+            name="action" onclick="farmersell()">Submit
+            <i class="material-icons right">submit</i>
+        </button>
+
+
+        <div class="searchbar">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for crops..">
+        </div>
+
+
+        <!-- ############################################################## -->
+        <!-- ########################  Buyer display  ##################### -->
+        <!-- ############################################################## -->
+
+
+        <table class="highlight" id="myTable">
+
+
+            <tr class="k_header">
+                <th style="width:30%;"> Buyer Name</th>
+                <th style="width:20%;">Address</th>
+                <th style="width:20%;">Crop-type</th>
+                <th style="width:15%;">Buyer organisation type</th>
+                <th style="width:20%;">Quantity</th>
+                <th colspan="2" style="width:30%;">Send Notifications</th>
+            </tr>
+            <tbody id="buyertable">
+
+            </tbody>
+         
+
+        </table>
+
+    </div>
+
+</div>
+<div class="row"></div>
+
+<script src="{{url_for('static', filename='js/farmersell.js')}}"></script>
+<script>
+    function myFunction() {
+        // Declare variables 
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+{% endblock content %}
