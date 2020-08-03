@@ -1,7 +1,7 @@
 # NC_GEU_MK100_MUSKETEERS
 # Website
 - `latest version of Chrome 84.0.4147.105`
-- `We have used government site `<a href='https://data.gov.in/'> https://data.gov.in/</a>` to extract data of different types which is used in our website.`
+- `We have used government site  https://data.gov.in/ to extract data of different types which is used in our website using apis.`
 ## User Stories
 - `install python3`
 - `pip3 install flask`
