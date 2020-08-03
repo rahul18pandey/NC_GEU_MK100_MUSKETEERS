@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>HTML dynamic table using JavaScript</title>
+  <title>UPLOAD Bill {{userid}}</title>
   <script type="text/javascript" src="app.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css">
   <link
@@ -45,15 +45,15 @@
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
-      apiKey: "AIzaSyBYyNRsISshMh9B2K7dA1vfrLSGDpEPV3M",
-      authDomain: "sakshamkisan-a168b.firebaseapp.com",
-      databaseURL: "https://sakshamkisan-a168b.firebaseio.com",
-      projectId: "sakshamkisan-a168b",
-      storageBucket: "sakshamkisan-a168b.appspot.com",
-      messagingSenderId: "343160654067",
-      appId: "1:343160654067:web:6aa94660d11f826476cf86",
-      measurementId: "G-SZMLB65V63"
-    };
+      apiKey: "AIzaSyDH7kJ5CDLg2lcoK_MCAaKW43aZoccEzps",
+      authDomain: "saksham-kisan.firebaseapp.com",
+      databaseURL: "https://saksham-kisan.firebaseio.com",
+      projectId: "saksham-kisan",
+      storageBucket: "saksham-kisan.appspot.com",
+      messagingSenderId: "354803173877",
+      appId: "1:354803173877:web:a96feafd468fa8a8b178bc",
+      measurementId: "G-ZLQ6ZMLCWL"
+  };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -63,6 +63,7 @@
     var storage = firebase.storage();
     var db = firebase.firestore();
   //db.settings({timestampsInSnashots:true});
+  
 
 
 
@@ -115,7 +116,7 @@
             <td>
               <div class="input-field col s12 m6 l2">
                 <i class="material-icons prefix">local_florist</i>
-                <input id="crop" type="text" onkeyup="myFunction()" class="validate">
+                <input id="crop" type="text" class="validate">
                 <label for="crop">Crop type</label>
               </div>
             </td>
@@ -264,7 +265,7 @@
       // Add a new document in collection "cities"
       db.collection("Bill").doc().set({
         Email: userEmail,
-        Bill_Quantity: "CA",
+        Bill_Quantity: cropQuantity,
         Type: cropType,
         URL: userFile
       })
@@ -274,9 +275,10 @@
             <tr>
               <td>`+cropType+`</td>
               <td>`+cropQuantity+`</td>
-              <td>`+userFile+`</td>
+              <td><a href="`+userFile+`"> View File</a></td>
             </tr>
           `;
+          alert("Bill uploaded For : "+userEmail +" <br> Quantity : "+ cropQuantity)
         })
         .catch(function (error) {
           console.error("Error writing document: ", error);
