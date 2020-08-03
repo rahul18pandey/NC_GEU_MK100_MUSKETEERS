@@ -1,0 +1,331 @@
+<html>
+	<head>
+		
+			<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		 <script type="text/javascript" src="js/materialize.min.js"></script>
+		   <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="common/k-style.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="fonts/beyond_the_mountains-webfont.css"  media="screen,projection"/>
+		
+<!--		for stars-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+<!--		//////////////////////////////-->
+					
+<!--		 input rating of stars-->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--		end of rating-->
+		<script type="text/javascript" src="saksham-kisan/js/kisan.js"></script>
+		
+		<script>
+			 $(document).ready(function(){
+$(".dropdown-trigger").dropdown();
+			 $('.sidenav').sidenav();
+				  $('.collapsible').collapsible();
+				  $('.datepicker').datepicker();
+				 
+				  });
+			
+			 document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction: 'left'
+    });
+  });
+		</script>
+	
+		
+		<script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>
+ 
+		
+		
+	</head>
+	<style>
+.checked {
+  color: orange;
+}
+</style>
+	<main>
+	<body>
+	      		<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating blue"><i class="material-icons">chat</i></a></li>
+    <li><a class="btn-floating yellow darken-1"><i class="material-icons">notifications</i></a></li>
+    <li><a class="btn-floating green"><i class="material-icons">power_settings_new</i></a></li>
+    
+  </ul>
+</div>
+
+		
+		
+				 	          
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="farmerirrigation.html">Irrigation</a></li>
+  <li><a href="farmerfertilisers.html">Fertilisers</a></li>
+  <li><a href="farmerpackaging.html">Packaging</a></li>
+  <li><a href="farmertransport.html">Transport</a></li>
+  <li><a href="farmerwarehouse.html">Warehouse</a></li>
+</ul>
+
+		
+
+		<ul id="dropdown2" class="dropdown-content">
+   <li><a href="farmerirrigation.html">Irrigation</a></li>
+  <li><a href="farmerfertilisers.html">Fertilisers</a></li>
+  <li><a href="farmerpackaging.html">Packaging</a></li>
+  <li><a href="farmertransport.html">Transport</a></li>
+  <li><a href="farmerwarehouse.html">Warehouse</a></li>
+</ul>
+
+		
+			<nav style="background-color: limegreen;">
+    <div class="nav-wrapper">
+      <a href="farmerhome.html" class="brand-logo mastfont" style="font-size: 50px; height: auto;">Saksham kisan</a>
+      
+      <ul class="right hide-on-med-and-down">
+        <li><a href="farmersell.html">Sell</a></li>
+        <li><a href="schemes.html">Schemes</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="farmerauction.html">Auction</a></li>
+<!--		   Dropdown Trigger -->
+		<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Services<i class="material-icons right">arrow_drop_down</i></a></li>
+		  <li><a class="waves-effect waves-light btn" href="farmerprofile.html">Profile</a></li>
+       <li><a class="waves-effect waves-light btn" href="#">Language</a></li>
+      </ul>
+    </div>
+  </nav>
+		
+	<ul class="hide-on-med-and-up">	
+	<ul id="slide-out" class="sidenav ">
+  <li><a href="farmersell.html">Sell</a></li>
+        <li><a href="schemes.html">Schemes</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="farmerauction.html">Auction</a></li>
+		
+	<li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Services<i class="material-icons right">arrow_drop_down</i></a></li>  
+	  <li><a class="waves-effect waves-light btn" href="farmerprofile.html">Profile</a></li>
+       <li><a class="waves-effect waves-light btn" href="#">Language</a></li>
+  </ul>
+		
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		</ul>
+ 
+		<div class="maindiv">
+			<h1 class="mastfont center-align" style="font-size: 120px;margin-top: 5%;">Send Notifications</h1>
+			<div class="container">
+		<button class="btn waves-effect waves-light top_marg "  style="margin-top:2%;margin-left: 80%;margin-bottom: 1%;" type="submit" name="action" >Submit
+    <i class="material-icons right">submit</i>
+  </button>
+				<table class="highlight" id="myTable" >
+  
+
+  <tr class="k_header">
+    <th style="width:30%;"> Buyer Name</th>
+    <th style="width:20%;">Ratings</th>
+    
+    <th colspan="2" style="width:30%;">Send Notifications</th>
+  </tr>
+   
+  <tr>
+       
+      <td><a href="bigsellerprofiefarmer.html">Alfreds Futterkiste</a></td>
+    <td><span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span></td>
+    
+	   <td> <div class="switch">
+    <label>
+      no
+      <input type="checkbox">
+      <span class="lever"></span>
+      yes
+    </label>
+		</div> </td>
+	  
+    
+
+    </tr>
+    
+  <tr>
+      
+	  <td><a href="bigsellerprofiefarmer.html">Berglunds snabbkop</a></td>
+    <td><span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span></td>
+  
+	   <td> <div class="switch">
+    <label>
+      no
+      <input type="checkbox">
+      <span class="lever"></span>
+      yes
+    </label>
+		</div> </td>
+   
+  </tr>
+  <tr>
+      
+	  <td><a href="bigsellerprofiefarmer.html">Island Trading</a></td>
+    <td><span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span></td>
+   
+	   <td> <div class="switch">
+    <label>
+      no
+      <input type="checkbox">
+      <span class="lever"></span>
+      yes
+    </label>
+		</div> </td>
+    
+  </tr>
+  <tr>
+      
+	  <td><a href="bigsellerprofiefarmer.html">Koniglich Essen</a></td>
+    <td><span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span></td>
+
+	   <td> <div class="switch">
+    <label>
+      no
+      <input type="checkbox">
+      <span class="lever"></span>
+      yes
+    </label>
+		</div> </td>
+    
+  </tr>
+  <tr>
+      
+	  <td><a href="bigsellerprofiefarmer.html">Laughing Bacchus Winecellars</a></td>
+    <td><span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span></td>
+
+	   <td> <div class="switch">
+    <label>
+      no
+      <input type="checkbox">
+      <span class="lever"></span>
+      yes
+    </label>
+		</div> </td>
+    
+  </tr>
+  <tr>
+	  <td><a href="bigsellerprofiefarmer.html">Magazzini Alimentari Riuniti></a></td>
+    <td><span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span></td>
+    
+	   <td> <div class="switch">
+    <label>
+      no
+      <input type="checkbox">
+      <span class="lever"></span>
+      yes
+    </label>
+		</div> </td>
+    
+  </tr>
+  <tr>
+      
+	  <td><a href="bigsellerprofiefarmer.html">North/South</a></td>
+    <td><span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span></td>
+
+    <td> <div class="switch">
+    <label>
+      no
+      <input type="checkbox">
+      <span class="lever"></span>
+      yes
+    </label>
+		</div> </td>
+    
+  </tr>
+  <tr>
+      
+	  <td><a href="bigsellerprofiefarmer.html">Paris specialites</a></td>
+    <td><span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span></td>
+
+	   <td> <div class="switch">
+    <label>
+      no
+      <input type="checkbox">
+      <span class="lever"></span>
+      yes
+    </label>
+		</div> </td>
+    
+  </tr>
+
+</table>
+				
+	</div>
+		  
+		</div>
+
+	</body>
+		<!--		footer-->
+		
+		<div id="footer" style="height: 400px;width: 100%;"></div>
+		
+	</main>
+</html>
