@@ -47,6 +47,7 @@
     <link type="text/css" rel="stylesheet"
         href="{{url_for('static', filename='fonts/beyond_the_mountains-webfont.css')}}" media="screen,projection" />
     <script type="text/javascript" src="{{url_for('static', filename='js/kisan.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/data.js')}}"></script>
 
 
 
@@ -60,36 +61,37 @@
 </head>
 
 <body>
+
     <header>
 
 
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-            <li class="lang-eng"><a href="farmerfertilisers.html">Irrigation</a></li>
-            <li class="lang-hin"><a href="farmerfertilisers.html">सिंचाई</a></li>
-            <li class="lang-eng"><a href="farmerfertilisers.html">Fertilisers</a></li>
-            <li class="lang-hin"><a href="farmerfertilisers.html">उर्वरक</a></li>
-            <li class="lang-eng"><a href="farmerfertilisers.html">Packaging</a></li>
-            <li class="lang-hin"><a href="farmerfertilisers.html">पैकेजिंग</a></li>
-            <li class="lang-eng"><a href="farmerfertilisers.html">Warehousing</a></li>
-            <li class="lang-hin"><a href="farmerfertilisers.html">भंडारण</a></li>
-            <li class="lang-eng"><a href="farmertransport.html">Transport</a></li>
-            <li class="lang-hin"><a href="farmertransport.html">परिवहन</a></li>
+            <li class="lang-eng"><a href="/farmerirrigation">Irrigation</a></li>
+            <li class="lang-hin"><a href="/farmerirrigation">सिंचाई</a></li>
+            <li class="lang-eng"><a href="/farmerfertilisers">Fertilisers</a></li>
+            <li class="lang-hin"><a href="/farmerfertilisers">उर्वरक</a></li>
+            <li class="lang-eng"><a href="/farmerpackaging">Packaging</a></li>
+            <li class="lang-hin"><a href="/farmerpackaging">पैकेजिंग</a></li>
+            <li class="lang-eng"><a href="/farmerwarehouse">Warehousing</a></li>
+            <li class="lang-hin"><a href="/farmerwarehouse">भंडारण</a></li>
+            <li class="lang-eng"><a href="/farmertransport">Transport</a></li>
+            <li class="lang-hin"><a href="/farmertransport">परिवहन</a></li>
         </ul>
 
 
 
         <ul id="dropdown2" class="dropdown-content">
-            <li class="lang-eng"><a href="farmerfertilisers.html">Irrigation</a></li>
-            <li class="lang-hin"><a href="farmerfertilisers.html">सिंचाई</a></li>
-            <li class="lang-eng"><a href="farmerfertilisers.html">Fertilisers</a></li>
-            <li class="lang-hin"><a href="farmerfertilisers.html">उर्वरक</a></li>
-            <li class="lang-eng"><a href="farmerfertilisers.html">Packaging</a></li>
-            <li class="lang-hin"><a href="farmerfertilisers.html">पैकेजिंग</a></li>
-            <li class="lang-eng"><a href="farmerfertilisers.html">Warehousing</a></li>
-            <li class="lang-hin"><a href="farmerfertilisers.html">भंडारण</a></li>
-            <li class="lang-eng"><a href="farmertransport.html">Transport</a></li>
-            <li class="lang-hin"><a href="farmertransport.html">परिवहन</a></li>
+            <li class="lang-eng"><a href="/farmerirrigation">Irrigation</a></li>
+            <li class="lang-hin"><a href="/farmerirrigation">सिंचाई</a></li>
+            <li class="lang-eng"><a href="/farmerfertilisers">Fertilisers</a></li>
+            <li class="lang-hin"><a href="/farmerfertilisers">उर्वरक</a></li>
+            <li class="lang-eng"><a href="/farmerpackaging">Packaging</a></li>
+            <li class="lang-hin"><a href="/farmerpackaging">पैकेजिंग</a></li>
+            <li class="lang-eng"><a href="/farmerwarehouse">Warehousing</a></li>
+            <li class="lang-hin"><a href="/farmerwarehouse">भंडारण</a></li>
+            <li class="lang-eng"><a href="/farmertransport">Transport</a></li>
+            <li class="lang-hin"><a href="/farmertransport">परिवहन</a></li>
         </ul>
 
 
@@ -100,15 +102,15 @@
 
                 <ul class="right hide-on-med-and-down">
                     <li class="only-to-farmer "><a href="/farmersell" id="navsell"><span class="lang-eng">Sell</span></a></li>
-                    <li class="only-to-farmer "><a href="/farmersell" id="navsell"><span class="lang-hin">बेचना</span></a></li>
-                    <li class="lang-eng"><a href="/schemes">Schemes</a></li>
+                    <li class="only-to-farmer "><a href="/farmersell"><span class="lang-hin">बेचना</span></a></li>
+                    <li class="lang-eng"><a href="/schemes" id="navscheme">Schemes</a></li>
                             <li class="lang-hin"><a href="/schemes">योजनाओं</a></li>
-                            <li class="lang-eng"><a href="/tutorials">Tutorials</a></li>
+                            <li class="lang-eng"><a href="/tutorials" id="navtutorials">Tutorials</a></li>
                             <li class="lang-hin"><a href="/tutorials">ट्यूटोरियल</a></li>
                     <li class="only-to-farmer"><a href="/farmerauction" id="navauction"><span class="lang-eng">Auction</span></a></li>
-                    <li class="only-to-farmer"><a href="/farmerauction" id="navauction"><span class="lang-hin">नीलामी</span></a></li>
+                    <li class="only-to-farmer"><a href="/farmerauction"><span class="lang-hin">नीलामी</span></a></li>
                     <!--		   Dropdown Trigger -->
-                    <li class="only-to-farmer"><a class="dropdown-trigger" href="#!" data-target="dropdown1" ><span class="lang-eng">Services<i
+                    <li class="only-to-farmer"><a class="dropdown-trigger" href="#!" data-target="dropdown1" id="navservices"><span class="lang-eng">Services<i
                                 class="material-icons right" id="navservices">arrow_drop_down</i></span></a></li>
                     <li class="only-to-farmer"><a class="dropdown-trigger" href="#!" data-target="dropdown1" ><span class="lang-hin">सेवाओं<i
                                     class="material-icons right" id="navservices">arrow_drop_down</i></span></a></li>
@@ -183,9 +185,10 @@
           <i class="large material-icons">mode_edit</i>
         </a>
         <ul>
-          <li><a class="btn-floating blue"><i class="material-icons">chat</i></a></li>
+            <li onclick="window.open('/chat'+'?user='+userEmail)"><a class="btn-floating blue"><i class="material-icons">chat</i></a></li>
+
           
-          <li><a class="btn-floating pink"><i class="material-icons">cloud_queue</i></a></li>
+          <li><a class="btn-floating pink" href="https://weatherappopen.herokuapp.com"><i class="material-icons">cloud_queue</i></a></li>
           
         </ul>
       </div>
