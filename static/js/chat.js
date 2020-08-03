@@ -1,3 +1,4 @@
+
 // function to search users lists
 
 // var userEmail = 'ankit@gmail.com'
@@ -28,13 +29,13 @@ function search() {
 //function to create a users list
 
 function users() {
-    userEmail= document.getElementById("inp_mesg").value;
+    userEmail = 'raju@gmail.com'
+    // userEmail= document.getElementById("inp_mesg").value;
     console.log('users() function called');
     document.getElementById('myUL').innerHTML = "";
     document.getElementById('chat_user').style.display = "block";
     document.getElementById('chat').style.display = "block";
     document.getElementById('myInput').style.display = "block";
-    // userEmail = document.getElementById('inp_mesg').value;
     if (userEmail) {
         console.log(userEmail);
         db.collection("Buyer").get().then((querySnapshot) => {
