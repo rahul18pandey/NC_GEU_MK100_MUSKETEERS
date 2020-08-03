@@ -151,6 +151,18 @@ class _ShowCropState extends State<ShowCrop> {
                 ]),
               ),
               Padding(
+                padding: const EdgeInsets.only(top: 4.0, bottom: 6.0),
+                child: Row(children: <Widget>[
+                  Text("Description :  ",
+                    style: new TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600,fontFamily: 'Montserrat'),),
+                  Text(cropdata.documents[i].data['Address'].toString(),
+                      style: new TextStyle(
+                        fontSize: 15.0, fontFamily: 'Montserrat',)),
+                  Spacer(),
+
+                ]),
+              ),
+              Padding(
                 padding: const EdgeInsets.only(top: 4.0, bottom: 10.0),
                 child: Row(children: <Widget>[
                   Text(
@@ -296,6 +308,18 @@ class _ShowCropState extends State<ShowCrop> {
                         style: new TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15.0)),
                     Spacer(),
+                  ]),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 4.0, bottom: 6.0),
+                  child: Row(children: <Widget>[
+                    Text("Description :  ",
+                      style: new TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600,fontFamily: 'Montserrat'),),
+                    Text(cropdata.documents[i].data['Address'].toString(),
+                        style: new TextStyle(
+                          fontSize: 15.0, fontFamily: 'Montserrat',)),
+                    Spacer(),
+
                   ]),
                 ),
                 Padding(

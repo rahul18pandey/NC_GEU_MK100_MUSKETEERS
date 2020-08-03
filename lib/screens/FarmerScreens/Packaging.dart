@@ -87,7 +87,7 @@ class _PackagingState extends State<Packaging> {
         width: double.infinity,
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(5),
             boxShadow: [
               BoxShadow(
                 color: Colors.black26,
@@ -178,7 +178,7 @@ class _PackagingState extends State<Packaging> {
                             "yes",fobj.user.email,servicedata1.documents[i].data['Email'],servicedata1.documents[i].data['Type']
                         )));
                       },
-                      child: Text("Buy now",style: TextStyle(fontFamily:'Montserrat',fontWeight: FontWeight.bold,color:Colors.white,fontSize: 17.0),),
+                      child: Text((AppLocalizations.of(context).translate('84')),style: TextStyle(fontFamily:'Montserrat',fontWeight: FontWeight.bold,color:Colors.white,fontSize: 17.0),),
                     ),
                     SizedBox(width: 5,),
                     RaisedButton(
@@ -190,7 +190,7 @@ class _PackagingState extends State<Packaging> {
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceProfile(servicedata1.documents[i].data['Email'])));
                       },
-                      child: Text("Profile",style: TextStyle(fontFamily:'Montserrat',fontWeight: FontWeight.bold,color:Colors.white,fontSize: 17.0),),
+                      child: Text((AppLocalizations.of(context).translate('85')),style: TextStyle(fontFamily:'Montserrat',fontWeight: FontWeight.bold,color:Colors.white,fontSize: 17.0),),
                     ),
                     SizedBox(width: 5,),
                     RaisedButton(

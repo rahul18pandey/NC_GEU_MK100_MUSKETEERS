@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:kisan_app/Constants/loading.dart';
 import 'package:kisan_app/screens/FarmerScreens/buyerprofilefarmerside.dart';
 
 import '../../app_localizations.dart';
@@ -59,10 +60,7 @@ class _RetailerListState extends State<RetailerList> {
       );
     }
     else{
-      return Container(
-        width: 0.0,
-        height: 0.0,
-      );
+      return Loading();
     }
   }
 

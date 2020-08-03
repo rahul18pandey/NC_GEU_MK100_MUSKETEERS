@@ -1,4 +1,3 @@
-
 import 'dart:typed_data';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:kisan_app/constants.dart';
+import 'checkBasePrice.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -44,6 +44,8 @@ class _AddCropState extends State<AddCrop> {
   final FlutterTts tts=FlutterTts();
   Locale _currentLocale;
   String resultText = "";
+  var croplist=['wheat','oat','rice','maize','barley','sorgum','rye','millet','tomato','potato','apple'];
+  var maxpricelist=['21','20','20','17','16','15','33','35','18','22','45'];
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
   bool count=false;
   Future getImage() async {
@@ -55,7 +57,7 @@ class _AddCropState extends State<AddCrop> {
   }
 
   Widget _buildTypeTF() {
-    var items = [(AppLocalizations.of(context).translate('57')), (AppLocalizations.of(context).translate('58')), (AppLocalizations.of(context).translate('59')),(AppLocalizations.of(context).translate('60')),(AppLocalizations.of(context).translate('61')),(AppLocalizations.of(context).translate('62')),(AppLocalizations.of(context).translate('63')),(AppLocalizations.of(context).translate('64')),];
+    var items = [(AppLocalizations.of(context).translate('57')), (AppLocalizations.of(context).translate('58')), (AppLocalizations.of(context).translate('59')),(AppLocalizations.of(context).translate('60')),(AppLocalizations.of(context).translate('61')),(AppLocalizations.of(context).translate('62')),(AppLocalizations.of(context).translate('63')),(AppLocalizations.of(context).translate('64')),(AppLocalizations.of(context).translate('155')),(AppLocalizations.of(context).translate('156')),(AppLocalizations.of(context).translate('157')),];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -150,7 +152,7 @@ class _AddCropState extends State<AddCrop> {
                   side: BorderSide(color: Colors.grey)
               ),
               color: Colors.green,
-              child: Text("Go",style: TextStyle(color: Colors.white,fontSize: 16,fontFamily: "Montserrat"),),
+              child: Text((AppLocalizations.of(context).translate('154')),style: TextStyle(color: Colors.white,fontSize: 16,fontFamily: "Montserrat"),),
               onPressed: (){
                 (context as Element).reassemble();
               },
@@ -400,60 +402,108 @@ class _AddCropState extends State<AddCrop> {
       ),
     );
   }
+  Widget _buildCheckPriceBtn() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 25.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CheckDailyPrice()),
+          );
+        },
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Colors.blue,
+        child: Text((AppLocalizations.of(context).translate('153')),
+          style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
   submitCrop()async{
-    user= fobj.getUser();
-    int q=int.parse(this.quantity);
-    if(_imageFile!=null) {
-      showLoadingDialog(context, _keyLoader);
-      final StorageReference firebaseStorgaeRef = FirebaseStorage
-          .instance.ref().child("crop photos"+"/"+fobj.user.email+this.quantity+this.phone+this.price);
-      // ignore: deprecated_member_use
-      final StorageUploadTask task = firebaseStorgaeRef.putFile(_imageFile);
-      StorageTaskSnapshot taskSnapshot = await task.onComplete;
-      String url = await taskSnapshot.ref.getDownloadURL();
-      if (q > 100) {
-        fobj.addcropdata({
-          'Quantity': this.quantity,
-          'Auction_date': "${auctiondate.day}-${auctiondate.month}-${auctiondate
-              .year}",
-          'Address': this.address,
-          'Phone': this.phone,
-          'View_date': "${viewdate.day}-${viewdate.month}-${viewdate.year}",
-          'Type': this.type,
-          'Base_price': this.price,
-          'Email': user.email,
-          'Current_bid': 0,
-          'URL':url
-        }).then((result) {
-          Navigator.of(
-              _keyLoader.currentContext,
-              rootNavigator: true).pop();
-          dialogTrigger(context);
-        }).catchError((e) {
-          print(e);
-        });
-      } else {
-        fobj.addcropdata({
-          'Quantity': this.quantity,
-          'Address': this.address,
-          'Phone': this.phone,
-          'View_date': "${viewdate.day}-${viewdate.month}-${viewdate.year}",
-          'Type': this.type,
-          'Base_price': this.price,
-          'Email': user.email,
-          'URL':url
-        }).then((result) {
-          Navigator.of(
-              _keyLoader.currentContext,
-              rootNavigator: true).pop();
-          dialogTrigger(context);
-        }).catchError((e) {
-          print(e);
-        });
+    bool su=false;
+    for(int a=0;a<croplist.length;a++){
+      if(croplist[a]==this.type){
+        int maxprice=int.parse(maxpricelist[a]);
+        int cropprice=int.parse(this.price);
+        if(maxprice<cropprice){
+          su=true;
+          break;
+        }
       }
     }
-    else{
-      imagedialog(context);
+    user= fobj.getUser();
+    int q=int.parse(this.quantity);
+    if(!su) {
+      if (_imageFile != null) {
+        showLoadingDialog(context, _keyLoader);
+        final StorageReference firebaseStorgaeRef = FirebaseStorage
+            .instance.ref().child(
+            "crop photos" + "/" + fobj.user.email + this.quantity + this.phone +
+                this.price);
+        // ignore: deprecated_member_use
+        final StorageUploadTask task = firebaseStorgaeRef.putFile(_imageFile);
+        StorageTaskSnapshot taskSnapshot = await task.onComplete;
+        String url = await taskSnapshot.ref.getDownloadURL();
+        if (q > 100) {
+          fobj.addcropdata({
+            'Quantity': this.quantity,
+            'Auction_date': "${auctiondate.day}-${auctiondate
+                .month}-${auctiondate
+                .year}",
+            'Address': this.address,
+            'Phone': this.phone,
+            'View_date': "${viewdate.day}-${viewdate.month}-${viewdate.year}",
+            'Type': this.type,
+            'Base_price': this.price,
+            'Email': user.email,
+            'Current_bid': 0,
+            'URL': url
+          }).then((result) {
+            Navigator.of(
+                _keyLoader.currentContext,
+                rootNavigator: true).pop();
+            dialogTrigger(context);
+          }).catchError((e) {
+            print(e);
+          });
+        } else {
+          fobj.addcropdata({
+            'Quantity': this.quantity,
+            'Address': this.address,
+            'Phone': this.phone,
+            'View_date': "${viewdate.day}-${viewdate.month}-${viewdate.year}",
+            'Type': this.type,
+            'Base_price': this.price,
+            'Email': user.email,
+            'URL': url
+          }).then((result) {
+            Navigator.of(
+                _keyLoader.currentContext,
+                rootNavigator: true).pop();
+            dialogTrigger(context);
+          }).catchError((e) {
+            print(e);
+          });
+        }
+      }
+      else {
+        imagedialog(context);
+      }
+    }else{
+      _addmaxprice(context);
     }
   }
 
@@ -479,7 +529,26 @@ class _AddCropState extends State<AddCrop> {
                   ]));
         });
   }
-
+  Future<bool> _addmaxprice(BuildContext context) async {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Your base price should be in between recommended price", style: TextStyle(fontSize: 15.0)),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("back",),
+              textColor: Colors.blue,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+      },
+    );
+  }
   Future<bool> dialogTrigger(BuildContext context) async {
     return showDialog(
       context: context,
@@ -495,7 +564,7 @@ class _AddCropState extends State<AddCrop> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                    builder: (context) => HomeScreen()));
+                        builder: (context) => HomeScreen()));
               },
             )
           ],
@@ -510,7 +579,7 @@ class _AddCropState extends State<AddCrop> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("please add crop image", style: TextStyle(fontSize: 15.0)),
+          title: Text((AppLocalizations.of(context).translate('152')), style: TextStyle(fontSize: 15.0)),
           actions: <Widget>[
             FlatButton(
               child: Text((AppLocalizations.of(context).translate('72')),),
@@ -530,7 +599,7 @@ class _AddCropState extends State<AddCrop> {
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         centerTitle:true,
-        title: Text('Add Crop', textAlign: TextAlign.center,style: TextStyle(fontFamily: 'Montserrat',fontWeight: FontWeight.w600),),
+        title: Text((AppLocalizations.of(context).translate('19')), textAlign: TextAlign.center,style: TextStyle(fontFamily: 'Montserrat',fontWeight: FontWeight.w600),),
         backgroundColor: Color(0xFF637BFF),
         elevation: 0,
       ),
@@ -597,12 +666,16 @@ class _AddCropState extends State<AddCrop> {
                                 borderRadius: new BorderRadius.circular(12.0),
                                 side: BorderSide(color: Colors.grey)),
                             color: Colors.blue,
-                          child: Text("add crop image"),
-                          onPressed: getImage
+                            child: Text((AppLocalizations.of(context).translate('152'))),
+                            onPressed: getImage
                         ),
                         Container(
                           child: _imageFile==null?Text(""):Image.file(_imageFile,height: 300.0,width: 300.0,),
                         ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        _buildCheckPriceBtn(),
 
 
                         _buildsubmitBtn(),
@@ -677,11 +750,21 @@ class _AddCropState extends State<AddCrop> {
     if((resultText!=null && resultText!="" )) {
       count1++;
       resultText=resultText.toLowerCase();
-      if(resultText=="submit"){
-        if (resultText == "submit") {
+      if(resultText=="submit"||resultText=='जमा करें'||resultText=='Go'||resultText=='जाओ'){
+        if (resultText == "submit"||resultText=='जमा करें') {
           if (!count) {
             tts.speak("Please wait");
+            resultText='';
             submitCrop();
+          }
+          count = true;
+        }
+        else if (resultText == "Go"||resultText=='जाओ') {
+          if (!count) {
+            tts.speak("Please wait");
+            Navigator.pop(context);
+            resultText="";
+            (context as Element).reassemble();
           }
           count = true;
         }

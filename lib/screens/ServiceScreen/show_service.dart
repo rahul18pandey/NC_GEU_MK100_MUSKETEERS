@@ -132,7 +132,7 @@ String a;
                 ]),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 4.0, bottom: 5.0,left: 130.0),
+                padding: const EdgeInsets.only(top: 4.0, bottom: 5.0,left: 10.0),
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
@@ -143,6 +143,15 @@ String a;
                       color: Colors.green,
                       onPressed: () {
                     }, child: Text("Edit",style: TextStyle(fontSize: 17.0, fontFamily: 'Montserrat',color: Colors.white),),),
+                    Spacer(),
+                    RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(12.0),
+                          side: BorderSide(color: Colors.grey)
+                      ),
+                      color: Colors.blue,
+                      onPressed: () {
+                    }, child: Text("Chat",style: TextStyle(fontSize: 17.0, fontFamily: 'Montserrat',color: Colors.white),),)
                   ],
                 ),
               ),

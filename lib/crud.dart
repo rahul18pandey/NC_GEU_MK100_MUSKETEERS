@@ -197,5 +197,8 @@ class crudMethods{
   getcollaboration() async {
     return await Firestore.instance.collection("Collaboration").getDocuments();
   }
+  getapidata()async{
+    return await Firestore.instance.collection("api_data").document('2020').collection('1').orderBy("quantity",descending: true).getDocuments();
+  }
 
 }

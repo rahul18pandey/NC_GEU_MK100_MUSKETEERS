@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "354803173877",
+    "firebase_url": "https://saksham-kisan.firebaseio.com",
+    "project_id": "saksham-kisan",
+    "storage_bucket": "saksham-kisan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354803173877:android:16599eebc0f22aa4b178bc",
+        "android_client_info": {
+          "package_name": "com.example.kisan_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354803173877-cmpgdppjjeq7imh1t43k4v66esstqfc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiNFfPZM7zbtu_yL2zDKZoKKQ3iHyEpN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354803173877-cmpgdppjjeq7imh1t43k4v66esstqfc6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -61,7 +61,7 @@ class _TransactionPageState extends State<TransactionPage> {
   }
   void showLongToast() {
     Fluttertoast.showToast(
-      msg: "you have got a collaboration",
+      msg: "you have got a collaboration request",
       toastLength: Toast.LENGTH_LONG,
     );
   }

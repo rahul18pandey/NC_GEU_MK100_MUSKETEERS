@@ -119,12 +119,13 @@ class _LocalBuyCropPageState extends State<LocalBuyCropPage> {
                   )
                 ],
               ),
+
               Padding(
                 padding: const EdgeInsets.only(top: 4.0, bottom: 6.0),
                 child: Row(children: <Widget>[
                   Text(cropdata.documents[i].data['Type'],
                     style: new TextStyle(
-                        fontSize: 20.0, fontWeight: FontWeight.bold),),
+                        fontSize: 26.0, fontWeight: FontWeight.bold),),
                   Spacer(),
                   SizedBox(width: 90,),
                   Text("Quantity (In Kg):  ",
@@ -134,6 +135,18 @@ class _LocalBuyCropPageState extends State<LocalBuyCropPage> {
                           fontWeight: FontWeight.bold, fontSize: 20.0)),
 
                   Spacer(),
+                ]),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4.0, bottom: 6.0),
+                child: Row(children: <Widget>[
+                  Text("Description :  ",
+                    style: new TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600,fontFamily: 'Montserrat'),),
+                  Text(cropdata.documents[i].data['Address'].toString(),
+                      style: new TextStyle(
+                        fontSize: 15.0, fontFamily: 'Montserrat',)),
+                  Spacer(),
+
                 ]),
               ),
               Padding(
