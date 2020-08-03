@@ -59,7 +59,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   }
 
   Widget contentFinishedDownload() {
-    if(_data!=null) {
+    if(_data[0]!=null) {
       return Center(
         child: ListView.separated(
           itemCount: _data.length,
@@ -452,34 +452,35 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        resizeToAvoidBottomPadding: false,
-        appBar: AppBar(
-        centerTitle:true,
-        title: Text(AppLocalizations.of(context).translate('first_string'), textAlign: TextAlign.center,style: TextStyle(fontFamily: 'Montserrat',fontWeight: FontWeight.w600),),
-    backgroundColor: Color(0xFF637BFF),
-    elevation: 0,
-    automaticallyImplyLeading: true,
-    ),
-    body:
-    DecoratedBox(
-    position: DecorationPosition.background,
-    decoration: BoxDecoration(
-    gradient: LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    stops: [0.0, 1.0],
-    colors: [Color(0xFF637BFF),Color(0XFF21C8F6)],
-    ),
-    ),
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          resizeToAvoidBottomPadding: false,
+          appBar: AppBar(
+            centerTitle:true,
+            title: Text(AppLocalizations.of(context).translate('first_string'), textAlign: TextAlign.center,style: TextStyle(fontFamily: 'Montserrat',fontWeight: FontWeight.w600),),
+            backgroundColor: Color(0xFF637BFF),
+            elevation: 0,
+            automaticallyImplyLeading: true,
+          ),
+          body:
+          DecoratedBox(
+              position: DecorationPosition.background,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.0, 1.0],
+                  colors: [Color(0xFF637BFF),Color(0XFF21C8F6)],
+                ),
+              ),
 
-    child: Column(
-            children: <Widget>[
+              child: Column(
+                children: <Widget>[
 
-              _buttons(),
-              Expanded(child: _resultView())
-            ],
-          )),)
+                  _buttons(),
+                  Expanded(child: _resultView())
+                ],
+              )),)
     );
   }
   getUserLocation() async {//call this async method from whereever you need

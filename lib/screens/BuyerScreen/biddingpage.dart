@@ -726,6 +726,7 @@ int count1=0,q,w;
     }
     else{
       fobj.addBiddata({
+        'URL':cropdata1.documents[number].data['URL'],
         'Quantity': cropdata1.documents[number].data['Quantity'],
         'Auction_date': cropdata1.documents[number]
             .data['Auction_date'],

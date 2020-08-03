@@ -21,13 +21,6 @@ class _InsuranceState extends State<Insurance> {
           backgroundColor: Color(0xFF637BFF),
           elevation: 0,
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // Add your onPressed code here!
-          },
-          child: Icon(Icons.settings_voice),
-          backgroundColor: Colors.green,
-        ),
         body: DecoratedBox(
           position: DecorationPosition.background,
           decoration: BoxDecoration(

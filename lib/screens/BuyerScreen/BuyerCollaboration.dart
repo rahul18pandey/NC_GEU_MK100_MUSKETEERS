@@ -41,8 +41,7 @@ class _BuyerCollaborationState extends State<BuyerCollaboration> {
             backgroundColor: Colors.indigoAccent[100],
             elevation: 0,
           ),
-        body: Column(
-          children: <Widget>[
+        body:
             DecoratedBox(
                   position: DecorationPosition.background,
                   decoration: BoxDecoration(
@@ -53,13 +52,16 @@ class _BuyerCollaborationState extends State<BuyerCollaboration> {
                       colors: [Color(0xFF637BFF),Color(0XFF21C8F6)],
                     ),
                   ),
+              child: new ListView.builder(
+                itemCount: collabdata.documents.length,
+                itemBuilder: (BuildContext context, int index) =>
+                    buildCollabCard(context, index),
+              ),
 
                 ),
-            Container(
-              child: buildCollabCard(),
-            )
-          ],
-        ),
+
+
+
 
       );
       }else{
@@ -95,11 +97,11 @@ class _BuyerCollaborationState extends State<BuyerCollaboration> {
     }
 
   }
-  Widget buildCollabCard() {
-    int i;
-    for(i=0;i<collabdata.documents.length;i++) {
+  Widget buildCollabCard(BuildContext context,i) {
+       print(collabdata.documents[i].data['Buyeremail']);
       if (fobj.user.email == collabdata.documents[i].data['Buyeremail']) {
         if(collabdata.documents[i].data['Response']=='1') {
+
           return new Container(
             margin: EdgeInsets.all(15),
             width: double.infinity,
@@ -125,10 +127,12 @@ class _BuyerCollaborationState extends State<BuyerCollaboration> {
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0, bottom: 10.0),
                     child: Row(children: <Widget>[
-                      Text("From : ${collabdata.documents[i].data['Farmeremail']}",
-                        style: new TextStyle(
-                            fontSize: 22.0, fontWeight: FontWeight.w800,fontFamily: 'Montserrat'),),
-                      Spacer(),
+                      Flexible(
+                        child: Text("From : ${collabdata.documents[i].data['Farmeremail']}",
+                          style: new TextStyle(
+                              fontSize: 20.0, fontWeight: FontWeight.w800,fontFamily: 'Montserrat'),),
+                      ),
+                    
                     ]),
                   ),
                   RaisedButton(
@@ -232,10 +236,12 @@ class _BuyerCollaborationState extends State<BuyerCollaboration> {
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0, bottom: 10.0),
                     child: Row(children: <Widget>[
-                      Text("From : ${collabdata.documents[i].data['Farmeremail']}",
-                        style: new TextStyle(
-                            fontSize: 22.0, fontWeight: FontWeight.w800,fontFamily: 'Montserrat'),),
-                      Spacer(),
+                      Flexible(
+                        child: Text("From : ${collabdata.documents[i].data['Farmeremail']}",
+                          style: new TextStyle(
+                              fontSize: 20.0, fontWeight: FontWeight.w800,fontFamily: 'Montserrat'),),
+                      ),
+
                     ]),
                   ),
                   RaisedButton(
@@ -263,7 +269,7 @@ class _BuyerCollaborationState extends State<BuyerCollaboration> {
 
         );
       }
-    }
+    
   }
 }
 

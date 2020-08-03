@@ -17,7 +17,7 @@ int a;
 QuerySnapshot cropdata;
 class _BuyCropPageState extends State<BuyCropPage> {
   crudMethods fobj = new crudMethods();
-QuerySnapshot transactiondata;
+QuerySnapshot transactiondata,buyerdata;
   FirebaseUser user;
 
 
@@ -33,13 +33,26 @@ QuerySnapshot transactiondata;
         transactiondata=results;
       });
     });
+    fobj.getData().then((results){
+      setState(() {
+        buyerdata=results;
+      });
+    });
   }
+  bool isbig=false;
   String dummyurl='https://firebasestorage.googleapis.com/v0/b/saksham-kisan.appspot.com/o/noImageUploaded.png?alt=media&token=e70e4293-b204-4571-86fe-667c0ef0408c';
   @override
   Widget build(BuildContext context) {
     user = fobj.getUser();
 
-    if (cropdata != null && transactiondata!=null) {
+    if (cropdata != null && transactiondata!=null && buyerdata!=null) {
+      for(int q=0;q<buyerdata.documents.length;q++){
+        if(buyerdata.documents[q].documentID==fobj.user.email){
+          if(buyerdata.documents[q].data['Type']=='big'){
+            isbig=true;
+          }
+        }
+      }
       return new Scaffold(
           resizeToAvoidBottomPadding: false,
           appBar: AppBar(
@@ -178,6 +191,18 @@ QuerySnapshot transactiondata;
               Padding(
                 padding: const EdgeInsets.only(top: 4.0, bottom: 6.0),
                 child: Row(children: <Widget>[
+                  Text("Description :  ",
+                    style: new TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600,fontFamily: 'Montserrat'),),
+                  Text(cropdata.documents[i].data['Address'].toString(),
+                      style: new TextStyle(
+                        fontSize: 15.0, fontFamily: 'Montserrat',)),
+                  Spacer(),
+
+                ]),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4.0, bottom: 6.0),
+                child: Row(children: <Widget>[
                   Text(
                     "View date:    ", style: new TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600,fontFamily: 'Montserrat'),),
                   Text(cropdata.documents[i].data['View_date'],
@@ -207,14 +232,18 @@ QuerySnapshot transactiondata;
                       onPressed: () {
                         int j=0;
                         bool present=false;
-                      for(j=0;j<transactiondata.documents.length;j++){
-    if(user.email==transactiondata.documents[j].data['Email'] && transactiondata.documents[j].data['Counter']=="1" && transactiondata.documents[j].data['Type']==cropdata.documents[i].data['Type']) {
-                     present=true;
-                      addCropDialog(context, i);
+                        print(isbig);
+                        j=transactiondata.documents.length;
+                        if(!isbig) {
+                          for(j=0;j<transactiondata.documents.length;j++){
+                            if(user.email==transactiondata.documents[j].data['Email'] && transactiondata.documents[j].data['Counter']=="1" && transactiondata.documents[j].data['Type']==cropdata.documents[i].data['Type']) {
+                             present=true;
+                               addCropDialog(context, i);
 
                        break;
                         }
                       }
+                        }
                         if(j==(transactiondata.documents.length)&&!present){
                         addCropDialog1(context, i);
                         }

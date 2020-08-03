@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter/material.dart';
 import 'package:kisan_app/Components/dialog_helper.dart';
-import 'package:kisan_app/screens/FarmerScreens/Checkprice.dart';
 import 'package:kisan_app/screens/FarmerScreens/recenttransaction.dart';
 import 'package:kisan_app/sign_in.dart';
 import 'package:kisan_app/youtube/screens/home_screen.dart';
 import 'package:speech_recognition/speech_recognition.dart';
+import 'package:kisan_app/screens/FarmerScreens/history.dart';
 import '../../app_localizations.dart';
 import '../../crud.dart';
 import '../chat_screen.dart';
@@ -70,7 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   int chatcount=0;
   void initSpeechRecognizer() {
-    tts.speak("How can i help you");
+
+
+    resultText=null;
     //print("inside speech recognizer");
     _speechRecognition = SpeechRecognition();
     _speechRecognition.setRecognitionCompleteHandler(onRecognitionComplete);
@@ -102,35 +104,43 @@ class _HomeScreenState extends State<HomeScreen> {
     if ((resultText != null && resultText != "")) {
       count1++;
       print(count1);
-      if ((resultText == "tutorial" ||
-          resultText == "transportation" ||
-          resultText == "crop insurance" ||
-          resultText == "branding" ||
-          resultText == "my profile" ||
-          resultText == "add crop" ||
-          resultText == "show crop" ||
-          resultText == "irrigation system" ||
-          resultText == "branding" ||
-          resultText == "fertilizer" ||
-          resultText == "packaging" ||
-          resultText == "warehouse" ||
-          resultText == "government schemes" ||
-          resultText == "crop insurance" ||
-          resultText == "crop forecasting" ||
-          resultText == "start season" ||
-          resultText == "middle season" ||
-          resultText == "end season" ||
-          resultText == "back" ||
-          resultText == "weather" ||
-          resultText == "logout")) {
-        if (resultText == "tutorial") {
+      if ((resultText == "tutorial" ||resultText=='ट्यूटोरियल'||
+          resultText == "transportation" ||resultText=='परिवहन'||
+          resultText == "crop insurance" ||resultText=='फसल बीमा'||
+          resultText == "branding" ||resultText=='ब्रांडिंग '||
+          resultText == "my profile" ||resultText=='मेरा प्रोफाइल'||
+          resultText == "add crop" ||resultText=="फसल जोड़ें"||
+          resultText == "show crop" ||resultText=='मेरी फसल'||
+          resultText == "irrigation system" ||resultText=='सिंचाई प्रणाली'||
+          resultText == "fertilizer" ||resultText=='उर्वरक' ||
+          resultText == "packaging" ||resultText=='पैकेजिंग'||
+          resultText == "warehouse" ||resultText=='गोदाम'||
+          resultText == "government schemes" ||resultText=='सरकारी योजनाएं'||
+          resultText == "starting" ||resultText=='शुरुआत'||
+          resultText == "middle" ||resultText=='मध्य'||
+          resultText == "ending" ||resultText=='समापन'||
+          resultText == "back"||resultText=="chat"||resultText=="चैट"||
+          resultText == "weather" ||resultText=='मौसम'||
+          resultText == "logout"||resultText=='लॉग आउट करें')) {
+        if (resultText == "tutorial"||resultText=='ट्यूटोरियल') {
           if (!count) {
             tts.speak("Please wait");
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => HomeScreen1()));
+            resultText = "";
           }
           count = true;
-        } else if (resultText == "start season") {
+        }
+        else if (resultText == "Chat"||resultText=='चैट') {
+          if (!count) {
+            tts.speak("Please wait");
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChatScreen()));
+            resultText = "";
+          }
+          count = true;
+        }
+        else if (resultText == "starting"||resultText=='शुरुआत') {
           if (!count) {
             tts.speak("Please wait");
             Navigator.push(context,
@@ -138,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "middle season") {
+        } else if (resultText == "middle"||resultText=='मध्य') {
           if (!count) {
             tts.speak("Please wait");
 
@@ -147,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "crop insurance") {
+        } else if (resultText == "crop insurance"||resultText=='फसल बीमा') {
           if (!count) {
             tts.speak("Please wait");
 
@@ -156,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "end season") {
+        } else if (resultText == "ending"||resultText=='समापन') {
           if (!count) {
             tts.speak("Please wait");
 
@@ -165,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "weather") {
+        } else if (resultText == "weather"||resultText=='मौसम') {
           if (!count) {
             tts.speak("Please wait");
 
@@ -174,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "transportation") {
+        } else if (resultText == "transportation"||resultText=='परिवहन') {
           if (!count) {
             tts.speak("Please wait");
 
@@ -183,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "irrigation system") {
+        } else if (resultText == "irrigation system" ||resultText=='सिंचाई प्रणाली') {
           if (!count) {
             tts.speak("Please wait");
 
@@ -192,13 +202,13 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "branding") {
+        } else if (resultText == "branding"||resultText=='ब्रांडिंग ') {
           if (!count) {
             tts.speak("Please wait");
             resultText = "";
           }
           count = true;
-        } else if (resultText == "fertilizer") {
+        } else if (resultText == "fertilizer" ||resultText=='उर्वरक') {
           if (!count) {
             tts.speak("Please wait");
 
@@ -207,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "packaging") {
+        } else if (resultText == "packaging"||resultText=='पैकेजिंग') {
           if (!count) {
             tts.speak("Please wait");
 
@@ -216,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "warehouse") {
+        } else if (resultText == "warehouse"||resultText=='गोदाम') {
           if (!count) {
             tts.speak("Please wait");
 
@@ -225,7 +235,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "government schemes") {
+        } else if (resultText == "government schemes"||resultText=='सरकारी योजनाएं') {
           if (!count) {
             tts.speak("Please wait");
 
@@ -234,24 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "crop insurance") {
-          if (!count) {
-            tts.speak("Please wait");
-
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Insurance()));
-            resultText = "";
-          }
-          count = true;
-        } else if (resultText == "crop forcasting") {
-          if (!count) {
-            tts.speak("Please wait");
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => CropHelp()));
-            resultText = "";
-          }
-          count = true;
-        } else if (resultText == "my profile") {
+        } else if (resultText == "my profile"||resultText=='मेरा प्रोफाइल') {
           if (!count) {
             tts.speak("Please wait");
             Navigator.push(context,
@@ -259,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "show crop") {
+        } else if (resultText == "show crop"||resultText=='मेरी फसल') {
           if (!count) {
             tts.speak("Please wait");
             Navigator.push(
@@ -267,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "logout") {
+        } else if (resultText == "logout"||resultText=='लॉग आउट करें') {
           if (!count) {
             tts.speak("Please wait");
             _firebaseAuth.signOut();
@@ -276,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "add crop") {
+        } else if (resultText == "add crop"||resultText=="फसल जोड़ें") {
           if (!count) {
             tts.speak("Please wait");
             Navigator.push(
@@ -284,15 +277,16 @@ class _HomeScreenState extends State<HomeScreen> {
             resultText = "";
           }
           count = true;
-        } else if (resultText == "branding") {
+        }
+        else if (resultText == "Check Daily Price"||resultText=="दैनिक मूल्य की जाँच करें") {
           if (!count) {
             tts.speak("Please wait");
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Collaboration()));
+                context, MaterialPageRoute(builder: (context) => DailyPrice()));
             resultText = "";
           }
           count = true;
-        } else if (resultText == "back") {
+        }else if (resultText == "back") {
           if (!count) {
             tts.speak("Please wait");
             Navigator.pop(context);
@@ -302,7 +296,6 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       } else if (count1 >= 1) {
         count1 = 0;
-        tts.speak("Not able to process");
         tts.speak(resultText + "is not a service");
         resultText = "";
       }
@@ -917,8 +910,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.white,
                               child: ListTile(
                                 leading: Icon(
-                                  Icons.directions_bus,
-                                  color: Colors.black,
+                                  Icons.beach_access,
+                                  color: Colors.green,
                                 ),
                                 title: Text(
                                   (AppLocalizations.of(context).translate('7')),
@@ -945,11 +938,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.white,
                               child: ListTile(
                                 leading: Icon(
-                                  Icons.directions_bus,
-                                  color: Colors.black,
+                                  Icons.data_usage,
+                                  color: Colors.orange,
                                 ),
                                 title: Text(
-                                  "Check Daily Price",
+                                  (AppLocalizations.of(context).translate('136')),
                                   style: TextStyle(
                                     color: Colors.teal,
                                     fontSize: 20.0,
@@ -965,6 +958,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => DailyPrice()),
+                              );
+                            },
+                          ),
+                          FlatButton(
+                            child: Card(
+                              color: Colors.white,
+                              child: ListTile(
+                                  leading: Icon(
+                                    Icons.data_usage,
+                                    color: Colors.blue,
+                                  ),
+                                title: Text(
+                                  "Previous Data",
+                                  style: TextStyle(
+                                      color: Colors.teal,
+                                      fontSize: 20.0,
+                                      letterSpacing: 1.2,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: "Montserrat"),
+                                ),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HistoryPage()),
                               );
                             },
                           ),
@@ -1221,32 +1241,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => HomeScreen1()),
-                              );
-                            },
-                          ),
-                          FlatButton(
-                            child: Card(
-                              color: Colors.white,
-                              child: ListTile(
-                                leading: Icon(Icons.help),
-                                title: Text(
-                                  (AppLocalizations.of(context)
-                                      .translate("73")),
-                                  style: TextStyle(
-                                    color: Colors.teal,
-                                    fontSize: 20.0,
-                                    letterSpacing: 1.2,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: "Montserrat",
-                                  ),
-                                ),
-                              ),
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CropHelp()),
                               );
                             },
                           ),
