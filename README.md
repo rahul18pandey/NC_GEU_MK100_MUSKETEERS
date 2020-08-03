@@ -1,12 +1,13 @@
 # NC_GEU_MK100_MUSKETEERS
 # Website
 - `latest version of Chrome 84.0.4147.105`
+- `We have used government site  https://data.gov.in/ to extract data of different types which is used in our website using apis.`
 ## User Stories
-- install `python3`
+- `install python3`
 - `pip3 install flask`
 - `cd <root directory>`
 - `python3 app.py`
-- visit `localhost:8000`
+- `visit localhost:8000`
 
 # Weather App
 A weather application to get the temperature, weather condition and whether it is day or night of a particular city using weatherstack (A free weather api).
@@ -20,6 +21,6 @@ A weather application to get the temperature, weather condition and whether it i
 - `cd geo`
 - `pip3 install -r requirements.txt`
 - `python3 manage.py runserver`
-- visit `localhost:8000`
+- `visit localhost:8000`
 - `localhost:8000/?location=<your location>`
-- or you can directly go on `https://weatherappopen.herokuapp.com/?location=<your location>`
+- `or you can directly go on https://weatherappopen.herokuapp.com/?location=<your location>`

@@ -1,18 +1,18 @@
 from flask import Flask, render_template, request, jsonify, make_response, json
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
+# import firebase_admin
+# from firebase_admin import credentials
+# from firebase_admin import firestore
 
-# Use a service account
-cred = credentials.Certificate('./firepy-7e705-firebase-adminsdk-iffv4-ab6fbe1767.json')
-firebase_admin.initialize_app(cred)
+# # Use a service account
+# cred = credentials.Certificate('./firepy-7e705-firebase-adminsdk-iffv4-ab6fbe1767.json')
+# firebase_admin.initialize_app(cred)
 
-db = firestore.client()
+# db = firestore.client()
 app = Flask(__name__)
 
 
-def login_auth():
-    pass
+# def login_auth():
+#     pass
 
 
 @app.route('/')
@@ -62,6 +62,27 @@ def schemes():
 @app.route('/tutorials', methods=['GET'])
 def tutorials():
     return render_template('tutorials.html', title = 'Saksham Kisan - TURORIAL', user="farmer") #other users could be "kisan", "sprovider", "buyer"
+
+#sercices
+@app.route('/farmerirrigation', methods=['GET'])
+def farmerirrigation():
+    return render_template('farmertransport.html', title = 'Saksham Kisan - IRRIGATION', data="IRRIGATION", user="farmer") #other users could be "kisan", "sprovider", "buyer"
+
+@app.route('/farmerfertilisers', methods=['GET'])
+def farmerfertilisers():
+    return render_template('farmertransport.html', title = 'Saksham Kisan - FERTILIZERS', data="FERTILIZERS", user="farmer") #other users could be "kisan", "sprovider", "buyer"
+
+@app.route('/farmerpackaging', methods=['GET'])
+def farmerpackaging():
+    return render_template('farmertransport.html', title = 'Saksham Kisan - PACKAGEING', data="PACKAGEING", user="farmer") #other users could be "kisan", "sprovider", "buyer"
+
+@app.route('/farmertransport', methods=['GET'])
+def farmertransport():
+    return render_template('farmertransport.html', title = 'Saksham Kisan - TRANSPORT', data="TRANSPORT", user="farmer") #other users could be "kisan", "sprovider", "buyer"
+
+@app.route('/farmerwarehouse', methods=['GET'])
+def farmerwarehouse():
+    return render_template('farmertransport.html', title = 'Saksham Kisan - WAREHOUSE', data="WAREHOUSE", user="farmer") #other users could be "kisan", "sprovider", "buyer"
 
 
 ##############  farmer auction  #############
@@ -177,15 +198,15 @@ def chat():
 
 
 
-############### api
-@app.route('/api', methods=['GET'])
-def api():
-    docs = db.collection(u'Farmer').stream()
-    data = []
-    for doc in docs:
-        print(doc.to_dict())
-        data.append("ASDF")
-    return data
+# ############### api
+# @app.route('/api', methods=['GET'])
+# def api():
+#     docs = db.collection(u'Farmer').stream()
+#     data = []
+#     for doc in docs:
+#         print(doc.to_dict())
+#         data.append("ASDF")
+#     return data
 
 
 
