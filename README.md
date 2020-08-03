@@ -20,3 +20,4 @@ A weather application to get the temperature, weather condition and whether it i
 - `pip3 install -r requirements.txt`
 - `python3 manage.py runserver`
 - visit `localhost:8000`
+- `localhost:8000/?location=<your location>`
