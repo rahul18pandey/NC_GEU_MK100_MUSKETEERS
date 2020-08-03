@@ -38,6 +38,8 @@ firebase.auth().onAuthStateChanged(function (user) {
     
                                         //...............check for service provider....................
                                         console.log('service provider found');
+                            window.location = '/servicehome';
+
                                         //window.location.href('service-provider-profile.html');
                                     } else {
                                         console.log('you must signup first');
