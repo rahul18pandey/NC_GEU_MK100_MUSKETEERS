@@ -13,3 +13,7 @@ FOR DATABASE :
 Go to this link to Sign up into Firebase : https://firebase.google.com/?authuser=2
 Username : skashamkisan@gmail.com
 Password : RealTime2
+
+
+FOR PPT:
+link: https://docs.google.com/presentation/d/1_jXcLUA3DFumnqzyjTYQOPqwa2AFkXBCaqXufrVPHLg/edit?usp=sharing
