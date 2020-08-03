@@ -404,7 +404,7 @@ Widget _buildsubmit1Btn() {
         fobj.addstorageservicedata({
           'Service_type': this.fertilizertype,
           'Phone':this.phone,
-          'Charges':this.charges,
+          'Price':this.charges,
           'Email':user.email,
           'Type':'fertilizer/pesticides',
         }).then((result) {
